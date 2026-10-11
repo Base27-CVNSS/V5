@@ -15,5 +15,12 @@ jobs:
           python-version: '3.12'
       - name: Exact rational geometry checks
         run: python -m unittest discover -s tests -v
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Spherical angle and 3D math regression tests
+        run: node --test tests/test_sphere_math.mjs
+      - name: Check 3D module syntax
+        run: node --check web/v5-3d.js
       - name: Generate 32-cell test SVG
         run: python src/v5.py --depth 5 --svg > v5-32.svg
