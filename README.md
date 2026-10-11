@@ -1,6 +1,6 @@
 # V5 — Pentagonal Geospatial Indexing System
 
-**An experimental, mathematically grounded pentagonal spatial indexing research project.**
+**V5 Research Reference v1.0.0 (2026-10-11): a versioned experimental weak-pentagon reference implementation, V5-64 address codec and research website — not a production global DGGS.**
 
 [Website](https://base27-cvnss.github.io/V5/) · [English Technical Specification](https://base27-cvnss.github.io/V5/technical-specification.html) · [V5-32 specification (Markdown)](docs/TECHNICAL_SPEC_EN.md) · [Chứng minh toán học (VI) — V5/H3/S2](https://base27-cvnss.github.io/V5/mathematical-proof.html) · [3D spherical simulation](https://base27-cvnss.github.io/V5/#simulation3d) · [Mathematical paper](docs/paper.tex) · [Proof notes](docs/PROOF.md) · [Python prototype](src/v5.py) · [V5-64 codec](src/v5id.py) · [H3 comparison](https://h3geo.org/)
 
@@ -40,6 +40,14 @@ The **geometric contraction rate, conformity, numerical quality, and spherical e
 * A fivefold rotationally symmetric partition into convex cells has orbit sizes 1 or 5, with at most one invariant convex cell; 32 cells cannot respect full fivefold rotational symmetry.
 * A sphere cannot be edge-to-edge tiled by more than twelve **congruent regular spherical pentagons** with geodesic edges.
 
+## V5 Research Reference v1.0.0 — security & QA release scope
+
+[Release notes](CHANGELOG.md) · [Release criteria](docs/RELEASE_1.0.0.md) · [Security policy](SECURITY.md) · [Source version](VERSION) · [CI quality gate](.github/workflows/quality.yml) · [Pages deployment gate](.github/workflows/pages.yml)
+
+Release v1.0.0 covers the static research site, documented weak planar/spherical constructions, the experimental 64-bit address codec, and automated geometry/canonical-ID tests. **It does not certify a fully convex, conforming, equal-area or WGS84-ready DGGS.**
+
+GitHub Actions quality checks now include Python and Node tests, browser-source syntax checks, and a static-site security audit; Pages deployment is configured to require successful verification. **Do not mark the actual run as PASS without inspecting the workflow logs.** No Git tag or GitHub Release should be inferred solely from the presence of `VERSION`. Current CSP still allows inline scripts and remote Three.js CDN modules are version-pinned but not cryptographically integrity-pinned.
+
 ## Quick start
 
 Requires Python 3.10+; core prototype uses the Python standard library only.
@@ -76,9 +84,9 @@ The earlier 5-child / 3-bit / 31-level description is treated as a separate **su
 | WGS84 projection, point lookup, neighbor traversal | Not implemented |
 | Performance comparison with H3 or S2 | Not measured |
 
-## Suggested V5-64 layout (proposal only)
+## Implemented V5-64 v1 path format (research codec)
 
-`version:4 | resolution:4 | root:6 | path:50` = 64 bits. The path contains up to ten 5-bit base-32 digits. The canonical binary path codec is **implemented in [src/v5id.py](src/v5id.py)** and documented in [docs/V5-64.md](docs/V5-64.md), but this is **not** a complete operational geospatial index or coordinate lookup API. The number five in `5-bit` does not mathematically imply five polygon edges.
+`version:4 | resolution:4 | root:6 | path:50` = 64 bits. The path contains up to ten 5-bit base-32 digits. This format is implemented for canonical root/path addresses (not geolocation). The canonical binary path codec is **implemented in [src/v5id.py](src/v5id.py)** and documented in [docs/V5-64.md](docs/V5-64.md), but this is **not** a complete operational geospatial index or coordinate lookup API. The number five in `5-bit` does not mathematically imply five polygon edges.
 
 ## Research publication
 
