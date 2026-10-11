@@ -40,6 +40,12 @@ The **geometric contraction rate, conformity, numerical quality, and spherical e
 * A fivefold rotationally symmetric partition into convex cells has orbit sizes 1 or 5, with at most one invariant convex cell; 32 cells cannot respect full fivefold rotational symmetry.
 * A sphere cannot be edge-to-edge tiled by more than twelve **congruent regular spherical pentagons** with geodesic edges.
 
+## Spatial DNA v0.1 — entropy and authenticated provenance research
+
+The [Spatial DNA technical design](docs/SPATIAL_DNA_V0_1.md) and [mathematical website section](https://base27-cvnss.github.io/V5/mathematical-proof.html#spatial-dna) distinguish **77.4% efficiency of an alternative five-child tree encoded in 3-bit digits** from existing **V5-32 with 32 choices in 5 bits, 100% digit-capacity efficiency**. At fifteen five-way levels, 45 raw bits need 35 dense bits and could reclaim **10 integer bits** by repacking; these are not preexisting V5-64 bits.
+
+An optional **54-byte Spatial DNA v0.1 sidecar** in [src/v5dna.py](src/v5dna.py) and [tests/test_v5dna.py](tests/test_v5dna.py) associates a canonical V5-64 cell with per-level metadata marks, CRC32 corruption detection and HMAC-SHA256/128 message authentication. It **does not** change the 64-bit codec, encrypt content, implement ACLs, correct damaged bits, or certify external GIS observations. Future ECC, signed provenance, IAM, atlas version migration and event history need distinct services. H3/S2 can also use sidecar designs.
+
 ## 50 research use cases (GIS · WebGIS · GeoAI · Spatial LLM · SLAM · LiDAR · BIM)
 
 The [interactive 50-use-case catalog](https://base27-cvnss.github.io/V5/use-cases.html) and [full Vietnamese Markdown scenarios](docs/USE_CASES_50_VI.md) provide seven groups of concrete research cases, each with inputs, workflow, falsifiable V5 hypothesis, required infrastructure, and measured acceptance criteria. Three browser demonstrations cover V5-64 bit encoding, area-weighted means and 32-way hierarchy counts using synthetic data only. The catalog is backed by [a typed JavaScript dataset](web/v5-usecases-data.js), [pure mathematics helpers](web/v5-usecases-math.js) and [Node regression tests](tests/test_usecases.mjs).
