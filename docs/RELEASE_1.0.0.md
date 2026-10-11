@@ -35,3 +35,7 @@ Version 1.0.0 is the release baseline for the **static V5 research website, docu
 - Pin GitHub Actions to commit SHAs after verifying official action digests.
 - Introduce headless browser smoke tests + WebGL fallback paths and CI link checks.
 - Add independent computational geometry overlap certificates.
+
+## 6. H3/S2/V5 comparison and unsigned 64-bit caveat
+
+The [multi-criteria comparison](COMPARISON_H3_S2_V5_VI.md) and [live Vietnamese proof section](../mathematical-proof.html#weak) clarify that H3/S2 already use 64-bit spatial cell identifiers. V5's 32-way choice requires 5 bits/digit and its 50-bit path permits exactly 10 levels, not unrestricted 64-bit depth. These references are maintained with the 1.0.0 research-release scope. Geometry and full GIS API verification remain gated.
