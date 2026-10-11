@@ -1,0 +1,11 @@
+{
+  "name": "v5-research-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "V5-32 experimental geometry and V5-64 research codec; not a production DGGS",
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.mjs",
+    "check:syntax": "node --check web/v5-sphere-math.js && node --check web/v5-3d.js"
+  }
+}
