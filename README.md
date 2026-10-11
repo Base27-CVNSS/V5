@@ -2,7 +2,7 @@
 
 **An experimental, mathematically grounded pentagonal spatial indexing research project.**
 
-[Website](https://base27-cvnss.github.io/V5/) · [Chứng minh toán học (VI) — V5/H3/S2](https://base27-cvnss.github.io/V5/mathematical-proof.html) · [3D spherical simulation](https://base27-cvnss.github.io/V5/#simulation3d) · [Mathematical paper](docs/paper.tex) · [Proof notes](docs/PROOF.md) · [Python prototype](src/v5.py) · [V5-64 codec](src/v5id.py) · [H3 comparison](https://h3geo.org/)
+[Website](https://base27-cvnss.github.io/V5/) · [English Technical Specification](https://base27-cvnss.github.io/V5/technical-specification.html) · [V5-32 specification (Markdown)](docs/TECHNICAL_SPEC_EN.md) · [Chứng minh toán học (VI) — V5/H3/S2](https://base27-cvnss.github.io/V5/mathematical-proof.html) · [3D spherical simulation](https://base27-cvnss.github.io/V5/#simulation3d) · [Mathematical paper](docs/paper.tex) · [Proof notes](docs/PROOF.md) · [Python prototype](src/v5.py) · [V5-64 codec](src/v5id.py) · [H3 comparison](https://h3geo.org/)
 
 > **Research status (2026):** A weak, geometrically nested 32-child refinement exists for simple, nondegenerate planar pentagons and can be transferred to a spherical dodecahedral atlas. The construction allows **nonconvex cells and hanging nodes**. An edge-to-edge, uniformly shape-regular, equal-area V5 grid is **not proven**. Do not describe this as a production DGGS or as faster than H3.
 
@@ -56,6 +56,12 @@ The prototype uses rational coordinates (via `fractions.Fraction`) for exact pla
 ## 2026-10-11: Mathematical proof and responsible deployment
 
 The [Vietnamese V5-32 proof and comparison page](mathematical-proof.html) presents Gauss–Bonnet, Euler/parity, the spherical Riemannian no-homothety theorem, and the distinction between exact similarity and diameter contraction. It covers application-dependent selection versus H3/S2 and the current 10-level limit of the V5-64 codec. **Strong all-convex conforming 32-child recursive contraction has not been verified in this repository.** V5 performance superiority over H3 or S2 has not been measured.
+
+## English Technical Specification (Draft v1.1 — 2026-10-11)
+
+The [English technical specification](docs/TECHNICAL_SPEC_EN.md) and its [interactive web companion](https://base27-cvnss.github.io/V5/technical-specification.html) are now the architecture reference for **V5-32 / V5-64 v1**. They document the exact implemented 4+4+6+50-bit address, ten 5-bit path digits and 10-level limit, with canonical hex vectors, API maturity statuses, proposed GeoAI models, a H3/S2 comparison, benchmark requirements and an explicit conformance checklist.
+
+The earlier 5-child / 3-bit / 31-level description is treated as a separate **superseded proposal**, not the running codec. Strict equal-area spherical cells, uniform convex edge-to-edge 32-way refinement, WGS84 lookup and any speedup over H3/S2 are **not validated**.
 
 ## Research roadmap
 
