@@ -2,7 +2,7 @@
 
 **An experimental, mathematically grounded pentagonal spatial indexing research project.**
 
-[Website](https://base27-cvnss.github.io/V5/) · [3D spherical simulation](https://base27-cvnss.github.io/V5/#simulation3d) · [Mathematical paper](docs/paper.tex) · [Proof notes](docs/PROOF.md) · [Python prototype](src/v5.py) · [V5-64 codec](src/v5id.py) · [H3 comparison](https://h3geo.org/)
+[Website](https://base27-cvnss.github.io/V5/) · [Chứng minh toán học (VI) — V5/H3/S2](https://base27-cvnss.github.io/V5/mathematical-proof.html) · [3D spherical simulation](https://base27-cvnss.github.io/V5/#simulation3d) · [Mathematical paper](docs/paper.tex) · [Proof notes](docs/PROOF.md) · [Python prototype](src/v5.py) · [V5-64 codec](src/v5id.py) · [H3 comparison](https://h3geo.org/)
 
 > **Research status (2026):** A weak, geometrically nested 32-child refinement exists for simple, nondegenerate planar pentagons and can be transferred to a spherical dodecahedral atlas. The construction allows **nonconvex cells and hanging nodes**. An edge-to-edge, uniformly shape-regular, equal-area V5 grid is **not proven**. Do not describe this as a production DGGS or as faster than H3.
 
@@ -52,6 +52,10 @@ python -m src.v5id
 ```
 
 The prototype uses rational coordinates (via `fractions.Fraction`) for exact planar orientation, areas, and intersection checks. This is intentionally a research prototype, **not** a latitude/longitude lookup library.
+
+## 2026-10-11: Mathematical proof and responsible deployment
+
+The [Vietnamese V5-32 proof and comparison page](mathematical-proof.html) presents Gauss–Bonnet, Euler/parity, the spherical Riemannian no-homothety theorem, and the distinction between exact similarity and diameter contraction. It covers application-dependent selection versus H3/S2 and the current 10-level limit of the V5-64 codec. **Strong all-convex conforming 32-child recursive contraction has not been verified in this repository.** V5 performance superiority over H3 or S2 has not been measured.
 
 ## Research roadmap
 
