@@ -210,6 +210,7 @@ ol{padding-left:21px}li{margin:6px 0}code{background:#eef3f8;padding:2px 5px;bor
 <tr><td>Hội tụ cấp sâu</td><td>Phân hoạch yếu không bảo đảm D→0</td><td>Chứng minh D<sub>n</sub> ≤ Cρ<sup>n</sup>, và nếu cần D<sub>n+1</sub> ≤ ρD<sub>n</sub></td></tr>
 <tr><td>WGS84 ellipsoid</td><td>Sphere ≠ ellipsoid; sai số đo diện tích</td><td>Ánh xạ chuẩn, kiểm chứng geodesic trên ellipsoid</td></tr>
 <tr><td>CellID 64-bit</td><td>Tối đa 10 cấp cho layout hiện hành</td><td>Format mới, ID 128-bit hoặc phân giải theo vùng cho cấp sâu hơn</td></tr>
+<tr><td>Entropy mã hóa &amp; Spatial DNA</td><td>77,4% chỉ đúng với mô hình giả định 5-con/3-bit, không phải V5-32/5-bit. Metadata sidecar 54 byte làm tăng lưu trữ nếu gắn đại trà.</td><td>Bit-packing có chứng minh, metadata tách riêng; so 8-byte ID với 54-byte sidecar bằng benchmark. CRC/HMAC không phải ECC, encryption hoặc ACL.</td></tr>
 <tr><td>GPU / cache / hiệu năng</td><td>5 cạnh không tự động nhanh hơn raster/H3/S2</td><td>Benchmark công bằng; tính cả hình học và chi phí hàng xóm</td></tr>
 <tr><td>OGC / tương tác</td><td>Chưa được xác nhận phù hợp mọi yêu cầu OGC</td><td>Conformance tests, API địa lý và tham chiếu OGC DGGS</td></tr>
 </tbody></table></div>
