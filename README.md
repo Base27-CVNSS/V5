@@ -2,7 +2,7 @@
 
 **V5 Research Reference v1.0.0 (2026-10-11): a versioned experimental weak-pentagon reference implementation, V5-64 address codec and research website — not a production global DGGS.**
 
-[Website](https://base27-cvnss.github.io/V5/) · [English Technical Specification](https://base27-cvnss.github.io/V5/technical-specification.html) · [V5-32 specification (Markdown)](docs/TECHNICAL_SPEC_EN.md) · [Chứng minh toán học (VI) — V5/H3/S2](https://base27-cvnss.github.io/V5/mathematical-proof.html) · [3D spherical simulation](https://base27-cvnss.github.io/V5/#simulation3d) · [Mathematical paper](docs/paper.tex) · [Proof notes](docs/PROOF.md) · [Python prototype](src/v5.py) · [V5-64 codec](src/v5id.py) · [H3 comparison](https://h3geo.org/)
+[Website](https://base27-cvnss.github.io/V5/) · [English Technical Specification](https://base27-cvnss.github.io/V5/technical-specification.html) · [Comparison H3/S2/V5 (VI)](docs/COMPARISON_H3_S2_V5_VI.md) · [V5-32 specification (Markdown)](docs/TECHNICAL_SPEC_EN.md) · [Chứng minh toán học (VI) — V5/H3/S2](https://base27-cvnss.github.io/V5/mathematical-proof.html) · [3D spherical simulation](https://base27-cvnss.github.io/V5/#simulation3d) · [Mathematical paper](docs/paper.tex) · [Proof notes](docs/PROOF.md) · [Python prototype](src/v5.py) · [V5-64 codec](src/v5id.py) · [H3 comparison](https://h3geo.org/)
 
 > **Research status (2026):** A weak, geometrically nested 32-child refinement exists for simple, nondegenerate planar pentagons and can be transferred to a spherical dodecahedral atlas. The construction allows **nonconvex cells and hanging nodes**. An edge-to-edge, uniformly shape-regular, equal-area V5 grid is **not proven**. Do not describe this as a production DGGS or as faster than H3.
 
