@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="V5-32 experimental technical specification: 64-bit hierarchical pentagonal addresses, mathematical constraints, API contracts, H3/S2 comparison, conformance criteria and GeoAI architectures.">
-<meta name="theme-color" content="#0c243b">
+<meta name="theme-color" content="#090412">
 <title>V5-32 | English Technical Specification · GeoAI · V5-64</title>
 <style>
 :root{--ink:#102b44;--muted:#5d7388;--bg:#f3f7fb;--stroke:#dce7ef;--navy:#09243c;--blue:#166bbe;--teal:#048786;--gold:#dc971e}
@@ -19,11 +19,12 @@ main section{background:#fff;border:1px solid var(--stroke);border-radius:14px;p
 @media(max-width:580px){.stats{grid-template-columns:1fr 1fr}.stat b{font-size:21px}.layout{padding:0 13px}.hero{padding:43px 17px}.top{padding:13px}.nav{margin:0}main section{padding:22px 17px}.inputrow{grid-template-columns:1fr}.bitbar>div{font-size:9px}.bitbar small{font-size:8px}}
 @media print{header,aside,.actions,.inputrow{display:none}.layout{display:block}main section{break-inside:avoid;box-shadow:none}body{background:#fff}}
 </style>
+<link rel="stylesheet" href="./web/v5-web3.css">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://cdn.jsdelivr.net; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="no-referrer">
 </head>
-<body>
-<header><div class="top"><a class="logo" href="./"><span>V</span>V5</a><nav class="nav"><a href="./">Overview</a><a href="#theorems">Mathematics</a><a href="#codec">V5-64</a><a href="#dna">Spatial DNA</a><a href="#api">API</a><a href="#ai">GeoAI</a><a href="#benchmarks">Benchmark</a><a href="mathematical-proof.html" lang="vi">Tiếng Việt</a></nav></div></header>
+<body class="v5-web3 v5-doc v5-spec">
+<header><div class="top"><a class="logo" href="./"><span>V</span>V5</a><nav class="nav"><a href="./">Overview</a><a href="#theorems">Mathematics</a><a href="mathematical-proof.html" title="Chứng minh bằng tiếng Việt">VI Proof</a><a href="#codec">V5-64</a><a href="#dna">Spatial DNA</a><a href="#api">API</a><a href="#ai">GeoAI</a><a href="#benchmarks">Benchmark</a><a href="mathematical-proof.html" lang="vi">Tiếng Việt</a></nav></div></header>
 <div class="hero"><div class="inner"><div class="eyebrow">Research implementation · English Technical Specification · Draft v1.1</div><h1>V5-32 <em>Technical Specification</em></h1><p>A precise, implementation-aligned specification for 32-way pentagonal indexing, a 64-bit hierarchical CellID, spherical geometry, GeoAI tensor contracts, benchmark requirements and unresolved mathematical limitations.</p><div class="actions"><a class="btn dark" href="https://github.com/Base27-CVNSS/V5/blob/main/docs/TECHNICAL_SPEC_EN.md" target="_blank" rel="noopener noreferrer">Read full normative specification ↗</a><a class="btn ghost" href="#codec">Inspect CellID bits</a><a class="btn ghost" href="#conformance">Conformance checklist</a></div><div class="meta">Long Ngo · Vietflexmap · October 11, 2026 · Apache-2.0 · Research draft — not a certified DGGS standard</div></div></div>
 <div class="stats"><div class="stat"><b>12</b><small>Dodecahedral root faces</small></div><div class="stat"><b>32</b><small>Children per weak refinement</small></div><div class="stat"><b>64-bit</b><small>Canonical address codec</small></div><div class="stat"><b>10</b><small>Encoded depth limit (v1)</small></div></div>
 <div class="layout">
