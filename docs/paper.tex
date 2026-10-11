@@ -182,6 +182,56 @@ coordinate-to-cell conversion. A proposed 64-bit layout
 ten base-32 refinement digits and a canonical integer address codec is implemented in\texttt{src/v5id.py}, but neither provides a WGS84 coordinate locator or a full geographic indexing library.
 No timing benchmark or H3-vs-V5 speedup is claimed.
 
+
+\section{Local spherical angle conditions and global no-similarity theorem}
+\begin{proposition}[Spherical pentagon excess]
+For a positively oriented, simple geodesic pentagonal disk
+$P\subset S^2_R$ of area $A>0$ with interior angles
+$\alpha_1,\ldots,\alpha_5$, the Gauss--Bonnet formula gives
+\begin{equation}
+\sum_{i=1}^5\alpha_i-3\pi=\frac{A}{R^2}>0.
+\end{equation}
+At each junction of a gap-free, non-overlapping decomposition of the
+smooth sphere, all incident sector angles sum to $2\pi$.
+\end{proposition}
+\begin{proof}
+Every edge is a segment of a great circle and therefore has
+geodesic curvature zero. By Gauss--Bonnet, the sum of exterior turns
+is $2\pi-\int_P K\,dA=2\pi-A/R^2$, with
+$K=1/R^2$ and the interior disk orientation.
+Converting exterior turns to interior angles yields the first claim.
+The incident sectors at a nonsingular point form a partition of its
+tangent circle, whose angular measure is $2\pi$.
+\end{proof}
+
+\begin{theorem}[No nontrivial local spherical homothety]
+Let $U,V$ be nonempty open subsets of the same round sphere of radius
+$R$, equipped with spherical metric $g$. If a smooth local
+diffeomorphism $f:U\to V$ obeys $f^*g=\lambda^2g$ for a constant
+$\lambda>0$, then $\lambda=1$.
+\end{theorem}
+\begin{proof}
+Gaussian curvature is preserved under local isometries and changes
+under constant metric rescaling by $K(\lambda^2g)=K(g)/\lambda^2$.
+On a round sphere, $K(g)=1/R^2$. Since the pullback $f^*g$
+has curvature $K(g)\circ f=1/R^2$, equality with the curvature of
+$\lambda^2g$ forces $\lambda^2=1$, hence $\lambda=1$.
+\end{proof}
+
+The theorem forbids an \emph{exact} constant-scale similarity
+between spherical open sets, not a nested subdivision with variable
+shapes. As a visual check, changing geodesic radius $\theta$ about
+a pole to $\lambda\theta$ produces a circle of circumference
+$2\pi R\sin(\lambda\theta)$, which is not generally equal to
+$\lambda\,2\pi R\sin\theta$. A WebGL model, using the icosahedral
+dual to construct twelve great-circle pentagons, computes the
+root-cell angle sums and the $20$ triple vertex junctions. At the
+dodecahedral roots, each angle is $2\pi/3$ and every cell excess is
+$\pi/3$, yielding total excess $4\pi$ across twelve faces. The
+interactive implementation and Node tests are available in
+\texttt{web/v5-3d.js}, \texttt{web/v5-sphere-math.js}, and
+\texttt{tests/test\_sphere\_math.mjs}.
+
 \section{Conclusion}
 The narrow weak-existence question has a constructive affirmative
 answer, under explicit nonconvexity and hanging-node allowances.
