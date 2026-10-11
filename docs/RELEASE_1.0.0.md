@@ -43,3 +43,7 @@ The [multi-criteria comparison](COMPARISON_H3_S2_V5_VI.md) and [live Vietnamese 
 ## 7. Post-baseline research scenario catalog (50 use cases)
 
 The project includes [50 proposed GIS/WebGIS/GeoAI/Spatial LLM/SLAM/LiDAR/BIM applications](USE_CASES_50_VI.md), a [searchable public page](../use-cases.html), and three browser synthetic mathematics/codec demonstrations. These do not expand the certified scope of v1.0.0 beyond the **weak geometric research reference and V5-64 codec**. Unit tests and static audits include the new page; actual GitHub Actions runs and remote Pages status still require independent inspection before a PASS/DEPLOYED claim.
+
+## 9. Web3 bilingual UI and scientific comparison update
+
+The [Web3 UX design guide](WEB3_DESIGN_SYSTEM.md) describes the black–magenta responsive visual refresh, original SVG orb, bilingual top-level homepage UI, H3/S2/V5 architecture charts, categorical maturity matrix, native MathML Gauss–Bonnet area/angle demonstration and preserved 2D/3D research tools. Automated [UI source/mathematics tests](../tests/test_v5_web3.mjs) and static-site audit were expanded. **The website styling and code changes are committed; CI run success, actual Pages deployment, Lighthouse results, WCAG audit and browser screenshots have not been independently verified here.** Version 1.0.0 continues to denote the scope-limited research reference, not a global production DGGS.
