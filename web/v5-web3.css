@@ -212,3 +212,8 @@ body.v5-web3 .stage-note{background:#382441;color:#e6c9ef}
 .v5-globe-static span{font-weight:820;font-size:15px;margin-top:-22px;letter-spacing:.03em}
 .v5-globe-static small{font-size:11px;max-width:330px;color:#d3b8d9;margin-top:7px;line-height:1.6}
 #v5-globe-stage:has(canvas) .v5-globe-static{display:none}
+
+/* Secondary research links: preserve information architecture without competing with the main CTA. */
+.v5-hero-links{display:flex;flex-wrap:wrap;gap:9px 20px;align-items:center;margin:1px 0 20px}
+body.v5-web3 .v5-hero-links a{color:#e5bce7;text-decoration:underline;text-decoration-color:#e8a3ef56;text-underline-offset:5px;font-size:12px;font-weight:650}
+body.v5-web3 .v5-hero-links a:hover{color:#fff;text-decoration-color:#fff}
