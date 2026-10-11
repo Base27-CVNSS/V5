@@ -61,6 +61,46 @@
     .tablewrap{overflow-x:auto;border:1px solid #dde6ef;border-radius:12px}table{border-collapse:collapse;width:100%;font-size:14px}th,td{text-align:left;padding:13px 17px;border-bottom:1px solid #e4ebf2}th{background:#edf4f9;color:#304b63}td{color:#576e80}tr:last-child td{border:0}
     pre{background:#0d273f;border-radius:12px;color:#cdeaf7;padding:22px;overflow:auto;font-size:13px;line-height:1.8}.num{color:#80d6ca}.fn{color:#f9d28e}
     footer{border-top:1px solid #dce6ef;background:#f5f9fc;padding:35px 0;color:#657888;font-size:13px}footer .wrap{display:flex;justify-content:space-between;gap:25px;flex-wrap:wrap}
+
+    /* V5 Three.js globe research laboratory — modular, responsive */
+    .v5-sim-shell{border:1px solid #d8e5f0;border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 14px 42px #102d4b13}
+    .v5-sim-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:13px;padding:18px 22px;border-bottom:1px solid #e0eaf2}
+    .v5-sim-top strong{font-size:15px}.v5-sim-top span{font-size:12px;color:#637c8f}
+    .v5-sim-grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(300px,1fr)}
+    .v5-sim-globe{position:relative;min-height:540px;background:#061827}
+    #v5-globe-stage{position:relative;min-height:540px;height:540px;overflow:hidden;touch-action:pan-y}
+    #v5-globe-stage canvas{display:block;cursor:grab;outline:none}
+    #v5-globe-stage canvas:active{cursor:grabbing}
+    .v5-hud{position:absolute;left:16px;top:16px;display:flex;gap:8px;flex-wrap:wrap;pointer-events:none}
+    .v5-hud span{background:#12364cc9;color:#bae1ee;border:1px solid #2e6477;border-radius:8px;padding:5px 10px;font:600 11px/1.5 ui-monospace,Consolas,monospace}
+    #v5-3d-ready.ready{color:#78f9d0;border-color:#327c6d}
+    #v5-3d-caption{position:absolute;bottom:13px;left:17px;right:17px;color:#d7eaf3;background:#0b2942df;border:1px solid #295268;padding:9px 12px;border-radius:7px;font-size:12px;pointer-events:none}
+    .v5-sim-controls{padding:24px 22px;border-left:1px solid #e0eaf2;background:#fff}
+    .v5-sim-controls label{display:block;color:#45677b;font-size:12px;font-weight:750;margin-bottom:8px}
+    .v5-select{width:100%;border:1px solid #cbdae6;border-radius:9px;background:#f9fcfe;color:#164362;padding:11px;font-size:13px}
+    .v5-modes{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;background:#f1f6fa;border-radius:9px;padding:4px;margin:18px 0}
+    .v5-mode{background:transparent;border:0;border-radius:7px;cursor:pointer;color:#5f7384;font-size:12px;font-weight:700;padding:10px 5px}
+    .v5-mode.active,.v5-mode[aria-pressed="true"]{background:#fff;color:#006c97;box-shadow:0 1px 8px #21475a20}
+    .v5-metrics{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin:15px 0}
+    .v5-measure{background:#f3f8fb;border:1px solid #e0ebf3;border-radius:9px;padding:11px}
+    .v5-measure small{display:block;color:#587588;font-size:10px;font-weight:600;letter-spacing:.02em}
+    .v5-measure strong{display:block;color:#163e60;font-size:16px;margin-top:5px;overflow-wrap:anywhere}
+    .v5-constraint{border-left:3px solid #1ba9a4;padding:12px 14px;background:#effaf7;color:#275965;border-radius:3px;font-size:12px;margin:15px 0}
+    .v5-sim-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:15px}
+    .v5-sim-actions .btn{padding:8px 12px;font-size:12px}
+    .v5-switches{display:flex;flex-wrap:wrap;gap:18px;padding:16px 22px;border-top:1px solid #e4edf4;background:#fbfdff;color:#496980;font-size:12px}
+    .v5-switches label{display:inline-flex;align-items:center;gap:6px;cursor:pointer}
+    .v5-switches input{accent-color:#087aa4}
+    .v5-range{display:flex;align-items:center;gap:10px;color:#315c76;font-size:12px}
+    .v5-range input{flex:1;accent-color:#1289ab;min-width:90px}
+    .v5-range output{min-width:46px;text-align:right;font-weight:800}
+    .v5-proof-text{font-size:13px;color:#5c7282;line-height:1.75}
+    .v5-ring-bar{height:10px;border-radius:99px;background:#f4d8b5;overflow:hidden;margin:12px 0 4px}
+    .v5-ring-bar>div{height:100%;background:#2a90ac;border-radius:99px}
+    .v5-sim-foot{color:#607a8b;font-size:12px;padding:16px 21px;background:#f7fafc;border-top:1px solid #e0ebf2}
+    [hidden]{display:none!important}
+    @media(max-width:960px){.v5-sim-grid{grid-template-columns:1fr}.v5-sim-controls{border-left:0;border-top:1px solid #e0eaf2}.v5-sim-globe,#v5-globe-stage{min-height:440px;height:440px}}
+    @media(max-width:600px){.v5-sim-globe,#v5-globe-stage{min-height:365px;height:365px}.v5-sim-controls{padding:20px 16px}.v5-metrics{gap:8px}.v5-measure strong{font-size:14px}.v5-sim-top{padding:15px 16px}}
     @media(max-width:970px){.nav nav{display:none}.hero-grid,.explore-grid,.globegrid{grid-template-columns:1fr}.hero-art{max-width:640px}.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.stats{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}}
     @media(max-width:600px){.wrap{padding:0 18px}.nav{height:62px}.hero{padding:48px 0}h1{letter-spacing:-2px}.cards,.proofgrid{grid-template-columns:1fr}.section{padding:55px 0}.stats{grid-template-columns:repeat(2,1fr)}.stat{padding:17px}.stat b{font-size:22px}.paper{padding:22px}.diagram{height:340px}.hero-art{min-height:345px}#heroSvg{height:280px}.small-stats b{font-size:17px}.nav .tiny-pill{display:none}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.diagram polygon{transition:none}}
@@ -69,7 +109,7 @@
 <body>
 <header><div class="wrap nav">
   <a class="brand" href="#top"><span class="mark">V</span> V5</a>
-  <nav aria-label="Main navigation"><a href="#overview">Overview</a><a href="#explorer">Explorer</a><a href="#mathematics">Mathematics</a><a href="#paper">Research paper</a><a href="#implementation">Developers</a></nav>
+  <nav aria-label="Main navigation"><a href="#overview">Overview</a><a href="#explorer">Explorer</a><a href="#simulation3d">3D Simulation</a><a href="#mathematics">Mathematics</a><a href="#paper">Research paper</a><a href="#implementation">Developers</a></nav>
   <span class="push"></span><span class="tiny-pill">RESEARCH PREPRINT · 2026</span><a class="nav-btn" href="https://github.com/Base27-CVNSS/V5" target="_blank" rel="noopener">GitHub ↗</a>
 </div></header>
 <main id="top">
@@ -117,6 +157,67 @@
       <div class="note" id="validation">Numerical browser preview; mathematically exact rational demonstration is in Python. No claim of equal cell areas.</div>
       <a href="https://github.com/Base27-CVNSS/V5/blob/main/src/v5.py" class="btn" target="_blank" rel="noopener" style="margin-top:20px">View source algorithm ↗</a></div>
     </aside>
+  </div>
+</div></section>
+<section id="simulation3d" class="section alt" aria-labelledby="v5-3d-title"><div class="wrap">
+  <div class="kicker">V5 3D simulation · spherical geometry</div>
+  <h2 id="v5-3d-title">Curvature is the constraint.</h2>
+  <p class="section-intro">Rotate a geometrically constructed dodecahedral atlas, inspect spherical angle excess and vertex closure, and test why a uniform spherical similarity factor <b>0 &lt; λ &lt; 1</b> is impossible. The visualized 32-child refinement is a <b>weak nonconvex construction</b>, not a conforming DGGS.</p>
+  <div class="v5-sim-shell">
+    <div class="v5-sim-top"><strong>V5 · Globe / topology / spherical physics</strong><span id="v5-3d-mode-label">Spherical excess / local geometry</span></div>
+    <div class="v5-sim-grid">
+      <div class="v5-sim-globe">
+        <div id="v5-globe-stage"><div style="position:absolute;top:46%;width:100%;text-align:center;color:#a6cde0;font-size:13px">Initializing interactive Three.js globe…</div></div>
+        <div class="v5-hud"><span id="v5-3d-ready">LOADING WEBGL</span><span>12 × 32ʳ</span><span>R = 1 (unit sphere)</span></div>
+        <div id="v5-3d-caption" role="status">The twelve root pentagons form a complete spherical atlas.</div>
+      </div>
+      <div class="v5-sim-controls">
+        <label for="v5-depth">Subdivision / mathematical scope</label>
+        <select class="v5-select" id="v5-depth">
+          <option value="roots">r = 0 · 12 spherical pentagonal roots</option>
+          <option value="global1">r = 1 · all 384 weak cells</option>
+          <option value="selected2">r = 2 · 1,024 cells in selected root</option>
+        </select>
+        <div class="v5-metrics"><div class="v5-measure"><small>Global theoretical count</small><strong id="v5-global-cells">12</strong></div><div class="v5-measure"><small>Rendered cells</small><strong id="v5-drawn-cells">12</strong></div></div>
+        <div class="v5-modes" role="group" aria-label="Mathematical mode">
+          <button type="button" id="v5-mode-angles" class="v5-mode active" aria-pressed="true">∑ Angles</button>
+          <button type="button" id="v5-mode-vertices" class="v5-mode" aria-pressed="false">Vertex 2π</button>
+          <button type="button" id="v5-mode-similarity" class="v5-mode" aria-pressed="false">λ &lt; 1</button>
+        </div>
+        <div id="v5-panel-angles">
+          <div class="kicker">Girard / spherical excess</div>
+          <h3 id="v5-selected-face">Root pentagon 01 / 12</h3>
+          <div class="v5-metrics">
+            <div class="v5-measure"><small>Five corner angles</small><strong style="font-size:12px" id="v5-angle-value">120° × 5</strong></div>
+            <div class="v5-measure"><small>Σα</small><strong id="v5-angle-sum">600°</strong></div>
+            <div class="v5-measure"><small>E = Σα − 3π</small><strong id="v5-excess">π/3 sr</strong></div>
+            <div class="v5-measure"><small>A / (4πR²)</small><strong id="v5-cell-area">8.33333%</strong></div>
+          </div>
+          <div class="v5-constraint" id="v5-angle-check">PASS · Σα &gt; 3π</div>
+          <p class="v5-proof-text">For a simple positively oriented geodesic pentagon: <b>Σα = 3π + A/R²</b>. Here every root has exactly 120° corners, so its area is πR²/3.</p>
+          <div class="v5-sim-actions"><button class="btn" type="button" id="v5-next-face">Next pentagon →</button></div>
+        </div>
+        <div id="v5-panel-vertices" hidden>
+          <div class="kicker">Local vertex closure</div><h3 id="v5-vertex-name">Vertex 01 / 20</h3>
+          <p class="v5-proof-text">At each of the 20 root vertices, three pentagons meet. Their interior angles close to a full turn, leaving neither gaps nor overlaps.</p>
+          <div class="v5-measure"><small>Incident angles</small><strong id="v5-vertex-angles" style="font-size:12px">120° + 120° + 120°</strong></div>
+          <div class="v5-metrics"><div class="v5-measure"><small>Σ around vertex</small><strong id="v5-vertex-sum">360°</strong></div><div class="v5-measure"><small>Numerical residual</small><strong id="v5-vertex-residual">0°</strong></div></div>
+          <div class="v5-constraint">∑ α(v) = 2π = 360°. For descendant hanging nodes, account for straight-through sectors in the planar arrangement.</div>
+          <div class="v5-sim-actions"><button class="btn" type="button" id="v5-next-vertex">Next vertex →</button></div>
+        </div>
+        <div id="v5-panel-similarity" hidden>
+          <div class="kicker">Curvature / similarity obstruction</div><h3>Why λ &lt; 1 cannot be exact.</h3>
+          <p class="v5-proof-text">Test a geodesic circle at angular radius θ. A radial contraction would send θ to λθ, but its circumference becomes <b>2πR sin(λθ)</b>, not λ times the original circumference.</p>
+          <label for="v5-lambda">Proposed scale λ</label><div class="v5-range"><input id="v5-lambda" type="range" min="20" max="100" value="50" step="5"/><output id="v5-lambda-val">0.50</output></div>
+          <label for="v5-theta" style="margin-top:15px">Geodesic radius θ</label><div class="v5-range"><input id="v5-theta" type="range" min="10" max="85" value="60" step="5"/><output id="v5-theta-val">60°</output></div>
+          <div class="v5-metrics"><div class="v5-measure"><small>Actual circumference</small><strong id="v5-ring-actual">—</strong></div><div class="v5-measure"><small>If exact similarity</small><strong id="v5-ring-similar">—</strong></div></div>
+          <div class="v5-ring-bar"><div id="v5-ring-ratio"></div></div>
+          <div class="v5-constraint">Scale discrepancy: <strong id="v5-ring-error">—</strong>. For 0 &lt; λ &lt; 1, Gaussian curvature excludes an exact constant-distance rescaling on any open spherical patch. At λ = 1 there is no discrepancy.</div>
+        </div>
+      </div>
+    </div>
+    <div class="v5-switches"><label><input id="v5-auto-rotate" type="checkbox" checked/> Auto rotate</label><label><input id="v5-visible-edges" type="checkbox" checked/> Draw cell boundaries</label><button class="btn" type="button" id="v5-reset-camera">Reset view</button><span>Drag to rotate · Scroll to zoom · Click a face / vertex</span></div>
+    <div class="v5-sim-foot"><strong>Mathematical status:</strong> spherical base atlas verified; weak 32-child nesting demonstrated. An exactly similar spherical contraction is impossible; <em>general</em> nested refinements are not. V5-64 geocoding, fully edge-to-edge 32-ary cells and uniform cell quality remain open. Three.js module requires a network connection to its pinned CDN version. <strong>Long Ngo 2026 · Vietflexmap Copyright (c) 2025 · Apache-2.0.</strong></div>
   </div>
 </div></section>
 <section id="mathematics" class="section"><div class="wrap">
@@ -242,5 +343,9 @@ document.getElementById("reset").addEventListener("click",function(){slider.valu
 show(5);
 })();
 </script>
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
+</script>
+<script type="module" src="./web/v5-3d.js"></script>
 </body>
 </html>
