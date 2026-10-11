@@ -89,3 +89,20 @@ Với cùng workload, cùng hệ tọa độ, sai số cho phép, cùng phần c
 - [V5-64 codec](../src/v5id.py) · [V5 mathematical proof](PROOF.md) · [Full English technical specification](TECHNICAL_SPEC_EN.md)
 
 **Scientific integrity:** V5 Research Reference 1.0.0 không có nghĩa V5 đã là DGGS toàn cầu hoàn chỉnh. Kết quả hình học vững chắc hiện tại là phân chia **yếu** 32 ô/cha và phép chuyển tôpô lên mặt cầu. Các điều kiện lồi cầu, khớp cạnh và tốc độ ưu việt còn nghiên cứu.
+
+## 6. Entropy 77,4% và Spatial DNA: không phải ưu thế độc quyền của V5
+
+Tỷ lệ **77,4% = log₂(5)/3** phát sinh nếu mã hóa một **cây 5 con giả định** trong nhóm 3 bit. Nó **không** áp dụng lên codec **V5-32** hiện có, vì tất cả 32 giá trị trong 5 bit đều có nghĩa. Một đường dẫn 15 cấp của cây 5 con chiếm 45 bit ở dạng từng chữ số nhưng có thể nén thành **35 bit** dạng rank base-5, giúp tiết kiệm **10 bit sau khi mã hóa lại**; không có 15 bit "chữ ký" tự sinh.
+
+V5 đề xuất [Spatial DNA sidecar v0.1](SPATIAL_DNA_V0_1.md) tùy chọn **54 byte**, tách khỏi CellID 8 byte, phục vụ metadata theo cấp, CRC32 phát hiện lỗi và HMAC-SHA256/128 kiểm tra nội dung sidecar. Chưa có mã hóa bí mật, quyền truy cập, chữ ký đa tác giả, ECC sửa lỗi hoặc tự hồi phục. H3 và S2 cũng có thể triển khai sidecar an toàn tương tự.
+
+| Vấn đề | H3 | S2 | V5 v1 + Spatial DNA v0.1 |
+| --- | --- | --- | --- |
+| Chỉ số 64-bit | Có | Có | Có, path base-32 5 bit/nhánh |
+| Có 22,6% bit dư do 5 lựa chọn trong 3 bit? | Không phải cấu trúc mã hóa H3 | Không phải cấu trúc mã hóa S2 | **Không** — chỉ trong **cây 5-way thay thế** |
+| Kết hợp metadata/provenance bên ngoài | Có thể | Có thể | Có thể; sidecar thử nghiệm đã được viết |
+| CRC32 phát hiện lỗi | Có thể kết hợp | Có thể kết hợp | Có trong sidecar, **không sửa lỗi** |
+| Xác thực HMAC | Có thể kết hợp | Có thể kết hợp | Có prototype trên metadata, **không mã hóa dữ liệu** |
+| Phục hồi/ECC, ACL, lịch sử đáng tin cậy | Phụ thuộc ứng dụng | Phụ thuộc ứng dụng | **Chưa triển khai** trong bản V5 này |
+
+**Kết luận triển khai:** nếu dùng kho dữ liệu cực lớn chỉ lưu ID, giữ khóa uint64 đơn thuần; chỉ bổ sung sidecar cho các bản ghi cần gắn dấu vết/tính toàn vẹn. Muốn chứng minh V5 có lợi thế cần benchmark tổng dung lượng và chi phí CPU/GPU trên workload cụ thể, không lấy tỷ lệ 22,6% làm benchmark.
