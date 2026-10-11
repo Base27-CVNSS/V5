@@ -17,6 +17,8 @@ REQUIRED_DOCUMENTS = (
     "web/v5-sphere-math.js", "web/v5-3d.js",
     "web/v5-usecases-data.js", "web/v5-usecases.js", "web/v5-usecases-math.js",
     "docs/USE_CASES_50_VI.md",
+    "docs/SPATIAL_DNA_V0_1.md", "src/v5dna.py",
+    "web/v5-entropy.js", "web/v5-entropy-ui.js",
 )
 DANGEROUS_ATTRS = {"onload", "onerror", "onclick", "onfocus", "onmouseover"}
 UNSAFE_CALLS = (r"\beval\s*\(", r"\bnew\s+Function\s*\(", r"\bdocument\.write\s*\(")
