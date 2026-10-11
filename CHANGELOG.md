@@ -7,6 +7,11 @@ All notable changes to the *research reference implementation and documentation*
 **Release name:** V5 Research Reference 1.0.0 (scope-limited).
 
 ### Added
+- Web3 bilingual visual system across the website, including original iridescent orb, shared magenta glass stylesheet, and EN/VI homepage language controls.
+- Honest H3/S2/V5 architectural bar charts and implementation maturity matrix; Gauss–Bonnet area/angle MathML calculator.
+- Mobile navigation, reduced-motion and offscreen WebGL optimizations, graceful offline fallback.
+- [Web3 design system documentation](docs/WEB3_DESIGN_SYSTEM.md) and [math/chart/UI regression tests](tests/test_v5_web3.mjs).
+
 - Experimental **Spatial DNA v0.1** optional 54-byte CRC/HMAC-authenticated sidecar with versioned marks per level and regression tests; CellID v1 remains unchanged.
 - Entropy-capacity comparison: the often-quoted 77.4% applies to an alternative five-child/3-bit format, not the implemented 32-child/5-bit path. A 15-level base-5 path needs 35 densely encoded bits rather than 45 fixed-digit bits.
 - Browser-side entropy capacity calculator and detailed mathematical/security caveats (no encryption/ECC/ACL/provenance proof).
