@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="V5-32 — chứng minh toán học trên mặt cầu, định lý bất khả thi đồng dạng Riemann, ràng buộc Euler và parity, điều kiện lựa chọn V5 so với H3/S2, CellID 64-bit và giới hạn nghiên cứu.">
-<meta name="theme-color" content="#071e34">
+<meta name="theme-color" content="#090412">
 <title>V5-32 | Chứng minh toán học · Ứng dụng · H3/S2 · CellID 64-bit</title>
 <style>
 :root{--bg:#f5f8fc;--card:#fff;--ink:#18314a;--muted:#5b7288;--navy:#091e32;--border:#dce6ef;--teal:#008a88;--blue:#176abb;--amber:#a7681c;--red:#ae3b36;--green:#137b63}
@@ -25,11 +25,12 @@ ol{padding-left:21px}li{margin:6px 0}code{background:#eef3f8;padding:2px 5px;bor
 @media(max-width:580px){.hero{padding:45px 18px}.layout{padding:20px 13px 50px}.grid,.metrics{grid-template-columns:1fr}header .nav{padding:0 14px}header nav{gap:9px}}
 @media print{header,aside,.choices,.links{display:none!important}.layout{display:block}article section{break-inside:avoid;box-shadow:none;border:0}body{background:white}.hero{background:white;color:#111;padding:12px}.lead,.byline{color:#333}}
 </style>
+<link rel="stylesheet" href="./web/v5-web3.css">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://cdn.jsdelivr.net; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="no-referrer">
 </head>
-<body>
-<header><div class="nav"><a class="logo" href="./"><b>V</b>V5 · Vietflexmap</a><nav aria-label="Điều hướng"><a href="./">Trang V5</a><a href="#proof">Định lý</a><a href="#compare">V5 / H3 / S2</a><a href="#bits">CellID 64-bit</a><a href="#limitations">Hạn chế</a><a href="https://github.com/Base27-CVNSS/V5">Mã nguồn ↗</a></nav></div></header>
+<body class="v5-web3 v5-doc v5-proof">
+<header><div class="nav"><a class="logo" href="./"><b>V</b>V5 · Vietflexmap</a><nav aria-label="Điều hướng"><a href="./">Trang V5</a><a href="#proof">Định lý</a><a href="technical-specification.html" title="English technical specification">EN Spec</a><a href="#compare">V5 / H3 / S2</a><a href="#bits">CellID 64-bit</a><a href="#limitations">Hạn chế</a><a href="https://github.com/Base27-CVNSS/V5">Mã nguồn ↗</a></nav></div></header>
 <div class="hero"><div class="hero-inner"><div class="eyebrow">V5-32 / mathematical research dossier / October 2026</div><h1>Ngũ giác cầu: chứng minh toán học và giới hạn của phân chia 32 ô</h1><p class="lead">Tồn tại phân hoạch yếu; không tồn tại phép co đồng dạng Riemann chính xác; còn phải chứng nhận tính lồi, khớp cạnh và chất lượng hình học của lưới mạnh. Khi nào V5 thực sự có lý do để thay H3 hoặc S2?</p><div class="links"><a class="btn" href="#proof">Đọc chứng minh →</a><a class="btn secondary" href="#compare">Xem tiêu chí lựa chọn</a><a class="btn secondary" href="#bits">Tính giới hạn V5-64</a></div><p class="byline">Long Ngo · 2026 · Vietflexmap Copyright (c) 2025 · Apache License 2.0 · Bản thảo nghiên cứu, chưa phản biện khoa học</p></div></div>
 <div class="layout"><aside><strong>Mục lục nghiên cứu</strong><a href="#status">0. Kết luận & mức độ chứng minh</a><a href="#proof">1. Gauss–Bonnet & góc cầu</a><a href="#no-similarity">2. Bất khả thi đồng dạng</a><a href="#topology">3. Euler & parity</a><a href="#weak">4. Phân hoạch yếu 32 nhánh</a><a href="#strong">5. Điều kiện bài toán mạnh</a><a href="#compare">6. Khi nào dùng V5 / H3 / S2?</a><a href="#optimal">7. Điều kiện cần & đủ tối ưu</a><a href="#bits">8. CellID V5-64</a><a href="#spatial-dna">9. Entropy & Spatial DNA</a><a href="#limitations">10. Hạn chế kỹ thuật</a><a href="#references">11. Tài liệu, giấy phép</a></aside>
 <article>
