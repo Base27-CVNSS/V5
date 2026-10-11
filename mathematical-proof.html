@@ -31,7 +31,7 @@ ol{padding-left:21px}li{margin:6px 0}code{background:#eef3f8;padding:2px 5px;bor
 <body>
 <header><div class="nav"><a class="logo" href="./"><b>V</b>V5 · Vietflexmap</a><nav aria-label="Điều hướng"><a href="./">Trang V5</a><a href="#proof">Định lý</a><a href="#compare">V5 / H3 / S2</a><a href="#bits">CellID 64-bit</a><a href="#limitations">Hạn chế</a><a href="https://github.com/Base27-CVNSS/V5">Mã nguồn ↗</a></nav></div></header>
 <div class="hero"><div class="hero-inner"><div class="eyebrow">V5-32 / mathematical research dossier / October 2026</div><h1>Ngũ giác cầu: chứng minh toán học và giới hạn của phân chia 32 ô</h1><p class="lead">Tồn tại phân hoạch yếu; không tồn tại phép co đồng dạng Riemann chính xác; còn phải chứng nhận tính lồi, khớp cạnh và chất lượng hình học của lưới mạnh. Khi nào V5 thực sự có lý do để thay H3 hoặc S2?</p><div class="links"><a class="btn" href="#proof">Đọc chứng minh →</a><a class="btn secondary" href="#compare">Xem tiêu chí lựa chọn</a><a class="btn secondary" href="#bits">Tính giới hạn V5-64</a></div><p class="byline">Long Ngo · 2026 · Vietflexmap Copyright (c) 2025 · Apache License 2.0 · Bản thảo nghiên cứu, chưa phản biện khoa học</p></div></div>
-<div class="layout"><aside><strong>Mục lục nghiên cứu</strong><a href="#status">0. Kết luận & mức độ chứng minh</a><a href="#proof">1. Gauss–Bonnet & góc cầu</a><a href="#no-similarity">2. Bất khả thi đồng dạng</a><a href="#topology">3. Euler & parity</a><a href="#weak">4. Phân hoạch yếu 32 nhánh</a><a href="#strong">5. Điều kiện bài toán mạnh</a><a href="#compare">6. Khi nào dùng V5 / H3 / S2?</a><a href="#optimal">7. Điều kiện cần & đủ tối ưu</a><a href="#bits">8. CellID V5-64</a><a href="#limitations">9. Hạn chế kỹ thuật</a><a href="#references">10. Tài liệu, giấy phép</a></aside>
+<div class="layout"><aside><strong>Mục lục nghiên cứu</strong><a href="#status">0. Kết luận & mức độ chứng minh</a><a href="#proof">1. Gauss–Bonnet & góc cầu</a><a href="#no-similarity">2. Bất khả thi đồng dạng</a><a href="#topology">3. Euler & parity</a><a href="#weak">4. Phân hoạch yếu 32 nhánh</a><a href="#strong">5. Điều kiện bài toán mạnh</a><a href="#compare">6. Khi nào dùng V5 / H3 / S2?</a><a href="#optimal">7. Điều kiện cần & đủ tối ưu</a><a href="#bits">8. CellID V5-64</a><a href="#spatial-dna">9. Entropy & Spatial DNA</a><a href="#limitations">10. Hạn chế kỹ thuật</a><a href="#references">11. Tài liệu, giấy phép</a></aside>
 <article>
 <section id="status"><div class="kicker">Research integrity / current scope</div><h2>Kết luận ngắn gọn</h2><div class="grid">
 <div class="mini"><span class="tag">Đã chứng minh</span><h3>Định lý bất khả thi</h3><p>Trên cùng mặt cầu tròn, không tồn tại phép đồng dạng Riemann cục bộ không suy biến với hệ số tỉ lệ cố định 0 &lt; λ &lt; 1.</p></div>
@@ -161,7 +161,47 @@ ol{padding-left:21px}li{margin:6px 0}code{background:#eef3f8;padding:2px 5px;bor
 <div class="note warning"><b>Giới hạn nghiên cứu:</b> 64-bit không đủ mã hóa vô hạn cấp; độ sâu tối đa thực thi là 10. H3 và S2 cũng đều có ID 64-bit nên không thể kết luận V5 nhanh hơn chỉ từ độ rộng khóa. V5 vượt trội khi và chỉ khi một workload cụ thể có kiểm chứng đúng đắn, đạt SLA và benchmark tốt hơn.</div>
 </section>
 
-<section id="limitations"><div class="kicker">Scientific limitations / honest claims</div><h2>9. Các hạn chế của V5-32 ngũ giác cầu lồi</h2><div class="table-scroll"><table><thead><tr><th>Hạn chế</th><th>Hệ quả</th><th>Hướng kiểm chứng / khắc phục</th></tr></thead><tbody>
+<section id="spatial-dna">
+<div class="kicker">Entropy disadvantage · Spatial DNA v0.1 · experimental extension</div>
+<h2>9. Biến lãng phí thành ADN không gian: bảo mật, phục hồi và tiến hóa</h2>
+<p><b>Hiệu suất 77,4% chỉ bất lợi trong một số ngữ cảnh cụ thể.</b> Nó là hiệu suất dung lượng thông tin của một <em>cây 5 con giả định</em> khi mã hóa mỗi lựa chọn bằng 3 bit; <b>không phải</b> đặc tính mất mát 22,6% bit của codec V5-32 hiện tại. Nếu mỗi ID đều lưu bằng <code>uint64</code> cố định, không thể suy ra chỉ riêng tỷ lệ này làm tốn RAM, băng thông hoặc chậm CPU hơn 22,6%. Vấn đề rõ hơn khi bit-packing cực dày, nén chuỗi chỉ số, đổi chiều sâu phân cấp và phân bổ metadata trong một ngân sách bit bị giới hạn.</p>
+<div class="grid">
+<div class="mini"><span class="tag open">Kiến trúc 5-way giả định</span><h3>5 lựa chọn trong một nhóm 3 bit</h3><div class="math small">η = log₂(5)/3 ≈ <b>77,4%</b></div><p>Ba mã <code>101</code>, <code>110</code>, <code>111</code> không thuộc tập con 0–4. Đây là các giá trị <em>không hợp lệ của chữ số con</em>, không phải ba bit metadata gắn kèm một ô hợp lệ.</p></div>
+<div class="mini"><span class="tag">V5-32 v1 thực thi</span><h3>32 lựa chọn trong một nhóm 5 bit</h3><div class="math small">η = log₂(32)/5 = <b>100%</b></div><p>Mọi mã con 0–31 đều hợp lệ; đường dẫn 50 bit có tối đa 10 chữ số con. Không tồn tại "22,6% mã dự trữ" để nhúng watermark hoặc chữ ký mà không đổi format.</p></div>
+</div>
+<h3>Thí nghiệm entropy: 5-con/3-bit so với 32-con/5-bit</h3>
+<div class="demo" aria-label="Bộ tính dung lượng mã hóa cho cây phân nhánh 5">
+<label for="dna-depth">Cấp phân nhánh theo giả định 5-con: <output id="dna-depth-value">15</output><input id="dna-depth" type="range" min="1" max="15" value="15" step="1"></label>
+<div style="height:10px;background:#294660;border-radius:99px;overflow:hidden;margin-top:18px"><div id="dna-bar-used" style="height:100%;background:#78e0d4;width:77.4%"></div></div>
+<div class="metrics"><div class="metric"><b id="dna-alloc">45 bit</b><small>3 bit × số cấp</small></div><div class="metric"><b id="dna-info">34,829 bit</b><small>Dung lượng Shannon cực đại</small></div><div class="metric"><b id="dna-min">35 bit</b><small>Bit tối thiểu để lưu đủ đường dẫn</small></div><div class="metric"><b id="dna-reclaim">10 bit</b><small>Số bit thực có thể tiết kiệm nếu mã hóa lại toàn bộ</small></div><div class="metric"><b id="dna-eff">77,4%</b><small>Hiệu suất biểu diễn</small></div><div class="metric"><b id="dna-waste">22,6%</b><small>Tỷ lệ chênh dung lượng lý thuyết</small></div></div>
+<p style="color:#cbe6ee;font-size:12px">Ở 15 cấp: 45 bit mã cố định cho 5¹⁵ nhánh, nhưng xếp hạng base-5 toàn chuỗi chỉ cần 35 bit. Phần <b>10 bit</b> tái phân bổ được là kết quả <em>đổi cách mã hóa</em>; không phải 15 bit chữ ký có sẵn. V5-32 hiện hành có hiệu suất dung lượng chữ số <b id="dna-live">100%</b>.</p>
+</div>
+<h3>Vì sao không thể "giấu" dữ liệu vào mã 5, 6, 7?</h3>
+<p>Trong hệ 5 con, một chữ số 3 bit có tám cách biểu diễn; chỉ năm cách mang vị trí con. Nếu dùng một mã 5/6/7 để biểu diễn epigenetic mark, chữ số đó <b>không còn xác định được ô con nào</b> nếu không có thông tin thay thế. Lưu cả allele 3-bit lẫn mark 3-bit cho 15 cấp yêu cầu 15 × (3+3) = <b>90 bit</b>, vượt 64 bit ngay trước khi tính root/version.</p>
+<div class="note warning"><b>Giới hạn Hamming:</b> không tồn tại mã nhị phân (5,3) sửa mọi lỗi 1 bit cho cả 8 thông điệp 3-bit: điều kiện đóng gói cầu Hamming đòi 2³(1+5) ≤ 2⁵, tức 48 ≤ 32, vô lý. CRC32 kiểm tra lỗi ngẫu nhiên, <b>không tự sửa lỗi</b>; muốn ECC thực cần thêm bit dự phòng và một bộ mã có chứng minh khoảng cách Hamming tối thiểu.</div>
+<h3>Mô hình Spatial DNA v0.1: CellID bất biến + metadata riêng</h3>
+<div class="table-scroll"><table><thead><tr><th>Lớp dữ liệu</th><th>Biểu diễn</th><th>Chức năng thật sự</th><th>Không bảo đảm</th></tr></thead><tbody>
+<tr><td><b>Spatial genotype</b></td><td><code>uint64</code> V5-64 v1, 8 byte</td><td>Định danh nhánh, cha/con, root và cấp phân giải</td><td>Không chứa vị trí WGS84, khóa bảo mật hay lịch sử</td></tr>
+<tr><td><b>Epigenetic marks</b></td><td>2 bit cho từng cấp thực trong sidecar</td><td>Gợi ý biên, đánh dấu sửa đổi, yêu cầu duyệt</td><td>Không xác nhận tình trạng thực địa hay phân quyền</td></tr>
+<tr><td><b>Integrity</b></td><td>CRC32, 4 byte</td><td>Phát hiện một số sai lệch dữ liệu do lỗi truyền/lưu trữ</td><td>Không xác thực tác giả, không phục hồi bit</td></tr>
+<tr><td><b>Authentication</b></td><td>HMAC-SHA256 cắt 128 bit, 16 byte</td><td>Kiểm tra nội dung sidecar bằng khóa bí mật</td><td>Không mã hóa, không chống replay tự thân</td></tr>
+<tr><td><b>Version & lineage</b></td><td>atlas_id, epoch, key_id, CellID path</td><td>Gắn phiên bản lưới và cấp cha/con có xác thực metadata</td><td>Không lưu toàn bộ lịch sử/nguồn gốc file địa lý</td></tr>
+<tr><td><b>Recovery / ACL</b></td><td>Snapshot, parity/FEC, IAM bên ngoài (đề xuất)</td><td>Phục hồi thật và phân quyền theo chính sách</td><td>Hiện <b>chưa triển khai</b> trong sidecar mẫu</td></tr>
+</tbody></table></div>
+<div class="math small"><span><strong>V5-64 CellID (8 byte) + SpatialDNA sidecar (54 byte, tùy chọn)</strong></span></div>
+<p>Trong prototype, sidecar chứa magic/version, atlas_id, key_id, CellID, epoch, flags, tối đa 10 dấu 2-bit mỗi cấp, CRC32 và HMAC 128-bit. Nó <b>không thay đổi</b> bất kỳ bit nào trong V5-64. Nếu gắn bản ghi 54 byte cho mọi ô, dung lượng sidecar một mình gấp <b>6,75 lần</b> khóa 8 byte — bất lợi đáng kể với dữ liệu dày đặc. Vì vậy nên chỉ gắn provenance cho ô quan trọng, dùng bảng metadata riêng hoặc lưu ở tầng object/event.</p>
+<h3>Xác thực ≠ mã hóa ≠ phân quyền ≠ tự hồi phục</h3>
+<div class="grid">
+<div class="mini"><h3>Bảo mật nguồn gốc</h3><p>Chữ ký 15-bit bị đoán trúng khoảng 1/32.768 mỗi lần thử, không đủ an toàn. HMAC 128-bit trong nguyên mẫu kiểm tra byte của sidecar khi khóa được bảo vệ; dữ liệu vệ tinh/LiDAR/BIM bên ngoài phải được băm và ký riêng. Cần quản lý khóa và danh tính người ký thực.</p></div>
+<div class="mini"><h3>Phục hồi có chứng cứ</h3><p>Mất hoàn toàn một chữ số đường dẫn không thể nội suy duy nhất từ ô cha. Phải có <em>backup</em>, parity, erasure coding hoặc mã sửa lỗi độc lập; xác minh lại HMAC/chữ ký sau khi khôi phục. Prototype mới phát hiện lỗi, chưa tự sửa lỗi.</p></div>
+<div class="mini"><h3>Tiến hóa phiên bản</h3><p>Lưu các sự kiện thay đổi trong time-series có dấu thời gian, phiên bản atlas và EntityID riêng. Không "đột biến" bit CellID hiện hữu vì như vậy thay đổi danh tính địa lý; nâng wire-version hoặc atlas-version theo quy trình di trú.</p></div>
+<div class="mini"><h3>Phân quyền và GeoAI</h3><p>Metadata về dữ liệu tổng hợp, đã duyệt hay cần duyệt chỉ là tuyên bố có nguồn. Quyền public/internal/confidential phải được dịch vụ xác thực và thực thi bằng IAM/RBAC/ABAC. Watermark không tự chặn LLM hallucination.</p></div>
+</div>
+<div class="note ok"><b>Đã có nguyên mẫu có thể kiểm thử:</b> <a href="https://github.com/Base27-CVNSS/V5/blob/main/src/v5dna.py">src/v5dna.py</a> và <a href="https://github.com/Base27-CVNSS/V5/blob/main/tests/test_v5dna.py">tests/test_v5dna.py</a> mô tả cách đóng gói sidecar 54 byte, kiểm tra CRC, HMAC và canonical V5-64. Đây là <b>mẫu thử nghiệm</b>, chưa qua kiểm định bảo mật độc lập, không được dùng để tuyên bố giải pháp mã hóa, self-healing hay chữ ký số production.</div>
+<p><a href="https://github.com/Base27-CVNSS/V5/blob/main/docs/SPATIAL_DNA_V0_1.md" target="_blank" rel="noopener noreferrer">Đọc đặc tả Spatial DNA v0.1 (toán học, bảo mật, format, ECC, roadmap) ↗</a> · <a href="#bits">Quay lại V5-64</a> · <a href="https://www.rfc-editor.org/rfc/rfc2104" target="_blank" rel="noopener noreferrer">HMAC RFC 2104 ↗</a></p>
+</section>
+
+<section id="limitations"><div class="kicker">Scientific limitations / honest claims</div><h2>10. Các hạn chế của V5-32 ngũ giác cầu lồi</h2><div class="table-scroll"><table><thead><tr><th>Hạn chế</th><th>Hệ quả</th><th>Hướng kiểm chứng / khắc phục</th></tr></thead><tbody>
 <tr><td>Không đồng dạng cầu chính xác</td><td>Không có phép co λ&lt;1 bảo toàn tỷ lệ mọi khoảng cách</td><td>Dùng khống chế đường kính ρ, không tuyên bố đồng dạng</td></tr>
 <tr><td>Độ lồi của 32 ô con</td><td>Prototype weak có ô lõm</td><td>Thuật toán strong có chứng minh tọa độ và kiểm thử exact predicates</td></tr>
 <tr><td>Parity của biên</td><td>B=5 không được với 32 mặt ngũ giác edge-to-edge</td><td>Quy tắc điểm chia biên chung, kiểm tra T-junction</td></tr>
@@ -176,7 +216,7 @@ ol{padding-left:21px}li{margin:6px 0}code{background:#eef3f8;padding:2px 5px;bor
 <div class="note ok"><b>Nguyên tắc thiết kế:</b> V5 nên được mô tả là <em>topologically recursive with geometrically controlled refinement</em> khi và chỉ khi đã có bằng chứng cho phần “controlled”. Cho đến lúc đó, dùng “experimental weak refinement”.</div>
 </section>
 
-<section id="references"><div class="kicker">References / reproducibility</div><h2>10. Nguồn đối chiếu và mã chứng minh</h2><p>Các công thức Gauss–Bonnet, tính bất biến độ cong và Euler là kết quả toán học cổ điển. Đối chiếu về hệ lưới và chuẩn công nghiệp:</p>
+<section id="references"><div class="kicker">References / reproducibility</div><h2>11. Nguồn đối chiếu và mã chứng minh</h2><p>Các công thức Gauss–Bonnet, tính bất biến độ cong và Euler là kết quả toán học cổ điển. Đối chiếu về hệ lưới và chuẩn công nghiệp:</p>
 <ol><li><a href="https://github.com/Base27-CVNSS/V5/blob/main/docs/PROOF.md">V5 — Proof audit, weak 32-ary construction</a> (repo, 2026)</li>
 <li><a href="https://github.com/Base27-CVNSS/V5/blob/main/src/v5.py">V5 — mã nguồn chứng minh thực nghiệm trên mặt phẳng</a></li>
 <li><a href="https://github.com/Base27-CVNSS/V5/blob/main/src/v5id.py">V5 — codec CellID 64-bit</a></li>
@@ -205,5 +245,6 @@ ol{padding-left:21px}li{margin:6px 0}code{background:#eef3f8;padding:2px 5px;bor
   document.querySelectorAll("[data-scenario]").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll("[data-scenario]").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));q("scenarioResult").textContent=descriptions[b.dataset.scenario];}));
 })();
 </script>
+<script type="module" src="./web/v5-entropy-ui.js"></script>
 </body>
 </html>
