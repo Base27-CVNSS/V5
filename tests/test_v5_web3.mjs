@@ -40,7 +40,7 @@ test('all four page templates share V5 Web3 stylesheet without losing core ancho
  }
  const home=read('../index.html');
  for(const id of ['heroSvg','v5-globe-stage','explorer','simulation3d','comparison-lab','v5-matrix-body','v5-bars','v5-area','v5-gb-angle-value','mathematics','implementation']){
-   assert.ok(home.includes(\`id="\${id}"\`),\`Missing existing/new feature: \${id}\`);
+   assert.ok(home.includes(`id="${id}"`),`Missing existing/new feature: ${id}`);
  }
  assert.ok(home.includes('src="./web/v5-orb.svg"'));
  assert.ok(home.includes('src="./web/v5-compare.js"'));
@@ -50,7 +50,7 @@ test('bilingual locale keys cover every decorated home element',()=>{
  const home=read('../index.html'),i18n=read('../web/v5-i18n.js');
  const keys=[...home.matchAll(/data-v5-t="([^"]+)"/g)].map(x=>x[1]);
  assert.ok(keys.length>20);
- for(const key of keys)assert.ok(i18n.includes('"'+key+'"'),\`Missing bilingual key \${key}\`);
+ for(const key of keys)assert.ok(i18n.includes('"'+key+'"'),`Missing bilingual key ${key}`);
  assert.ok(i18n.includes('document.documentElement')||i18n.includes('const root=document.documentElement'));
 });
 test('no dishonest computed score or unverified V5 benchmark claim',()=>{

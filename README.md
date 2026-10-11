@@ -128,3 +128,12 @@ This repository includes an English-language LaTeX **preprint draft** in [docs/p
 * [H3 Cell Index format](https://h3geo.org/docs/library/index/cell/)
 * [OGC DGGS standard](https://docs.ogc.org/as/20-040r3/20-040r3.html)
 * [arXiv](https://arxiv.org/) — archive referenced for scholarly presentation style only
+
+
+## Geo Adapter v0.1 — experimental spherical geolocation (2026-10-11)
+
+[Try the dependency-free Geo Lab](geo-lab.html) · [Read conformance gates](docs/GEO_ADAPTER_V0_1.md) · [source](web/v5-geo.js).
+
+Implemented angular point-to-CellID, cell boundary, interior sample, GeoJSON, root neighbors, canonical JS V5-64 v1 and measured local benchmark. Research geometry supports only levels 0–2 on the unit sphere. The existing 10-level V5-64 codec is unchanged. No WGS84 ellipsoidal geodesics, equal-area, global child-neighbor guarantees, OGC conformance or measured superiority versus H3/S2/A5 is implied. A 9/10 rating is an evidence-gated target.
+
+Run tests: npm test. Benchmark: node scripts/benchmark_geo.mjs 200 1.
