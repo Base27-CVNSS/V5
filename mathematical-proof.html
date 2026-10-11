@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="V5-32 — chứng minh toán học trên mặt cầu, định lý bất khả thi đồng dạng Riemann, ràng buộc Euler và parity, điều kiện lựa chọn V5 so với H3/S2, CellID 64-bit và giới hạn nghiên cứu.">
+<meta name="theme-color" content="#071e34">
+<title>V5-32 | Chứng minh toán học · Ứng dụng · H3/S2 · CellID 64-bit</title>
+<style>
+:root{--bg:#f5f8fc;--card:#fff;--ink:#18314a;--muted:#5b7288;--navy:#091e32;--border:#dce6ef;--teal:#008a88;--blue:#176abb;--amber:#a7681c;--red:#ae3b36;--green:#137b63}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.75 system-ui,-apple-system,"Segoe UI",sans-serif}a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
+header{background:var(--navy);color:#f5fbff;padding:17px 0;position:sticky;top:0;z-index:10;box-shadow:0 5px 18px #06192b21}header a{color:#dceefc}header .nav{max-width:1240px;margin:auto;padding:0 26px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}header .logo{font-weight:850;font-size:19px;color:white}header .logo b{display:inline-grid;place-items:center;width:33px;height:33px;margin-right:7px;color:var(--navy);background:#71d8d1;clip-path:polygon(50% 0,99% 36%,80% 100%,20% 100%,1% 36%)}header nav{display:flex;gap:17px;flex-wrap:wrap;margin-left:auto;font-size:12px}
+.hero{background:linear-gradient(123deg,#09253f,#123e62 65%,#0c4b59);color:#fff;padding:70px 26px 61px}.hero-inner{max-width:1180px;margin:auto}.eyebrow{text-transform:uppercase;letter-spacing:.15em;font-weight:800;font-size:12px;color:#77d8d3}h1{max-width:880px;font-size:clamp(33px,4vw,60px);line-height:1.12;letter-spacing:-.045em;margin:13px 0 23px}.lead{color:#cce1ec;font-size:18px;max-width:850px}.byline{color:#b7cbd8;font-size:12px;margin-top:26px}.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:25px}.btn{display:inline-block;background:white;border:1px solid #ffffff63;padding:10px 16px;border-radius:8px;font-weight:700;font-size:13px;color:#102e48}.btn.secondary{color:#e5fbff;background:#ffffff13}
+.layout{max-width:1240px;padding:38px 26px 84px;margin:auto;display:grid;grid-template-columns:228px minmax(0,1fr);align-items:start;gap:30px}aside{background:#fff;border:1px solid var(--border);border-radius:14px;padding:17px;position:sticky;top:103px}aside strong{display:block;font-size:12px;color:var(--teal);text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px}aside a{display:block;color:#475f74;padding:7px 3px;border-bottom:1px solid #edf1f5;font-size:12.5px}
+article section{scroll-margin-top:95px;background:white;border:1px solid var(--border);border-radius:16px;margin-bottom:22px;padding:30px 35px;box-shadow:0 4px 18px #0d36560a}h2{font-size:29px;letter-spacing:-.035em;line-height:1.25;margin:3px 0 12px}h3{font-size:18px;margin:26px 0 8px;color:#123b5d}h4{font-size:15px;margin:16px 0 6px}.kicker{text-transform:uppercase;letter-spacing:.14em;font-size:11px;color:var(--teal);font-weight:800}.subtitle{font-size:16px;color:var(--muted)}p{margin:8px 0 14px}.math{background:#f0f7fc;border:1px solid #dbe9f5;border-radius:10px;padding:17px 14px;text-align:center;margin:15px 0;font:clamp(15px,2vw,21px)/1.7 Cambria,Georgia,"Times New Roman",serif;overflow:auto;color:#0e4c74;white-space:nowrap}.math.small{font-size:17px}.math strong{color:#10496f}.math span{white-space:normal}
+.note{border-left:4px solid var(--blue);padding:15px 18px;background:#eef7ff;border-radius:6px;margin:20px 0}.warning{border-left-color:#dc8a2c;background:#fff7ec}.danger{border-left-color:#d55b57;background:#fff1f0}.ok{border-left-color:#259a78;background:#eff9f4}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.mini{background:#f8fbfd;border:1px solid var(--border);padding:19px;border-radius:11px}.mini h3{margin:0 0 8px}.tag{font-size:11px;font-weight:800;color:var(--green);background:#e9f6ee;border-radius:7px;padding:4px 8px;display:inline-block}.tag.open{color:var(--amber);background:#fff2e1}.tag.no{color:var(--red);background:#ffecea}.tag.caution{color:#4d6597;background:#eaf0ff}
+.table-scroll{overflow-x:auto;margin:16px 0}table{width:100%;border-collapse:collapse;min-width:630px;font-size:13px}th,td{border-bottom:1px solid #e5edf2;padding:12px 14px;text-align:left;vertical-align:top}th{background:#eaf2f9;color:#254a69}tr:nth-child(even) td{background:#fbfdfe}
+.diagram{max-width:660px;width:100%;height:auto;display:block;margin:17px auto;border:1px solid var(--border);background:#fbfdff;border-radius:13px}
+.demo{background:#0e2943;border-radius:13px;padding:22px;color:#ecf7ff}.demo label{display:flex;align-items:center;gap:15px;flex-wrap:wrap}.demo input[type=range]{accent-color:#70e1d0;flex:1;min-width:170px}.demo output{font-weight:850;color:#7ae8cc}.metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin:20px 0 10px}.metric{background:#ffffff16;border:1px solid #ffffff25;border-radius:9px;padding:13px}.metric b{font-size:clamp(15px,2vw,23px);display:block;overflow-wrap:anywhere}.metric small{font-size:11px;color:#c2d8e8}
+.choices{display:flex;flex-wrap:wrap;gap:8px}.choices button{cursor:pointer;background:#eaf3f9;border:1px solid #bdd5e6;border-radius:99px;padding:8px 13px;color:#195170;font-weight:700}.choices button[aria-pressed=true]{color:white;background:#155c95;border-color:#155c95}
+#scenarioResult{background:#f4f9fc;border-radius:10px;padding:14px 18px;border:1px solid var(--border);margin-top:13px}
+ol{padding-left:21px}li{margin:6px 0}code{background:#eef3f8;padding:2px 5px;border-radius:4px}details{border:1px solid var(--border);padding:13px 16px;border-radius:9px;margin:9px 0}summary{cursor:pointer;font-weight:750}footer{padding:30px 25px;background:#0b2238;color:#cbdeec;text-align:center;font-size:12px}
+@media(max-width:940px){.layout{grid-template-columns:1fr}aside{position:static;display:flex;flex-wrap:wrap;gap:3px 14px}aside strong{width:100%}aside a{border:0}header nav{margin:0}article section{padding:25px}}
+@media(max-width:580px){.hero{padding:45px 18px}.layout{padding:20px 13px 50px}.grid,.metrics{grid-template-columns:1fr}header .nav{padding:0 14px}header nav{gap:9px}}
+@media print{header,aside,.choices,.links{display:none!important}.layout{display:block}article section{break-inside:avoid;box-shadow:none;border:0}body{background:white}.hero{background:white;color:#111;padding:12px}.lead,.byline{color:#333}}
+</style>
+</head>
+<body>
+<header><div class="nav"><a class="logo" href="./"><b>V</b>V5 · Vietflexmap</a><nav aria-label="Điều hướng"><a href="./">Trang V5</a><a href="#proof">Định lý</a><a href="#compare">V5 / H3 / S2</a><a href="#bits">CellID 64-bit</a><a href="#limitations">Hạn chế</a><a href="https://github.com/Base27-CVNSS/V5">Mã nguồn ↗</a></nav></div></header>
+<div class="hero"><div class="hero-inner"><div class="eyebrow">V5-32 / mathematical research dossier / October 2026</div><h1>Ngũ giác cầu: chứng minh toán học và giới hạn của phân chia 32 ô</h1><p class="lead">Tồn tại phân hoạch yếu; không tồn tại phép co đồng dạng Riemann chính xác; còn phải chứng nhận tính lồi, khớp cạnh và chất lượng hình học của lưới mạnh. Khi nào V5 thực sự có lý do để thay H3 hoặc S2?</p><div class="links"><a class="btn" href="#proof">Đọc chứng minh →</a><a class="btn secondary" href="#compare">Xem tiêu chí lựa chọn</a><a class="btn secondary" href="#bits">Tính giới hạn V5-64</a></div><p class="byline">Long Ngo · 2026 · Vietflexmap Copyright (c) 2025 · Apache License 2.0 · Bản thảo nghiên cứu, chưa phản biện khoa học</p></div></div>
+<div class="layout"><aside><strong>Mục lục nghiên cứu</strong><a href="#status">0. Kết luận & mức độ chứng minh</a><a href="#proof">1. Gauss–Bonnet & góc cầu</a><a href="#no-similarity">2. Bất khả thi đồng dạng</a><a href="#topology">3. Euler & parity</a><a href="#weak">4. Phân hoạch yếu 32 nhánh</a><a href="#strong">5. Điều kiện bài toán mạnh</a><a href="#compare">6. Khi nào dùng V5 / H3 / S2?</a><a href="#optimal">7. Điều kiện cần & đủ tối ưu</a><a href="#bits">8. CellID V5-64</a><a href="#limitations">9. Hạn chế kỹ thuật</a><a href="#references">10. Tài liệu, giấy phép</a></aside>
+<article>
+<section id="status"><div class="kicker">Research integrity / current scope</div><h2>Kết luận ngắn gọn</h2><div class="grid">
+<div class="mini"><span class="tag">Đã chứng minh</span><h3>Định lý bất khả thi</h3><p>Trên cùng mặt cầu tròn, không tồn tại phép đồng dạng Riemann cục bộ không suy biến với hệ số tỉ lệ cố định 0 &lt; λ &lt; 1.</p></div>
+<div class="mini"><span class="tag">Đã chứng minh trong repo</span><h3>Phân hoạch yếu</h3><p>Một ngũ giác đơn có thể sinh 32 ngũ giác đơn không suy biến bằng 5 bước chia đôi; kết quả có thể lõm hoặc có nút treo.</p></div>
+<div class="mini"><span class="tag open">Chưa được xác nhận</span><h3>Lưới mạnh V5-32</h3><p>Tất cả 32 ô con đều lồi cầu, ghép cạnh hoàn chỉnh và có hệ số co đường kính chung: chưa được chứng minh/kiểm định đầy đủ trong mã nguồn hiện hành.</p></div>
+<div class="mini"><span class="tag caution">Chỉ là đề xuất</span><h3>V5-64 vận hành</h3><p>Đóng gói đường dẫn 64-bit đã có; định vị WGS84, hàng xóm, kiểm chứng toàn cầu và benchmark H3/S2 vẫn chưa có.</p></div>
+</div><div class="note warning"><b>Không được đánh đồng:</b> co đồng dạng chính xác λ, giới hạn đường kính ô con ρ, phân hoạch yếu và lưới DGGS chuẩn sản xuất. Đây là bốn mệnh đề toán học/kỹ thuật khác nhau.</div></section>
+
+<section id="proof"><div class="kicker">Theorem A / local spherical geometry</div><h2>1. Gauss–Bonnet cho ngũ giác cầu</h2><p>Giả sử P là ngũ giác cầu lồi, nằm trong một bán cầu mở; biên gồm năm cung trắc địa ngắn. Mặt cầu tròn bán kính R có độ cong Gauss K = 1/R².</p>
+<div class="math">∑<sub>i=1</sub><sup>5</sup> α<sub>i</sub> − 3π = ∫<sub>P</sub> K dA = A(P)/R²</div>
+<p>Do A(P) &gt; 0, điều kiện bắt buộc là:</p><div class="math"><strong>∑ α<sub>i</sub> &gt; 3π</strong></div>
+<p>Với lưới phân hoạch liên tục trên mặt cầu <em>trơn</em>, tại một đỉnh có d<sub>v</sub> ô gặp nhau:</p><div class="math">∑<sub>j=1</sub><sup>d<sub>v</sub></sup> α<sub>v,j</sub> = 2π</div>
+<p>Đây là các <b>điều kiện cần</b> của phân hoạch đúng, không phải điều kiện đủ độc lập cho một lưới 32-con. Nếu cạnh không phải đường trắc địa, công thức Gauss–Bonnet còn có tích phân độ cong trắc địa theo biên.</p>
+<svg class="diagram" viewBox="0 0 640 190" role="img" aria-label="Minh họa đường biên cong của ngũ giác cầu và tính khép kín tại đỉnh"><rect width="640" height="190" fill="#f7fbff"/><circle cx="168" cy="96" r="78" fill="#dff1fa" stroke="#7faeca" stroke-width="1.5"/><path d="M168 19Q215 44 230 88Q223 133 171 166Q125 142 113 91Q128 43 168 19" fill="#8fd3d4" fill-opacity=".56" stroke="#087b96" stroke-width="2.5"/><circle cx="168" cy="19" r="3" fill="#087b96"/><text x="315" y="57" fill="#244b65" font-size="16" font-weight="700">Ngũ giác cầu trắc địa</text><text x="315" y="88" fill="#55768b" font-size="14">Độ cong dương → dư góc</text><text x="315" y="121" fill="#164a75" font-size="20" font-family="Georgia">Σα = 3π + A/R²</text><text x="315" y="150" fill="#55768b" font-size="12">Hình biểu tượng; không phải dữ liệu đo đạc</text></svg>
+</section>
+
+<section id="no-similarity"><div class="kicker">Theorem B / proven impossibility</div><h2>2. Không tồn tại phép co đồng dạng Riemann không tầm thường</h2><p><b>Phát biểu.</b> Giả sử f:U→V là vi phôi cục bộ giữa các miền mở trên cùng mặt cầu S²<sub>R</sub>, với metric chuẩn g, và f* g = λ²g, trong đó λ &gt; 0 là hằng số. Khi đó λ = 1.</p>
+<h3>Chứng minh bằng tính bất biến của độ cong</h3>
+<div class="math">K<sub>g</sub> = 1/R²&nbsp;;&nbsp; K<sub>λ²g</sub> = K<sub>g</sub>/λ²</div>
+<p>Do phép kéo ngược metric bởi vi phôi bảo toàn độ cong tại điểm tương ứng, và độ cong cầu không đổi:</p>
+<div class="math">1/R² = K<sub>f*g</sub> = K<sub>λ²g</sub> = 1/(λ²R²) ⇒ <strong>λ = 1</strong></div>
+<p>Vì thế không tồn tại phép co đồng dạng metric chính xác với 0 &lt; λ &lt; 1. □</p>
+<div class="note danger"><b>Phạm vi bất khả thi:</b> điều này <em>không</em> cấm chia một ngũ giác thành nhiều ngũ giác khác hình, cũng không cấm diam(P<sub>i</sub>) ≤ ρ·diam(P) với ρ &lt; 1. Hệ số ρ chỉ ràng buộc đường kính, không nhân mọi khoảng cách bởi cùng một λ.</div>
+<details><summary>Chứng minh ngắn khác qua diện tích và góc</summary><p>Nếu hai ngũ giác cầu trắc địa đồng dạng chính xác thì các góc bằng nhau. Gauss–Bonnet buộc diện tích của chúng bằng nhau trên cùng mặt cầu. Nhưng phép đồng dạng tỉ lệ λ nhân diện tích bởi λ². Diện tích dương kéo theo λ² = 1.</p></details>
+</section>
+
+<section id="topology"><div class="kicker">Theorem C / necessary combinatorics</div><h2>3. Euler, chẵn lẻ biên và bậc đỉnh</h2><p>Đối với lưới ngũ giác <b>edge-to-edge</b> trên mặt cầu, mỗi cạnh chung được đếm đúng hai lần:</p>
+<div class="math">V − E + F = 2,&nbsp;&nbsp; 5F = 2E</div>
+<p>Suy ra V = 3F/2 + 2 và:</p><div class="math">∑<sub>v</sub> (deg(v) − 3) = F/2 − 6</div>
+<p>Nếu F = 12 thì tổng bằng 0, tương thích với tất cả đỉnh bậc 3. Nếu F &gt; 12 và các đỉnh đều có bậc ít nhất 3, phải xuất hiện đỉnh có bậc ít nhất 4. Không thể áp đặt đồng thời “mọi ô là ngũ giác” và “mọi đỉnh chỉ có 3 ô”.</p>
+<h3>Parity của phép chia 32 ô</h3><p>Với I cạnh nội bộ và B <em>đoạn cạnh biên sau chia</em>:</p><div class="math">5 × 32 = 2I + B ⇒ <strong>B chẵn</strong></div>
+<p>Nếu không chia cạnh mẹ, B = 5 (lẻ), vô lý. Nếu chia đôi mỗi cạnh, B = 10, khi đó I = 75, tổng cạnh E = 85, tổng đỉnh V = 54 cho miền hình đĩa.</p>
+<div class="note warning"><b>Điều kiện cần ≠ đủ.</b> V = 54, E = 85, F = 32 chỉ là phép kiểm tra tổ hợp. Nó không tự tạo ra một cấu hình lồi hoặc khớp cạnh có tọa độ hợp lệ.</div>
+<h3>Bất khả thi nếu mọi ô đều là ngũ giác cầu đều bằng nhau</h3><p>Với F &gt; 12 ngũ giác cầu trắc địa đều bằng nhau, góc trong mỗi ô sẽ nằm nghiêm ngặt giữa 108° và 120°. Không số nguyên d ≥ 3 nào thỏa dα = 360°: 3α &lt; 360°, 4α &gt; 360°. Vì vậy kiểu lưới này không thể lát toàn cầu.</p>
+</section>
+
+<section id="weak"><div class="kicker">Constructive result / actually implemented</div><h2>4. Chứng minh dạng yếu: đúng 32 ngũ giác đơn</h2><p>Với một ngũ giác đơn P (có thể lõm), dựng đường cắt gấp khúc xuyên nội thất A–T–Q như mô tả trong <a href="https://github.com/Base27-CVNSS/V5/blob/main/docs/PROOF.md">PROOF.md</a>. Hai miền kết quả là ngũ giác đơn không suy biến và có phần trong rời nhau.</p>
+<div class="math">P<sub>5</sub> → 2P<sub>5</sub> → 2<sup>5</sup>P<sub>5</sub> = <strong>32P<sub>5</sub></strong></div>
+<p>Áp dụng năm lần cắt đôi, rồi lặp lại hữu hạn lần trên các ô con. Với 12 mặt ngũ giác của hình 12 mặt đều:</p><div class="math">F<sub>n</sub> = 12 × 32<sup>n</sup></div>
+<p>Phép chiếu xuyên tâm từ biên đa diện lên mặt cầu có công thức ρ(x) = R·x/‖x‖, là một đồng phôi. Vì thế quan hệ bao phủ, không chồng lấn phần trong và quan hệ cha-con được bảo toàn.</p>
+<div class="note warning"><b>Giới hạn định lý này:</b> ô con có thể lõm, điểm biên treo có thể xuất hiện; chưa có chứng minh đường kính giảm theo cùng một ρ &lt; 1, chưa có diện tích đồng đều, không suy ra DGGS sản xuất.</div>
+</section>
+
+<section id="strong"><div class="kicker">Research problem / unverified strong conjecture</div><h2>5. Bài toán mạnh V5-32: phần còn phải chứng minh</h2><p>Tìm toán tử R<sub>32</sub> sao cho mọi ngũ giác cầu lồi P sinh ra 32 ngũ giác cầu lồi P<sub>i</sub>, thoả tất cả các bất biến sau:</p>
+<div class="math small"><span>⋃<sub>i=0</sub><sup>31</sup> P<sub>i</sub> = P;&nbsp;&nbsp; int(P<sub>i</sub>) ∩ int(P<sub>j</sub>) = ∅ (i ≠ j);&nbsp;&nbsp; sides(P<sub>i</sub>) = 5</span></div>
+<div class="math small"><span>Area(P<sub>i</sub>) &gt; 0;&nbsp;&nbsp; khớp cạnh liên ô;&nbsp;&nbsp; diam(P<sub>i</sub>) ≤ ρ·diam(P), 0 &lt; ρ &lt; 1</span></div>
+<p>Cần thêm tỷ số hình dạng (inradius/circumradius), giới hạn chênh diện tích, hàng xóm toàn cầu, lựa chọn các ô biên và quy tắc chung tại các cạnh gốc.</p>
+<div class="grid"><div class="mini"><h3>Hội tụ có điều kiện</h3><p>Nếu chứng minh được hệ số ρ thống nhất thì D<sub>n</sub> ≤ D<sub>0</sub>ρ<sup>n</sup> → 0. Nếu chỉ có D<sub>n</sub> ≤ Cρ<sup>n</sup> thì vẫn hội tụ, nhưng chưa suy ra tỷ số từng bước D<sub>n+1</sub>/D<sub>n</sub> ≤ ρ.</p></div><div class="mini"><h3>Ảnh hưởng độ cong</h3><p>Ở ô đủ nhỏ, sai lệch tương đối giữa metric cầu và xấp xỉ phẳng tiếp xúc thường bậc O(D²/R²) trên miền được kiểm soát. Đây không phải sai số GNSS hoặc số học máy tính.</p></div></div>
+<p><b>Bằng chứng tối thiểu để nâng từ conjecture lên theorem:</b> toạ độ/thuật toán dựng 32 ô, chứng minh mọi dấu tích có hướng để bảo đảm lồi, kiểm tra giao cạnh và khớp biên, chứng minh tỷ số co thống nhất qua mọi cấp, và bộ kiểm thử tính đúng đắn số học chính xác hoặc có chặn.</p>
+</section>
+
+<section id="compare"><div class="kicker">Deployment guidance / no unmeasured claims</div><h2>6. Khi nào V5 phù hợp hơn H3 hoặc S2?</h2>
+<p>H3 và S2 là những hệ lưới đã có triển khai trưởng thành. <a href="https://h3geo.org/docs/highlights/indexing/">H3</a> dùng ô chủ yếu lục giác, aperture 7 và phân cấp cha-con xấp xỉ theo biên; <a href="https://s2geometry.io/devguide/s2cell_hierarchy">S2</a> dùng sáu mặt lập phương, ô dạng tứ giác cầu, phân nhánh 4 và S2CellId 64-bit.</p>
+<div class="table-scroll"><table><thead><tr><th>Tiêu chí</th><th>V5-32 (hiện tại)</th><th>H3</th><th>S2</th></tr></thead><tbody>
+<tr><td>Hình dạng</td><td>Ngũ giác đơn; bản mạnh toàn-lồi chưa kiểm chứng</td><td>Chủ yếu lục giác, một số ngũ giác</td><td>Tứ giác cầu</td></tr>
+<tr><td>Phân nhánh</td><td>32 trong nguyên mẫu dạng yếu</td><td>Aperture 7; cha-con không phải luôn bao hàm hình học tuyệt đối</td><td>4 con bao hàm theo phân hoạch</td></tr>
+<tr><td>CellID</td><td>64-bit codec nghiên cứu; tối đa 10 cấp</td><td>64-bit; mã hoá và API địa lý hoàn chỉnh</td><td>64-bit; đến cấp 30</td></tr>
+<tr><td>Hàng xóm</td><td>Chưa có API toàn cầu được kiểm chứng</td><td>Tốt cho lân cận/lan truyền ô lục giác; lưu ý vùng méo pentagon</td><td>Tốt cho phân cấp và truy vấn vùng</td></tr>
+<tr><td>Diện tích / độ méo</td><td>Chưa kiểm chứng độ đồng đều</td><td>Diện tích ô biến đổi theo vị trí</td><td>Diện tích ô biến đổi theo vị trí</td></tr>
+<tr><td>Tốc độ, RAM, GPU</td><td>Chưa có benchmark đối chứng</td><td>Thư viện trưởng thành</td><td>Thư viện trưởng thành</td></tr>
+<tr><td>Lựa chọn hiện nay</td><td>Nghiên cứu cấu trúc ngũ giác, biểu diễn 5-neighbor nếu đã xác minh</td><td>Phân tích hotspot, tổng hợp thống kê, lân cận không gian</td><td>Định vị phân cấp, che phủ polygon, tra cứu vùng</td></tr>
+</tbody></table></div>
+<h3>Chọn theo bài toán cụ thể</h3><div class="choices" role="group" aria-label="Loại khối lượng tính toán"><button type="button" data-scenario="research" aria-pressed="true">Nghiên cứu hình học</button><button type="button" data-scenario="neighbors" aria-pressed="false">Lan truyền 5 láng giềng</button><button type="button" data-scenario="analytics" aria-pressed="false">Phân tích sản xuất</button><button type="button" data-scenario="region" aria-pressed="false">Bao phủ / truy vấn vùng</button><button type="button" data-scenario="edge" aria-pressed="false">Edge / GPU</button></div><div id="scenarioResult" role="status" aria-live="polite">V5 đáng thử nghiệm khi mục tiêu nghiên cứu chính là hình học và tôpô của lưới ngũ giác. Không có cơ sở suy ra V5 nhanh hơn H3/S2 chỉ vì mỗi ô có năm cạnh.</div>
+</section>
+
+<section id="optimal"><div class="kicker">Necessary and sufficient / workload-relative</div><h2>7. “Điều kiện cần và đủ để tối ưu hơn” phải đo theo workload</h2><p>Không tồn tại một định lý tổng quát nói ngũ giác luôn tối ưu hơn lục giác hay tứ giác trên mọi loại truy vấn. Để định nghĩa chính xác, chọn workload W, cùng máy, cùng ngân sách độ chính xác và cùng dữ liệu; định nghĩa hàm chi phí:</p>
+<div class="math small">J<sub>G</sub>(W) = w<sub>t</sub>·latency<sub>G</sub> + w<sub>m</sub>·RAM<sub>G</sub> + w<sub>s</sub>·storage<sub>G</sub> + w<sub>e</sub>·error<sub>G</sub></div>
+<p>Trong đó trọng số w do <em>người dùng định trước</em> và chuẩn hoá đơn vị để phép cộng có nghĩa. Đặt F<sub>G</sub>(W) là mệnh đề hệ G đáp ứng tất cả ràng buộc độ chính xác, độ bao phủ, topology, độ sâu và độ trễ tối đa.</p>
+<div class="math small"><span><b>V5 tối ưu nghiêm ngặt trong {V5,H3,S2}</b> ⇔ F<sub>V5</sub>(W) ∧ J<sub>V5</sub>(W) &lt; J<sub>H3</sub>(W) ∧ J<sub>V5</sub>(W) &lt; J<sub>S2</sub>(W), xét các đối thủ khả thi</span></div>
+<p>Đây là <b>định nghĩa điều kiện cần và đủ theo mục tiêu đã chọn</b>, không phải kết quả benchmark đã đạt. Nếu các đối thủ không khả thi, chỉ so với tập khả thi. Nếu tối ưu đa mục tiêu không gán trọng số, phải dùng Pareto và có thể không có một hệ duy nhất thắng mọi chỉ số.</p>
+<div class="grid"><div class="mini"><h3>Điều kiện cần (triển khai)</h3><ol><li>Đúng hình học, topology và chuyển đổi WGS84.</li><li>Neighbor graph nhất quán, CellID ổn định, không trùng.</li><li>Độ phân giải hữu dụng trong 10 cấp định danh.</li><li>Sai số nằm trong ngưỡng ứng dụng.</li></ol></div><div class="mini"><h3>Điều kiện đủ (theo mục tiêu W)</h3><ol><li>Đáp ứng toàn bộ SLA/QA và ràng buộc dữ liệu.</li><li>Benchmark đối chứng trên cùng phần cứng.</li><li>J(V5) nhỏ hơn cả J(H3) và J(S2).</li><li>Kết quả ổn định qua nhiều lần chạy, có khoảng tin cậy.</li></ol></div></div>
+<p><b>Bộ test khuyến nghị:</b> point→cell, cell→geometry, parent/children, k-ring, polygon→cells, spatial join, streaming sensor, cập nhật cục bộ, GPU batch; báo cáo p50/p95/p99, throughput, peak RAM, độ méo diện tích, số ô biên, sai số trắc địa. Cần test vùng cực, đường đổi ngày, các đường biên gốc và trường hợp lệch tâm.</p>
+</section>
+
+<section id="bits"><div class="kicker">Implementation / V5-64 codec v1</div><h2>8. CellID 64-bit: dùng khi nào, giới hạn ở đâu?</h2><p>Format đã có trong <a href="https://github.com/Base27-CVNSS/V5/blob/main/src/v5id.py">src/v5id.py</a>:</p><div class="math small"><span><strong>version:4 | resolution:4 | root:6 | path:50 = 64 bit</strong></span></div>
+<p>Mỗi chữ số đường dẫn dùng 5 bit cho 32 nhánh, nên độ sâu tối đa hiện hành là <b>50/5 = 10 cấp</b>. Bốn bit resolution mã hoá mức 0–10, sáu bit root chứa 12 mã gốc. ID có thể tính parent/children mà không cần truy vấn hình học. Tuy nhiên, hiện chưa có phép tra cứu lat/lon → CellID toàn cầu hoặc hàng xóm đúng theo WGS84.</p>
+<div class="demo"><label for="res">Cấp phân nhánh <output id="resout">5</output><input id="res" type="range" min="0" max="10" step="1" value="5"></label><div class="metrics"><div class="metric"><b id="cells">402.653.184</b><small>Tổng số ô lý thuyết trên toàn cầu</small></div><div class="metric"><b id="pathbits">25/50</b><small>Bit đường dẫn sử dụng</small></div><div class="metric"><b id="rawbits">~3,00 GiB</b><small>Bộ nhớ cho toàn bộ ID ở cấp này, nếu lưu 8 byte/ô</small></div></div><p style="font-size:12px;color:#bfd5e4;margin:0">Chỉ là số lượng ID và dung lượng mảng uint64 lý tưởng; không phản ánh diện tích thực tế, cấu trúc hình học, metadata, bảng hàng xóm hay index lưu trữ.</p></div>
+<div class="note"><b>Khi 64-bit phát huy tác dụng:</b> lưu khóa gọn trong cột, truyền ID qua API nhị phân, gom nhóm parent bằng bit, tính toán lô trên CPU/GPU. Nhưng <b>H3 và S2 cũng đã dùng 64-bit</b>. Ưu thế phải được chứng minh bằng thao tác cụ thể, không suy từ độ rộng khóa.</div>
+<h3>Điều kiện giới hạn</h3><p>Đường dẫn 50 bit chỉ cho 10 cấp, dù phép phân chia hình học có thể lặp vô hạn về lý thuyết. Không có bảo đảm diện tích ô bằng nhau: công thức A<sub>avg,n</sub> = 4πR²/(12·32<sup>n</sup>) chỉ là <em>trung bình toàn cầu</em>, không phải diện tích của từng ô.</p><p>64-bit CellID biểu diễn <em>ô không gian</em>, không phải định danh bất biến cho thực thể đất đai, công trình hoặc cảm biến. Có thể dùng EntityID 128-bit riêng cho đối tượng thực tế và ánh xạ sang tập CellID theo thời gian.</p>
+</section>
+
+<section id="limitations"><div class="kicker">Scientific limitations / honest claims</div><h2>9. Các hạn chế của V5-32 ngũ giác cầu lồi</h2><div class="table-scroll"><table><thead><tr><th>Hạn chế</th><th>Hệ quả</th><th>Hướng kiểm chứng / khắc phục</th></tr></thead><tbody>
+<tr><td>Không đồng dạng cầu chính xác</td><td>Không có phép co λ&lt;1 bảo toàn tỷ lệ mọi khoảng cách</td><td>Dùng khống chế đường kính ρ, không tuyên bố đồng dạng</td></tr>
+<tr><td>Độ lồi của 32 ô con</td><td>Prototype weak có ô lõm</td><td>Thuật toán strong có chứng minh tọa độ và kiểm thử exact predicates</td></tr>
+<tr><td>Parity của biên</td><td>B=5 không được với 32 mặt ngũ giác edge-to-edge</td><td>Quy tắc điểm chia biên chung, kiểm tra T-junction</td></tr>
+<tr><td>Bậc đỉnh & độ cong</td><td>Bậc 3 toàn cục không duy trì khi F&gt;12</td><td>Hỗ trợ đỉnh bậc ≥4 và topology đa dạng</td></tr>
+<tr><td>Ô mảnh, méo, diện tích chênh</td><td>Nguy cơ sai lệch sampling và chi phí neighbor search</td><td>Chặn aspect ratio, area ratio, histogram theo vĩ độ/cấp</td></tr>
+<tr><td>Hội tụ cấp sâu</td><td>Phân hoạch yếu không bảo đảm D→0</td><td>Chứng minh D<sub>n</sub> ≤ Cρ<sup>n</sup>, và nếu cần D<sub>n+1</sub> ≤ ρD<sub>n</sub></td></tr>
+<tr><td>WGS84 ellipsoid</td><td>Sphere ≠ ellipsoid; sai số đo diện tích</td><td>Ánh xạ chuẩn, kiểm chứng geodesic trên ellipsoid</td></tr>
+<tr><td>CellID 64-bit</td><td>Tối đa 10 cấp cho layout hiện hành</td><td>Format mới, ID 128-bit hoặc phân giải theo vùng cho cấp sâu hơn</td></tr>
+<tr><td>GPU / cache / hiệu năng</td><td>5 cạnh không tự động nhanh hơn raster/H3/S2</td><td>Benchmark công bằng; tính cả hình học và chi phí hàng xóm</td></tr>
+<tr><td>OGC / tương tác</td><td>Chưa được xác nhận phù hợp mọi yêu cầu OGC</td><td>Conformance tests, API địa lý và tham chiếu OGC DGGS</td></tr>
+</tbody></table></div>
+<div class="note ok"><b>Nguyên tắc thiết kế:</b> V5 nên được mô tả là <em>topologically recursive with geometrically controlled refinement</em> khi và chỉ khi đã có bằng chứng cho phần “controlled”. Cho đến lúc đó, dùng “experimental weak refinement”.</div>
+</section>
+
+<section id="references"><div class="kicker">References / reproducibility</div><h2>10. Nguồn đối chiếu và mã chứng minh</h2><p>Các công thức Gauss–Bonnet, tính bất biến độ cong và Euler là kết quả toán học cổ điển. Đối chiếu về hệ lưới và chuẩn công nghiệp:</p>
+<ol><li><a href="https://github.com/Base27-CVNSS/V5/blob/main/docs/PROOF.md">V5 — Proof audit, weak 32-ary construction</a> (repo, 2026)</li>
+<li><a href="https://github.com/Base27-CVNSS/V5/blob/main/src/v5.py">V5 — mã nguồn chứng minh thực nghiệm trên mặt phẳng</a></li>
+<li><a href="https://github.com/Base27-CVNSS/V5/blob/main/src/v5id.py">V5 — codec CellID 64-bit</a></li>
+<li><a href="https://h3geo.org/docs/highlights/indexing/">H3 — hierarchical indexing & aperture 7</a> và <a href="https://h3geo.org/docs/library/index/cell/">cell index</a></li>
+<li><a href="https://s2geometry.io/devguide/s2cell_hierarchy">S2 Geometry — S2CellId và phân cấp 64-bit</a></li>
+<li><a href="https://docs.ogc.org/as/20-040r3/20-040r3.html">OGC Topic 21 — DGGS core / Equal-Area Earth DGGS</a></li></ol>
+<p>Không khẳng định đây là kết quả đã được arXiv thẩm định, cũng không có đo đạc chứng minh tốc độ V5 vượt H3/S2. Mục tiêu là đưa ra một phát biểu khoa học có thể kiểm tra, phản biện và tái lập.</p>
+<p><a class="btn" href="./">← Về trang V5</a> <a class="btn" href="https://github.com/Base27-CVNSS/V5/blob/main/docs/PROOF.md">Xem proof audit ↗</a></p>
+</section>
+</article></div>
+<footer>Long Ngo · 2026 · Vietflexmap Copyright (c) 2025 · V5 licensed under Apache License 2.0<br>Research preprint • Phân biệt định lý, giả thuyết và benchmark chưa có.</footer>
+<script>
+(function(){
+  const q=id=>document.getElementById(id);
+  const out=q("resout"),slider=q("res");
+  const fmt=n=>n.toLocaleString("vi-VN");
+  function update(){const n=Number(slider.value);const cells=12n*(32n**BigInt(n));out.textContent=n;q("cells").textContent=fmt(cells);q("pathbits").textContent=(n*5)+"/50";const gib=(Number(cells)*8)/(1024**3);q("rawbits").textContent=(gib<1000?gib.toLocaleString("vi-VN",{maximumFractionDigits:2}):gib.toLocaleString("vi-VN",{maximumFractionDigits:0}))+" GiB";}
+  slider.addEventListener("input",update);update();
+  const descriptions={
+    research:"V5 đáng thử nghiệm khi mục tiêu nghiên cứu chính là hình học và tôpô của lưới ngũ giác. Không có cơ sở suy ra V5 nhanh hơn H3/S2 chỉ vì mỗi ô có năm cạnh.",
+    neighbors:"Nếu workload thực sự có đúng 5 kết nối cạnh cho mỗi ô và mã neighbor lookup được chứng minh đúng, V5 là một ứng viên thử nghiệm. H3 có 6 hàng xóm cho ô lục giác điển hình; phải so cùng thuật toán và độ phân giải, không giả định 5 luôn nhanh hơn 6.",
+    analytics:"H3 hiện phù hợp hơn để triển khai tức thời cho hotspot, thống kê và k-ring nhờ API ổn định. V5 chỉ nên thay khi có kiểm thử đúng đắn, tổng chi phí thấp hơn với cùng sai số.",
+    region:"S2 có cây phân cấp 4 con và S2RegionCoverer trưởng thành; là mốc đối chứng mạnh cho bao phủ polygon. V5 cần chứng minh containment, boundary handling và hiệu quả index trước khi đề xuất thay.",
+    edge:"64-bit và 5 bit/nhánh tạo format thân thiện bitwise, nhưng H3/S2 đều 64-bit. Cần đo throughput CPU/GPU, memory bandwidth, divergence, kích thước LUT và chi phí tái tạo hình học để kết luận."
+  };
+  document.querySelectorAll("[data-scenario]").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll("[data-scenario]").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));q("scenarioResult").textContent=descriptions[b.dataset.scenario];}));
+})();
+</script>
+</body>
+</html>
