@@ -90,3 +90,33 @@ No proof for the simultaneous existence of these properties is supplied here.
 ## 12. Academic integrity
 
 This repository proposes a particular synthesis and implementation, **not the discovery of polygon triangulation, Euler's theorem, or spherical projection**. The constructive weak result does not by itself establish a new practical DGGS, a performance advance, or a peer-reviewed mathematical discovery.
+
+
+## 13. Local spherical angles and global similarity obstruction
+
+**Proposition 13.1 (Girard–Gauss–Bonnet, sphere).** Let \(P\subset S_R^2\) be a positively oriented, simple geodesic spherical pentagon bounding a topological disk of area \(A\), with geodesic edges and interior angles \(\alpha_1,\ldots,\alpha_5\) measured inside the disk. Its signed spherical excess satisfies
+
+\[
+\sum_{i=1}^{5}\alpha_i-3\pi=\int_P K\,dA=\frac{A}{R^2}>0,
+\qquad K=\frac{1}{R^2}.
+\]
+
+The inequality assumes a nondegenerate positively oriented interior of positive area. Do not apply it unqualified to self-intersecting polygons or arbitrary chosen exterior regions.
+
+**Proposition 13.2 (vertex closure).** At an ordinary vertex of a gapless, non-overlapping partition of a smooth sphere into piecewise smooth cells, the sector angles around that point add to \(2\pi\). The original dodecahedral atlas has twenty vertices, each incident to three pentagonal roots; each root corner is \(2\pi/3\), giving \(3(2\pi/3)=2\pi\). At a weak-grid *hanging node*, a neighboring polygon can have a straight-through sector and must be included in the local angle accounting, even if that point is not a stored vertex of that polygon.
+
+**Proposition 13.3 (no nontrivial spherical metric homothety).** Suppose \(U,V\) are nonempty open subsets of the **same** round sphere \(S_R^2\) with metric \(g\), and \(f:U\to V\) is a smooth local diffeomorphism satisfying \(f^*g=\lambda^2g\) for constant \(\lambda>0\). The Gaussian curvature of the pullback metric is \(K(f^*g)=K(g)\circ f=1/R^2\). For the constantly scaled metric, \(K(\lambda^2g)=K(g)/\lambda^2=1/(\lambda^2R^2)\). Therefore
+
+\[
+\frac{1}{R^2}=\frac{1}{\lambda^2R^2}
+\quad\Longrightarrow\quad
+\boxed{\lambda=1}.
+\]
+
+Consequently a nontrivial exact uniform local or global distance-scaling similarity with \(0<\lambda<1\) is impossible on open pieces of one fixed-radius sphere. This **does not** rule out topological refinement, unequal-area pentagons, general conformal maps with *variable* scale, or approximate scaling as cell diameters tend toward zero.
+
+For an educational radial map from a pole taking geodesic radius \(\theta\) to \(\lambda\theta\), the circumference of the resulting parallel is \(2\pi R\sin(\lambda\theta)\), whereas an exact homothety would require \(2\pi\lambda R\sin\theta\). At \(\theta=\pi/3,\lambda=1/2\), the relative discrepancy is \(\sin(\pi/6)/[(1/2)\sin(\pi/3)]-1=2/\sqrt3-1\approx15.47\%\). This is a visualization, not the general nonexistence proof.
+
+**Numerical checks in the 3D simulation:** The [pure JS geometry module](../web/v5-sphere-math.js) constructs the spherical dodecahedral atlas through the dual of a regular icosahedron. [Node tests](../tests/test_sphere_math.mjs) verify twelve root faces, twenty triple junctions, five 120° corner angles per root, total spherical excess \(4\pi\), the 32-child weak partition, and the radial circumference discrepancy.
+
+**Research implication:** A single exact homothety ratio \(\lambda=32^{-1/2}\) is incompatible with the positive constant curvature of the sphere, even though such a ratio is meaningful as an **approximate characteristic diameter scaling** in non-similar hierarchical refinements.
