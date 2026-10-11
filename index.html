@@ -111,8 +111,8 @@
 <body>
 <header><div class="wrap nav">
   <a class="brand" href="#top"><span class="mark">V</span> V5</a>
-  <nav aria-label="Main navigation"><a href="#overview">Overview</a><a href="#explorer">Explorer</a><a href="#simulation3d">3D Simulation</a><a href="#mathematics">Mathematics</a><a href="mathematical-proof.html" lang="vi">Chứng minh V5-32</a><a href="technical-specification.html">Technical Spec EN</a><a href="#paper">Research paper</a><a href="#implementation">Developers</a></nav>
-  <span class="push"></span><span class="tiny-pill">RESEARCH PREPRINT · 2026</span><a class="nav-btn" href="https://github.com/Base27-CVNSS/V5" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+  <nav aria-label="Main navigation"><a href="#overview">Overview</a><a href="#release-v1">v1.0.0</a><a href="#explorer">Explorer</a><a href="#simulation3d">3D Simulation</a><a href="#mathematics">Mathematics</a><a href="mathematical-proof.html" lang="vi">Chứng minh V5-32</a><a href="technical-specification.html">Technical Spec EN</a><a href="#paper">Research paper</a><a href="#implementation">Developers</a></nav>
+  <span class="push"></span><span class="tiny-pill">v1.0.0 · RESEARCH REFERENCE</span><a class="nav-btn" href="https://github.com/Base27-CVNSS/V5" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
 </div></header>
 <main id="top">
 <section class="hero"><div class="wrap hero-grid">
@@ -120,7 +120,7 @@
   <h1>Five edges.<br/><em>Thirty-two</em> branches.<br/>One planet.</h1>
   <p class="lead">An open, proof-driven research project investigating recursively nested pentagonal partitions on the sphere, topology constraints, and hierarchical spatial identifiers.</p>
   <div class="hero-actions"><a class="btn primary" href="#explorer">Explore the 32-cell construction →</a><a class="btn" href="#paper">Read the paper ↗</a><a class="btn" href="mathematical-proof.html" lang="vi">Chứng minh toán học (VI) →</a><a class="btn" href="technical-specification.html">English Technical Spec →</a></div>
-  <p class="byline"><strong>Long Ngo · 2026</strong> &nbsp;|&nbsp; Vietflexmap &nbsp;|&nbsp; Apache-2.0</p>
+  <p class="byline"><strong>V5 Research Reference 1.0.0 · Long Ngo · 2026</strong> &nbsp;|&nbsp; Vietflexmap &nbsp;|&nbsp; Apache-2.0</p>
   </div>
   <div class="hero-art"><div class="art-head"><span>V5 / WEAK GEOMETRIC REFINEMENT</span><span class="art-dots"><i></i><i></i><i></i></span></div><svg id="heroSvg" viewBox="0 0 480 360" role="img" aria-label="Diagram of 32 subdivided pentagonal cells"></svg><div class="art-foot"><span>32 cells · 5 binary cuts</span><span>CONSTRUCTIVE PROOF</span></div></div>
 </div></section>
@@ -130,6 +130,17 @@
   <div class="stat"><b>5</b><small>Geometric corners per cell</small></div>
   <div class="stat"><b>64-bit</b><small>Canonical path codec; point lookup open</small></div>
 </div>
+<section id="release-v1" class="section alt"><div class="wrap">
+  <div class="kicker">V5 1.0.0 / Scope-limited research release / 2026-10-11</div><h2>Version 1.0.0 — Verified scope, documented limitations.</h2>
+  <p class="section-intro">Version 1.0.0 identifies the reproducible <b>research reference website, weak nested pentagonal prototype and V5-64 v1 path codec</b>. It is <b>not</b> a claim that a globally conforming, equal-area convex 32-child DGGS, WGS84 locator or faster-than-H3/S2 engine is finished.</p>
+  <div class="cards">
+    <div class="tile"><span class="tag">Implemented / scoped</span><h3>V5-64 codec v1</h3><p>Unsigned 64-bit identifiers, 12 root labels, 32-child path digits, ten encoded levels, and canonical-input test vectors.</p></div>
+    <div class="tile"><span class="tag">Proven weakly</span><h3>Research geometry</h3><p>Exact-rational planar subdivisions with 32 simple children per parent; radial sphere coverage. Possible concavity and hanging nodes are disclosed.</p></div>
+    <div class="tile"><span class="tag open">Unresolved DGGS core</span><h3>Global spatial engine</h3><p>Strong convex edge-to-edge refinement, uniform contraction, WGS84 lookup, neighbors, equal-area and comparative speed are not validated.</p></div>
+  </div>
+  <div class="notice" style="margin-top:20px"><b>QA and security:</b> Automated Python/Node/math/static audits gate GitHub Pages publication. A committed workflow is not proof that the workflow ran successfully: check GitHub Actions and the deployed page separately. Browser WebGL E2E and cryptographic CDN integrity remain future hardening work.</div>
+  <p style="margin-top:20px"><a class="btn primary" href="https://github.com/Base27-CVNSS/V5/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer">Version 1.0.0 changelog ↗</a> <a class="btn" href="https://github.com/Base27-CVNSS/V5/blob/main/docs/RELEASE_1.0.0.md" target="_blank" rel="noopener noreferrer">Release gates ↗</a> <a class="btn" href="https://github.com/Base27-CVNSS/V5/blob/main/SECURITY.md" target="_blank" rel="noopener noreferrer">Security policy ↗</a></p>
+</div></section>
 <section id="overview" class="section"><div class="wrap">
   <div class="kicker">Overview / research program</div><h2>From planar existence to spherical structure.</h2>
   <p class="section-intro">The weak-existence theorem is proved; a conforming, equal-area and efficiently searchable discrete global grid is still an open engineering and mathematical problem.</p>
@@ -310,7 +321,9 @@
 var root=[[0,-5],[5,-2],[3,4],[-3,4],[-5,-2]];
 function cross(a,b,c){return (b[0]-a[0])*(c[1]-a[1])-(b[1]-a[1])*(c[0]-a[0]);}
 function area2(p){var s=0;for(var i=0;i<p.length;i++){var q=p[(i+1)%p.length];s+=p[i][0]*q[1]-q[0]*p[i][1];}return s;}
-function valid(p){if(p.length!==5||area2(p)<=0)return false;for(var i=0;i<5;i++)if(cross(p[(i+4)%5],p[i],p[(i+1)%5])===0)return false;return true;}
+function onSeg(a,b,p){return cross(a,b,p)===0&&p[0]>=Math.min(a[0],b[0])&&p[0]<=Math.max(a[0],b[0])&&p[1]>=Math.min(a[1],b[1])&&p[1]<=Math.max(a[1],b[1]);}
+function segInt(a,b,c,d){var x=cross(a,b,c),y=cross(a,b,d),u=cross(c,d,a),v=cross(c,d,b);return((x>0&&y<0||x<0&&y>0)&&(u>0&&v<0||u<0&&v>0))||(x===0&&onSeg(a,b,c))||(y===0&&onSeg(a,b,d))||(u===0&&onSeg(c,d,a))||(v===0&&onSeg(c,d,b));}
+function valid(p){if(!Array.isArray(p)||p.length!==5||!(area2(p)>0)||new Set(p.map(x=>x.join(","))).size!==5)return false;for(var i=0;i<5;i++)if(!p[i].every(Number.isFinite)||cross(p[(i+4)%5],p[i],p[(i+1)%5])===0)return false;for(var i=0;i<5;i++)for(var j=i+1;j<5;j++)if(j!==i+1&&!(i===0&&j===4)&&segInt(p[i],p[(i+1)%5],p[j],p[(j+1)%5]))return false;return true;}
 function split(p){
   for(var i=0;i<5;i++){
     var f=p.slice(i).concat(p.slice(0,i)),a=f[0],b=f[1],c=f[2],d=f[3],e=f[4];
