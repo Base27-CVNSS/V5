@@ -15,6 +15,7 @@ All notable changes to the *research reference implementation and documentation*
 
 ### Corrected
 - Reject self-intersecting five-corner polygons instead of relying solely on signed area.
+- Restrict V5-64 v1 codec to version 1 and reject boolean values as numeric IDs/fields.
 - Distinguish metric homothety impossibility from diameter-convergence research.
 - Resolve 5-way vs 32-way ambiguity: V5-64 v1 encodes 10 × 5-bit base-32 digits, depth 0..10.
 - Replace unsupported exact equal-area, always-five-neighbors and speedup assertions.
