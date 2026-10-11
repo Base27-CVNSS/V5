@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
 // V5 Research Reference v1.0.0 — UI-only examples, not an operational DGGS.
 import {categories, useCases, gates} from './v5-usecases-data.js';
+import {encodeV564, weightedMean, hierarchyAtResolution} from './v5-usecases-math.js';
 const $=id=>document.getElementById(id);
 const fmt=n=>Number(n).toLocaleString('vi-VN',{maximumFractionDigits:3});
 const el=(tag,cls,text)=>{
@@ -81,14 +82,6 @@ function setup(){
 }
 setup();
 
-function canonical(root,path){
-  if(!Number.isSafeInteger(root)||root<0||root>11||path.length>10||
-      path.some(x=>!Number.isSafeInteger(x)||x<0||x>31))
-    throw new RangeError('root 0–11, tối đa 10 digits, digit 0–31');
-  let word=(1n<<60n)|(BigInt(path.length)<<56n)|(BigInt(root)<<50n);
-  path.forEach((d,i)=>word|=BigInt(d)<<BigInt(45-5*i));
-  return '0x'+word.toString(16).padStart(16,'0');
-}
 function inspectId(){
   const rootRaw=$('lab-root').value.trim(),pathRaw=$('lab-path').value.trim();
   const parts=pathRaw?pathRaw.split(',').map(s=>s.trim()):[];
@@ -96,7 +89,7 @@ function inspectId(){
   try{
     if(!isUInt(rootRaw)||parts.some(s=>!isUInt(s)))throw new Error('Chỉ nhập số nguyên không dấu, phân tách bằng dấu phẩy.');
     const root=Number(rootRaw),path=parts.map(Number);
-    const hex=canonical(root,path),parent=path.length?canonical(root,path.slice(0,-1)):'Không có (root)';
+    const hex=encodeV564(root,path),parent=path.length?encodeV564(root,path.slice(0,-1)):'Không có (root)';
     $('lab-id').textContent=hex;
     $('lab-parent').textContent='Parent: '+parent+' · Resolution: '+path.length+' · 32 children/parent';
     $('lab-id').dataset.valid='true';
@@ -114,20 +107,19 @@ inspectId();
 function weighted(){
   const cells=[{key:'A',area:1,val:20},{key:'B',area:2,val:50},{key:'C',area:0.5,val:80}];
   const mean=cells.reduce((a,x)=>a+x.val,0)/cells.length;
-  const weighted=cells.reduce((a,x)=>a+x.area*x.val,0)/cells.reduce((a,x)=>a+x.area,0);
+  const areaMean=weightedMean(cells);
   $('lab-mean').textContent=fmt(mean)+' °C';
-  $('lab-weighted').textContent=fmt(weighted)+' °C';
-  $('lab-diff').textContent=fmt(weighted-mean)+' °C';
+  $('lab-weighted').textContent=fmt(areaMean)+' °C';
+  $('lab-diff').textContent=fmt(areaMean-mean)+' °C';
   $('lab-weighted-detail').textContent='A: 1 km² × 20°C; B: 2 km² × 50°C; C: 0,5 km² × 80°C. Đây là ví dụ số học tổng hợp, không phải đo nhiệt độ thật hoặc cell V5 thật.';
 }
 weighted();
 function hierarchy(){
-  const res=Number($('lab-level').value), n=12n*(32n**BigInt(res));
-  const areaKm2=510065621.724/Number(n);
+  const res=Number($('lab-level').value), {count, pathBits, meanAreaKm2}=hierarchyAtResolution(res);
   $('lab-resolution').textContent=String(res);
-  $('lab-count').textContent=n.toLocaleString('vi-VN');
-  $('lab-pathbits').textContent=(5*res)+'/50 bit';
-  $('lab-meanarea').textContent=areaKm2>=1?fmt(areaKm2)+' km²':fmt(areaKm2*1e6)+' m²';
+  $('lab-count').textContent=count.toLocaleString('vi-VN');
+  $('lab-pathbits').textContent=pathBits+'/50 bit';
+  $('lab-meanarea').textContent=meanAreaKm2>=1?fmt(meanAreaKm2)+' km²':fmt(meanAreaKm2*1e6)+' m²';
   $('lab-theoretical').textContent='Trung bình toán học, không chứng minh các ô cùng diện tích hay cùng chất lượng hình học.';
 }
 $('lab-level').addEventListener('input',hierarchy);
