@@ -40,6 +40,16 @@ The **geometric contraction rate, conformity, numerical quality, and spherical e
 * A fivefold rotationally symmetric partition into convex cells has orbit sizes 1 or 5, with at most one invariant convex cell; 32 cells cannot respect full fivefold rotational symmetry.
 * A sphere cannot be edge-to-edge tiled by more than twelve **congruent regular spherical pentagons** with geodesic edges.
 
+## Web3 interface and scientific comparison charts (October 2026)
+
+The V5 research website now uses an original responsive black/violet/magenta glass design inspired by the provided design reference. Shared styling and assets are maintained in [the Web3 Design System](docs/WEB3_DESIGN_SYSTEM.md), [`web/v5-web3.css`](web/v5-web3.css) and an [original SVG orb](web/v5-orb.svg).
+
+The homepage includes EN/VI switching of main navigation, editorial text, interactive architecture charts and spherical-angle simulator. Deep technical documentation remains explicitly language-specific (EN technical specification; VI mathematical proof and 50 use cases), with cross-links rather than pretending all long documents have full translations.
+
+The [comparison laboratory](https://base27-cvnss.github.io/V5/#comparison-lab) uses independently checkable architecture facts (H3 122 roots/15 levels/aperture 7; S2 six roots/30 levels/4 children; V5 research 12 roots/10 encoded levels/32 weak children), an implementation capability matrix **without invented scores**, and a native MathML [Gauss–Bonnet](https://base27-cvnss.github.io/V5/mathematical-proof.html#proof) area/angle slider. These figures are **not** equal-ground-resolution benchmark results.
+
+The 2D weak-refinement explorer and Three.js 3D lab remain available; the globe receives visual/performance improvements and a static fallback. Responsive/bilingual UI and mathematical invariants have corresponding [Node regression tests](tests/test_v5_web3.mjs). Syntax and static audits are included in CI; actual CI and Pages statuses require external confirmation.
+
 ## Spatial DNA v0.1 — entropy and authenticated provenance research
 
 The [Spatial DNA technical design](docs/SPATIAL_DNA_V0_1.md) and [mathematical website section](https://base27-cvnss.github.io/V5/mathematical-proof.html#spatial-dna) distinguish **77.4% efficiency of an alternative five-child tree encoded in 3-bit digits** from existing **V5-32 with 32 choices in 5 bits, 100% digit-capacity efficiency**. At fifteen five-way levels, 45 raw bits need 35 dense bits and could reclaim **10 integer bits** by repacking; these are not preexisting V5-64 bits.
