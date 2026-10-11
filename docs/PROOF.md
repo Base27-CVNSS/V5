@@ -120,3 +120,52 @@ For an educational radial map from a pole taking geodesic radius \(\theta\) to \
 **Numerical checks in the 3D simulation:** The [pure JS geometry module](../web/v5-sphere-math.js) constructs the spherical dodecahedral atlas through the dual of a regular icosahedron. [Node tests](../tests/test_sphere_math.mjs) verify twelve root faces, twenty triple junctions, five 120° corner angles per root, total spherical excess \(4\pi\), the 32-child weak partition, and the radial circumference discrepancy.
 
 **Research implication:** A single exact homothety ratio \(\lambda=32^{-1/2}\) is incompatible with the positive constant curvature of the sphere, even though such a ratio is meaningful as an **approximate characteristic diameter scaling** in non-similar hierarchical refinements.
+
+
+## 14. Deployment theorem versus workload-specific optimality (2026-10-11)
+
+The project distinguishes **three logically different propositions**:
+
+1. **Established weak refinement:** a simple, generally nonconvex 32-child partition of any strict simple pentagon (Sections 2–4).
+2. **Established metric obstruction:** no nontrivial fixed-factor Riemannian homothety between open subsets of the same round sphere (Proposition 13.3).
+3. **Not yet verified in the repository:** a single recursive algorithm producing precisely 32 **convex**, fully edge-to-edge spherical pentagons per parent with a uniform one-step diameter reduction and adequate shape regularity.
+
+The positive existence of a conforming convex 32-child scheme, even if separately established as an abstract result, **must not be presented as a verified algorithm in this repository until an explicit construction and validation suite have been supplied**. In particular, the weak pentagonal prototype does not become convex by radial projection. A global convergence estimate \(D_n\le C\rho^n\) also does not *alone* imply the stronger one-step contraction \(D_{n+1}\le\rho D_n\).
+
+### 14.1 Necessary and sufficient condition for beating H3 / S2 — for a specified workload only
+
+There is no application-independent geometric theorem that five-sided cells are faster than four- or six-sided cells. Fix a workload \(W\), geometry/accuracy constraints, a common computing environment, and a **predeclared** normalized scalar cost \(J_G(W)\) per grid system \(G\). Examples of cost components are latency, peak memory, persistent storage, reconstruction cost, and geodesic approximation error.
+
+Writing \(\mathcal F_G(W)\) for all functionality and accuracy requirements being met, the strict winner condition is, **by definition**,
+
+\[
+\mathcal F_{\mathrm{V5}}(W)
+\quad\land\quad
+J_{\mathrm{V5}}(W)< J_G(W)
+\quad\text{for every other feasible }G\in\{\mathrm{H3,S2}\}.
+\]
+
+This is a necessary-and-sufficient **workload-relative decision rule**, not an empirical claim of V5 superiority. Without fixed weights or a scalar objective, use Pareto dominance instead. The experiment must match dataset, nominal resolution and accuracy, CPU/GPU, memory budget, and report confidence intervals over repeat runs.
+
+**Potential research niches:** deterministic base-32 path operations, local computations defined on a five-edge graph, offline compressed telemetry, novel geospatial primitives, and geometric / topological educational applications. None of these currently justify an unmeasured speed multiplier.
+
+**Safer operational defaults today:** use production H3 for well-supported hexagonal-neighborhood aggregation; use production S2 for hierarchical region coverage and parent-child containment. Prototype V5 against these established baselines only when the application's special constraints motivate it.
+
+### 14.2 64-bit limitations
+
+The implemented Python codec layout is
+
+\[
+\underbrace{4}_{\mathrm{version}}+
+\underbrace{4}_{\mathrm{resolution}}+
+\underbrace{6}_{\mathrm{root}}+
+\underbrace{50}_{\mathrm{path}}=64\,\mathrm{bits}.
+\]
+
+At 5 bits per base-32 child digit, this provides **10 levels**, regardless of the unlimited mathematical *finite-stage* refinement. H3 and S2 **also** have 64-bit index representations. Compact IDs do not demonstrate superior query speed, and a spatial CellID is not a stable real-world EntityID.
+
+### 14.3 Website and operational decision guide
+
+The site now provides a dedicated Vietnamese [theorem and deployment dossier](../mathematical-proof.html), covering Gauss–Bonnet, Euler/parity, the no-homothety theorem, the exact weak/strong status, H3/S2 criteria, the 10-level V5-64 budget, and the limitations of convex 32-child spherical pentagonal subdivision.
+
+Sources: [H3 indexing](https://h3geo.org/docs/highlights/indexing/), [S2CellId hierarchy](https://s2geometry.io/devguide/s2cell_hierarchy), [OGC DGGS Topic 21](https://docs.ogc.org/as/20-040r3/20-040r3.html).
