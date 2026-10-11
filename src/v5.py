@@ -53,12 +53,37 @@ def area2(poly: Sequence[Point]) -> F:
     )
 
 
+def _on_segment(a: Point, b: Point, p: Point) -> bool:
+    return (orient(a, b, p) == 0 and
+            min(a[0], b[0]) <= p[0] <= max(a[0], b[0]) and
+            min(a[1], b[1]) <= p[1] <= max(a[1], b[1]))
+
+
+def _segments_intersect(a: Point, b: Point, c: Point, d: Point) -> bool:
+    x, y = orient(a, b, c), orient(a, b, d)
+    u, v = orient(c, d, a), orient(c, d, b)
+    if ((x > 0 > y or x < 0 < y) and (u > 0 > v or u < 0 < v)):
+        return True
+    return ((x == 0 and _on_segment(a, b, c)) or
+            (y == 0 and _on_segment(a, b, d)) or
+            (u == 0 and _on_segment(c, d, a)) or
+            (v == 0 and _on_segment(c, d, b)))
+
+
 def strict_pentagon(poly: Sequence[Point]) -> bool:
-    return (
-        len(poly) == 5 and len(set(poly)) == 5 and area2(poly) > 0
-        and all(orient(poly[i - 1], poly[i], poly[(i + 1) % 5]) != 0
-                for i in range(5))
-    )
+    """Simple CCW five-corner polygon, possibly concave."""
+    if (len(poly) != 5 or len(set(poly)) != 5 or area2(poly) <= 0 or
+            any(orient(poly[i-1], poly[i], poly[(i+1) % 5]) == 0
+                for i in range(5))):
+        return False
+    for i in range(5):
+        for j in range(i+1, 5):
+            if j == i+1 or (i == 0 and j == 4):
+                continue
+            if _segments_intersect(poly[i], poly[(i+1) % 5],
+                                   poly[j], poly[(j+1) % 5]):
+                return False
+    return True
 
 
 def fan_vertex(poly: Polygon) -> tuple[Point, Point, Point, Point, Point]:
