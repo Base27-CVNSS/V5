@@ -7,6 +7,9 @@ All notable changes to the *research reference implementation and documentation*
 **Release name:** V5 Research Reference 1.0.0 (scope-limited).
 
 ### Added
+- 50-case research catalog covering GIS, WebGIS, GeoAI, Spatial LLM, SLAM, LiDAR and BIM, with falsifiable hypotheses, readiness gates and three offline synthetic demo labs.
+- Node tests for data completeness, canonical V5-64 vectors, area weighting, hierarchy count and new website links.
+
 - Release scope, mathematical status labels and explicit API maturity matrix.
 - English V5-32 Technical Specification and Vietnamese proof/decision guide.
 - Canonical 4+4+6+50-bit V5-64 codec test vectors and 32-child recursive weak-geometry examples.
