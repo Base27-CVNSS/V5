@@ -25,6 +25,8 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: JS spherical mathematics and geometry validation
         run: npm test
+      - name: Measured V5 geolocation microbenchmark (not H3/S2 comparison)
+        run: node scripts/benchmark_geo.mjs 200 1
       - name: Browser source syntax
         run: npm run check:syntax
       - name: Static website and security audit
