@@ -420,3 +420,17 @@ The uploaded Vietnamese text is retained as a **design input**; where it conflic
 ---
 
 **V5 · Long Ngo 2026 · Vietflexmap · Apache-2.0 · Experimental technical specification, subject to revision.**
+
+## 14. H3/S2/V5 decision matrix and v1.0.0 comparison update
+
+The user-facing [Vietnamese multi-criteria comparison and UInt64 rationale](COMPARISON_H3_S2_V5_VI.md) and its interactive [website sections `#weak, `#compare and `#bits](../mathematical-proof.html#weak) extend the selection guidance with separate columns for **GIS accuracy, geographic inclusion, root/cell count, index bits, adjacency, production APIs, area weighting, edge/CPU/GPU costs and GeoAI suitability**.
+
+**Technical clarifications:**
+- H3 has 122 resolution-0 cells (110 hexagons + 12 pentagons), aperture-7 behavior for hexagon refinement, and 64-bit indexes with resolutions 0–15. Its parent-child index nesting is exact, but geographic containment of cell boundaries is approximate.
+- S2 has six quadrilateral spherical root cells, four children per parent, levels 0–30, and 64-bit `S2CellId` indexing along Hilbert curves. S2 does not guarantee equal-area cells.
+- V5 research v1 has 12 root labels and a weak 32-child hierarchy with a canonical `4+4+6+50` UInt64 field layout, only levels 0–10, and no verified global WGS84 locator or edge-neighbor graph.
+- Five geometric sides are **not** five encoded child levels, nor necessarily five distinct adjacent cells in the current weak topology. H3 and S2 already use 64-bit indexes; V5 cannot claim that UInt64 is a new intrinsic performance advantage.
+
+The V5-64 codec version 1 is restricted to `version=1` for both encoding and decoding. Cross-language serializations MUST preserve all 64 bits, e.g. fixed-width hex string or binary unsigned integer; JavaScript Number is insufficient.
+
+**Release maturity:** Version 1.0.0 labels the research reference site, mathematical weak-refinement prototype and codec, **not** full strong pentagonal DGGS capabilities. Future comparative claims require accuracy-matched, externally repeatable benchmarks.
