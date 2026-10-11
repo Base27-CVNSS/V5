@@ -42,7 +42,7 @@ ol{padding-left:21px}li{margin:6px 0}code{background:#eef3f8;padding:2px 5px;bor
 </div><div class="note warning"><b>Không được đánh đồng:</b> co đồng dạng chính xác λ, giới hạn đường kính ô con ρ, phân hoạch yếu và lưới DGGS chuẩn sản xuất. Đây là bốn mệnh đề toán học/kỹ thuật khác nhau.</div></section>
 
 <section id="proof"><div class="kicker">Theorem A / local spherical geometry</div><h2>1. Gauss–Bonnet cho ngũ giác cầu</h2><p>Giả sử P là ngũ giác cầu lồi, nằm trong một bán cầu mở; biên gồm năm cung trắc địa ngắn. Mặt cầu tròn bán kính R có độ cong Gauss K = 1/R².</p>
-<div class="math">∑<sub>i=1</sub><sup>5</sup> α<sub>i</sub> − 3π = ∫<sub>P</sub> K dA = A(P)/R²</div>
+<div class="math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="Sum of five pentagon angles minus 3 pi equals surface integral of curvature equals area over radius squared"><mrow><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mn>5</mn></munderover><msub><mi>α</mi><mi>i</mi></msub><mo>−</mo><mn>3</mn><mi>π</mi><mo>=</mo><msub><mo>∫</mo><mi>P</mi></msub><mi>K</mi><mi>dA</mi><mo>=</mo><mfrac><mrow><mi>A</mi><mo>(</mo><mi>P</mi><mo>)</mo></mrow><msup><mi>R</mi><mn>2</mn></msup></mfrac></mrow></math></div>
 <p>Do A(P) &gt; 0, điều kiện bắt buộc là:</p><div class="math"><strong>∑ α<sub>i</sub> &gt; 3π</strong></div>
 <p>Với lưới phân hoạch liên tục trên mặt cầu <em>trơn</em>, tại một đỉnh có d<sub>v</sub> ô gặp nhau:</p><div class="math">∑<sub>j=1</sub><sup>d<sub>v</sub></sup> α<sub>v,j</sub> = 2π</div>
 <p>Đây là các <b>điều kiện cần</b> của phân hoạch đúng, không phải điều kiện đủ độc lập cho một lưới 32-con. Nếu cạnh không phải đường trắc địa, công thức Gauss–Bonnet còn có tích phân độ cong trắc địa theo biên.</p>
@@ -60,7 +60,7 @@ ol{padding-left:21px}li{margin:6px 0}code{background:#eef3f8;padding:2px 5px;bor
 </section>
 
 <section id="topology"><div class="kicker">Theorem C / necessary combinatorics</div><h2>3. Euler, chẵn lẻ biên và bậc đỉnh</h2><p>Đối với lưới ngũ giác <b>edge-to-edge</b> trên mặt cầu, mỗi cạnh chung được đếm đúng hai lần:</p>
-<div class="math">V − E + F = 2,&nbsp;&nbsp; 5F = 2E</div>
+<div class="math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="Euler formula V minus E plus F equals 2 and pentagon edge incidence 5F equals 2E"><mrow><mi>V</mi><mo>−</mo><mi>E</mi><mo>+</mo><mi>F</mi><mo>=</mo><mn>2</mn><mspace width="2em"/><mn>5</mn><mi>F</mi><mo>=</mo><mn>2</mn><mi>E</mi></mrow></math></div>
 <p>Suy ra V = 3F/2 + 2 và:</p><div class="math">∑<sub>v</sub> (deg(v) − 3) = F/2 − 6</div>
 <p>Nếu F = 12 thì tổng bằng 0, tương thích với tất cả đỉnh bậc 3. Nếu F &gt; 12 và các đỉnh đều có bậc ít nhất 3, phải xuất hiện đỉnh có bậc ít nhất 4. Không thể áp đặt đồng thời “mọi ô là ngũ giác” và “mọi đỉnh chỉ có 3 ô”.</p>
 <h3>Parity của phép chia 32 ô</h3><p>Với I cạnh nội bộ và B <em>đoạn cạnh biên sau chia</em>:</p><div class="math">5 × 32 = 2I + B ⇒ <strong>B chẵn</strong></div>
@@ -70,7 +70,7 @@ ol{padding-left:21px}li{margin:6px 0}code{background:#eef3f8;padding:2px 5px;bor
 </section>
 
 <section id="weak"><div class="kicker">Constructive result / actually implemented</div><h2>4. Chứng minh dạng yếu: đúng 32 ngũ giác đơn</h2><p>Với một ngũ giác đơn P (có thể lõm), dựng đường cắt gấp khúc xuyên nội thất A–T–Q như mô tả trong <a href="https://github.com/Base27-CVNSS/V5/blob/main/docs/PROOF.md">PROOF.md</a>. Hai miền kết quả là ngũ giác đơn không suy biến và có phần trong rời nhau.</p>
-<div class="math">P<sub>5</sub> → 2P<sub>5</sub> → 2<sup>5</sup>P<sub>5</sub> = <strong>32P<sub>5</sub></strong></div>
+<div class="math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="One pentagon to two pentagons to 2 to the 5 or 32 pentagons"><mrow><msub><mi>P</mi><mn>5</mn></msub><mo>→</mo><mn>2</mn><msub><mi>P</mi><mn>5</mn></msub><mo>→</mo><msup><mn>2</mn><mn>5</mn></msup><msub><mi>P</mi><mn>5</mn></msub><mo>=</mo><mn>32</mn><msub><mi>P</mi><mn>5</mn></msub></mrow></math></div>
 <p>Áp dụng năm lần cắt đôi, rồi lặp lại hữu hạn lần trên các ô con. Với 12 mặt ngũ giác của hình 12 mặt đều:</p><div class="math">F<sub>n</sub> = 12 × 32<sup>n</sup></div>
 <p>Phép chiếu xuyên tâm từ biên đa diện lên mặt cầu có công thức ρ(x) = R·x/‖x‖, là một đồng phôi. Vì thế quan hệ bao phủ, không chồng lấn phần trong và quan hệ cha-con được bảo toàn.</p>
 <div class="note warning"><b>Giới hạn định lý này:</b> ô con có thể lõm, điểm biên treo có thể xuất hiện; chưa có chứng minh đường kính giảm theo cùng một ρ &lt; 1, chưa có diện tích đồng đều, không suy ra DGGS sản xuất.</div>
