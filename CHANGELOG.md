@@ -7,6 +7,9 @@ All notable changes to the *research reference implementation and documentation*
 **Release name:** V5 Research Reference 1.0.0 (scope-limited).
 
 ### Added
+- Experimental **Spatial DNA v0.1** optional 54-byte CRC/HMAC-authenticated sidecar with versioned marks per level and regression tests; CellID v1 remains unchanged.
+- Entropy-capacity comparison: the often-quoted 77.4% applies to an alternative five-child/3-bit format, not the implemented 32-child/5-bit path. A 15-level base-5 path needs 35 densely encoded bits rather than 45 fixed-digit bits.
+- Browser-side entropy capacity calculator and detailed mathematical/security caveats (no encryption/ECC/ACL/provenance proof).
 - 50-case research catalog covering GIS, WebGIS, GeoAI, Spatial LLM, SLAM, LiDAR and BIM, with falsifiable hypotheses, readiness gates and three offline synthetic demo labs.
 - Node tests for data completeness, canonical V5-64 vectors, area weighting, hierarchy count and new website links.
 
