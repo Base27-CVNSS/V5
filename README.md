@@ -40,6 +40,12 @@ The **geometric contraction rate, conformity, numerical quality, and spherical e
 * A fivefold rotationally symmetric partition into convex cells has orbit sizes 1 or 5, with at most one invariant convex cell; 32 cells cannot respect full fivefold rotational symmetry.
 * A sphere cannot be edge-to-edge tiled by more than twelve **congruent regular spherical pentagons** with geodesic edges.
 
+## 50 research use cases (GIS · WebGIS · GeoAI · Spatial LLM · SLAM · LiDAR · BIM)
+
+The [interactive 50-use-case catalog](https://base27-cvnss.github.io/V5/use-cases.html) and [full Vietnamese Markdown scenarios](docs/USE_CASES_50_VI.md) provide seven groups of concrete research cases, each with inputs, workflow, falsifiable V5 hypothesis, required infrastructure, and measured acceptance criteria. Three browser demonstrations cover V5-64 bit encoding, area-weighted means and 32-way hierarchy counts using synthetic data only. The catalog is backed by [a typed JavaScript dataset](web/v5-usecases-data.js), [pure mathematics helpers](web/v5-usecases-math.js) and [Node regression tests](tests/test_usecases.mjs).
+
+**Caution:** equal-area 0%, exactly five neighbors, five-way branching/32 encoded levels, and performance superiority are not validated V5 attributes. Current V5-64 uses **32 children per weak parent**, **5 bits per digit**, and **10 encoded levels**. SLAM/LiDAR/BIM examples require independent 3D/voxel support.
+
 ## V5 Research Reference v1.0.0 — security & QA release scope
 
 [Release notes](CHANGELOG.md) · [Release criteria](docs/RELEASE_1.0.0.md) · [Security policy](SECURITY.md) · [Source version](VERSION) · [CI quality gate](.github/workflows/quality.yml) · [Pages deployment gate](.github/workflows/pages.yml)
