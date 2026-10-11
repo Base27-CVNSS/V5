@@ -295,8 +295,13 @@ changeMode("angles");
 el("v5-3d-ready").textContent="WebGL · Three.js · 12 spherical roots";
 el("v5-3d-ready").classList.add("ready");
 if(el("v5-3d-loading"))el("v5-3d-loading").remove();
+let stageVisible=true;
+if("IntersectionObserver" in window){
+  const visibilityObserver=new IntersectionObserver(entries=>{stageVisible=entries[0]?.isIntersecting??true;},{threshold:.01});
+  visibilityObserver.observe(stage);
+}
 function animate(){
   requestAnimationFrame(animate);
-  if(!document.hidden){orbit.update();renderer.render(scene,camera);}
+  if(!document.hidden&&stageVisible){orbit.update();renderer.render(scene,camera);}
 }
 animate();
