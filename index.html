@@ -105,24 +105,25 @@
     @media(max-width:600px){.wrap{padding:0 18px}.nav{height:62px}.hero{padding:48px 0}h1{letter-spacing:-2px}.cards,.proofgrid{grid-template-columns:1fr}.section{padding:55px 0}.stats{grid-template-columns:repeat(2,1fr)}.stat{padding:17px}.stat b{font-size:22px}.paper{padding:22px}.diagram{height:340px}.hero-art{min-height:345px}#heroSvg{height:280px}.small-stats b{font-size:17px}.nav .tiny-pill{display:none}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.diagram polygon{transition:none}}
   </style>
+<link rel="stylesheet" href="./web/v5-web3.css">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://cdn.jsdelivr.net; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="no-referrer">
 </head>
-<body>
+<body class="v5-web3 v5-home" data-v5-page="home">
 <header><div class="wrap nav">
   <a class="brand" href="#top"><span class="mark">V</span> V5</a>
-  <nav aria-label="Main navigation"><a href="#overview">Overview</a><a href="#release-v1">v1.0.0</a><a href="#explorer">Explorer</a><a href="#simulation3d">3D Simulation</a><a href="#mathematics">Mathematics</a><a href="mathematical-proof.html" lang="vi">Chứng minh V5-32</a><a href="technical-specification.html">Technical Spec EN</a><a href="use-cases.html">50 Use Cases</a><a href="mathematical-proof.html#spatial-dna">Spatial DNA</a><a href="#paper">Research paper</a><a href="#implementation">Developers</a></nav>
-  <span class="push"></span><span class="tiny-pill">v1.0.0 · RESEARCH REFERENCE</span><a class="nav-btn" href="https://github.com/Base27-CVNSS/V5" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+  <nav id="v5-main-nav" aria-label="Main navigation"><a href="#overview" data-v5-t="nav.overview">Overview</a><a href="#explorer" data-v5-t="nav.explorer">Explorer</a><a href="#simulation3d" data-v5-t="nav.globe">3D Sphere</a><a href="#comparison-lab" data-v5-t="nav.comparison">Compare</a><a href="#mathematics" data-v5-t="nav.math">Mathematics</a><a href="use-cases.html" data-v5-t="nav.usecases">50 Use Cases</a><a href="technical-specification.html" data-v5-t="nav.docs">Documentation</a></nav>
+  <span class="push"></span><button class="v5-nav-toggle" id="v5-nav-toggle" type="button" aria-label="Toggle navigation" aria-controls="v5-main-nav" aria-expanded="false">☰</button><span class="v5-language" role="group" aria-label="Website language"><button type="button" data-v5-lang="en" aria-pressed="true">EN</button><button type="button" data-v5-lang="vi" aria-pressed="false">VI</button></span><span class="tiny-pill">v1.0.0 · RESEARCH REFERENCE</span><a class="nav-btn" href="https://github.com/Base27-CVNSS/V5" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
 </div></header>
 <main id="top">
 <section class="hero"><div class="wrap hero-grid">
-  <div><div class="eyebrow">Pentagonal Geospatial Indexing · V5-32</div>
-  <h1>Five edges.<br/><em>Thirty-two</em> branches.<br/>One planet.</h1>
-  <p class="lead">An open, proof-driven research project investigating recursively nested pentagonal partitions on the sphere, topology constraints, and hierarchical spatial identifiers.</p>
-  <div class="hero-actions"><a class="btn primary" href="#explorer">Explore the 32-cell construction →</a><a class="btn" href="#paper">Read the paper ↗</a><a class="btn" href="mathematical-proof.html" lang="vi">Chứng minh toán học (VI) →</a><a class="btn" href="technical-specification.html">English Technical Spec →</a><a class="btn" href="mathematical-proof.html#spatial-dna">Spatial DNA v0.1 →</a><a class="btn" href="use-cases.html">50 GIS · GeoAI Use Cases →</a></div>
+  <div><div class="eyebrow" data-v5-t="hero.eyebrow">Pentagonal Geospatial Indexing · V5-32</div>
+  <h1><span data-v5-t="hero.first">Five edges.</span><br/><em data-v5-t="hero.thirtytwo">Thirty-two</em> <span data-v5-t="hero.branches">branches.</span><br/><span data-v5-t="hero.planet">One planet.</span></h1>
+  <p class="lead" data-v5-t="hero.lead">An open, proof-driven research project investigating recursively nested pentagonal partitions on the sphere, topology constraints, and hierarchical spatial identifiers.</p>
+  <div class="hero-actions"><a class="btn primary" href="#explorer" data-v5-t="hero.explore">Explore the 32-cell construction →</a><a class="btn" href="#comparison-lab" data-v5-t="hero.compare">Explore H3 / S2 / V5 →</a><a class="btn" href="mathematical-proof.html" lang="vi">Chứng minh toán học (VI) →</a><a class="btn" href="technical-specification.html">English Technical Spec →</a><a class="btn" href="mathematical-proof.html#spatial-dna">Spatial DNA v0.1 →</a><a class="btn" href="use-cases.html">50 GIS · GeoAI Use Cases →</a></div>
   <p class="byline"><strong>V5 Research Reference 1.0.0 · Long Ngo · 2026</strong> &nbsp;|&nbsp; Vietflexmap &nbsp;|&nbsp; Apache-2.0</p>
   </div>
-  <div class="hero-art"><div class="art-head"><span>V5 / WEAK GEOMETRIC REFINEMENT</span><span class="art-dots"><i></i><i></i><i></i></span></div><svg id="heroSvg" viewBox="0 0 480 360" role="img" aria-label="Diagram of 32 subdivided pentagonal cells"></svg><div class="art-foot"><span>32 cells · 5 binary cuts</span><span>CONSTRUCTIVE PROOF</span></div></div>
+  <div class="hero-art"><img class="v5-orb-image" src="./web/v5-orb.svg" alt="" width="620" height="620" loading="eager" decoding="async"><span class="v5-art-spark">V5 / GEO LAB · 32-WAY</span><div class="art-head"><span>V5 / WEAK GEOMETRIC REFINEMENT</span><span class="art-dots"><i></i><i></i><i></i></span></div><svg id="heroSvg" viewBox="0 0 480 360" role="img" aria-label="Diagram of 32 subdivided pentagonal cells"></svg><div class="art-foot"><span>32 cells · 5 binary cuts</span><span>CONSTRUCTIVE PROOF</span></div></div>
 </div></section>
 <div class="stats wrap" aria-label="Core facts">
   <div class="stat"><b>12</b><small>Root dodecahedral faces</small></div>
@@ -131,7 +132,7 @@
   <div class="stat"><b>64-bit</b><small>Canonical path codec; point lookup open</small></div>
 </div>
 <section id="release-v1" class="section alt"><div class="wrap">
-  <div class="kicker">V5 1.0.0 / Scope-limited research release / 2026-10-11</div><h2>Version 1.0.0 — Verified scope, documented limitations.</h2>
+  <div class="kicker">V5 1.0.0 / Scope-limited research release / 2026-10-11</div><h2 data-v5-t="release.title">Version 1.0.0 — Verified scope, documented limitations.</h2>
   <p class="section-intro">Version 1.0.0 identifies the reproducible <b>research reference website, weak nested pentagonal prototype and V5-64 v1 path codec</b>. It is <b>not</b> a claim that a globally conforming, equal-area convex 32-child DGGS, WGS84 locator or faster-than-H3/S2 engine is finished.</p>
   <div class="cards">
     <div class="tile"><span class="tag">Implemented / scoped</span><h3>V5-64 codec v1</h3><p>Unsigned 64-bit identifiers, 12 root labels, 32-child path digits, ten encoded levels, and canonical-input test vectors.</p></div>
@@ -142,7 +143,7 @@
   <p style="margin-top:20px"><a class="btn primary" href="https://github.com/Base27-CVNSS/V5/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer">Version 1.0.0 changelog ↗</a> <a class="btn" href="https://github.com/Base27-CVNSS/V5/blob/main/docs/RELEASE_1.0.0.md" target="_blank" rel="noopener noreferrer">Release gates ↗</a> <a class="btn" href="https://github.com/Base27-CVNSS/V5/blob/main/SECURITY.md" target="_blank" rel="noopener noreferrer">Security policy ↗</a></p>
 </div></section>
 <section id="overview" class="section"><div class="wrap">
-  <div class="kicker">Overview / research program</div><h2>From planar existence to spherical structure.</h2>
+  <div class="kicker" data-v5-t="overview.kicker">Overview / research program</div><h2 data-v5-t="overview.title">From planar existence to spherical structure.</h2>
   <p class="section-intro">The weak-existence theorem is proved; a conforming, equal-area and efficiently searchable discrete global grid is still an open engineering and mathematical problem.</p>
   <div class="cards">
     <div class="tile"><div class="iconish">①</div><h3>Constructive refinement</h3><span class="tag">Proved under assumptions</span><p>A bent-chord cut turns a simple pentagon into two nondegenerate pentagons. Five iterations give 32 descendants.</p></div>
@@ -151,7 +152,7 @@
   </div>
 </div></section>
 <section id="explorer" class="section alt"><div class="wrap">
-  <div class="kicker">Interactive laboratory</div><h2>Watch 1 pentagon become 32.</h2>
+  <div class="kicker" data-v5-t="explorer.kicker">Interactive laboratory</div><h2 data-v5-t="explorer.title">Watch 1 pentagon become 32.</h2>
   <p class="section-intro">This interactive demo reproduces the <b>planar weak partition</b>, not a production global DGGS. Some pentagons are concave; some boundaries contain hanging nodes.</p>
   <div class="explore-grid">
     <div class="panel">
@@ -174,7 +175,7 @@
 </div></section>
 <section id="simulation3d" class="section alt" aria-labelledby="v5-3d-title"><div class="wrap">
   <div class="kicker">V5 3D simulation · spherical geometry</div>
-  <h2 id="v5-3d-title">Curvature is the constraint.</h2>
+  <h2 id="v5-3d-title" data-v5-t="sim.title">Curvature is the constraint.</h2>
   <p class="section-intro">Rotate a geometrically constructed dodecahedral atlas, inspect spherical angle excess and vertex closure, and test why a uniform spherical similarity factor <b>0 &lt; λ &lt; 1</b> is impossible. The visualized 32-child refinement is a <b>weak nonconvex construction</b>, not a conforming DGGS.</p>
   <div class="v5-sim-shell">
     <div class="v5-sim-top"><strong>V5 · Globe / topology / spherical physics</strong><span id="v5-3d-mode-label">Spherical excess / local geometry</span></div>
@@ -233,8 +234,57 @@
     <div class="v5-sim-foot"><strong>Mathematical status:</strong> spherical base atlas verified; weak 32-child nesting demonstrated. An exactly similar spherical contraction is impossible; <em>general</em> nested refinements are not. V5-64 geocoding, fully edge-to-edge 32-ary cells and uniform cell quality remain open. Three.js module requires a network connection to its pinned CDN version. <strong>Long Ngo 2026 · Vietflexmap Copyright (c) 2025 · Apache-2.0.</strong></div>
   </div>
 </div></section>
+<section id="comparison-lab" class="v5-data-lab" aria-labelledby="v5-comparison-title">
+  <div class="wrap">
+    <div class="v5-lab-heading"><div><div class="kicker" data-v5-t="compare.kicker">INTERACTIVE RESEARCH MATRIX / VERIFIABLE METRICS</div><h2 id="v5-comparison-title" data-v5-t="compare.title">Three grids. Different strengths.</h2><p class="section-intro" data-v5-t="compare.lead">Explore architectural differences between H3, S2 and experimental V5-32. These are not invented benchmark rankings. V5's strong convex, equal-area and worldwide geocoding claims remain unverified.</p></div><span class="v5-pill">H3 / S2 / V5 · RESEARCH</span></div>
+    <div class="v5-lab-stack">
+      <div class="v5-chart-card">
+        <div class="kicker">01 / COMPARATIVE ARCHITECTURE</div>
+        <h3 id="v5-chart-title">Maximum ID resolution</h3>
+        <p id="v5-chart-description">Comparative architecture, not a performance benchmark.</p>
+        <div class="v5-chart-controls" role="group" aria-label="Architectural comparison metric">
+          <button type="button" data-v5-metric="depth" aria-pressed="true" data-v5-t="chart.depth">Depth</button>
+          <button type="button" data-v5-metric="branch" aria-pressed="false" data-v5-t="chart.branch">Branching</button>
+          <button type="button" data-v5-metric="roots" aria-pressed="false" data-v5-t="chart.roots">Root cells</button>
+          <button type="button" data-v5-metric="bits" aria-pressed="false" data-v5-t="chart.bits">Index bits</button>
+        </div>
+        <div id="v5-bars" aria-live="polite">
+          <div class="v5-bar-row"><span class="v5-bar-name">H3</span><span class="v5-bar-track"><span class="v5-bar-fill" style="--v5-pct:50%;--v5-color:#50cedd"></span></span><span class="v5-bar-value">15</span></div>
+          <div class="v5-bar-row"><span class="v5-bar-name">S2</span><span class="v5-bar-track"><span class="v5-bar-fill" style="--v5-pct:100%;--v5-color:#efa780"></span></span><span class="v5-bar-value">30</span></div>
+          <div class="v5-bar-row"><span class="v5-bar-name">V5</span><span class="v5-bar-track"><span class="v5-bar-fill" style="--v5-pct:33.33%;--v5-color:#eb5cdd"></span></span><span class="v5-bar-value">10</span></div>
+        </div>
+        <p class="v5-chart-caption" id="v5-chart-note">Levels are not directly comparable: branching and cell shapes differ.</p>
+        <p class="v5-microtext">Sources: <a href="https://h3geo.org/docs/core-library/restable/" target="_blank" rel="noopener noreferrer">H3</a> · <a href="https://s2geometry.io/devguide/s2cell_hierarchy" target="_blank" rel="noopener noreferrer">S2</a> · <a href="https://github.com/Base27-CVNSS/V5/blob/main/src/v5id.py" target="_blank" rel="noopener noreferrer">V5-64 v1</a></p>
+      </div>
+      <div class="v5-chart-card">
+        <div class="kicker">02 / CAPABILITY &amp; MATURITY MATRIX</div>
+        <h3 data-v5-t="matrix.title">Which capabilities actually exist?</h3>
+        <p data-v5-t="matrix.note">Evidence-oriented categorical statuses, not subjective numerical scores.</p>
+        <div class="tablewrap" style="border:0"><table class="v5-matrix"><thead><tr><th scope="col" data-v5-t="matrix.capability">Capability</th><th scope="col">H3</th><th scope="col">S2</th><th scope="col">V5</th></tr></thead><tbody id="v5-matrix-body"><tr><th scope="row">64-bit identifier</th><td class="v5-cell-yes">Available</td><td class="v5-cell-yes">Available</td><td class="v5-cell-yes">Available</td></tr><tr><th scope="row">Global geocoding</th><td class="v5-cell-yes">Available</td><td class="v5-cell-yes">Available</td><td class="v5-cell-open">Research</td></tr></tbody></table></div>
+        <div class="v5-legend"><span><i style="background:#185e58"></i><span data-v5-t="matrix.available">Implemented</span></span><span><i style="background:#645026"></i><span data-v5-t="matrix.limited">Conditional</span></span><span><i style="background:#4a285b"></i><span data-v5-t="matrix.research">Research</span></span><span><i style="background:#2d2536"></i>N/A</span></div>
+        <p class="v5-microtext" data-v5-t="matrix.caveat">Equal-area to zero error is NOT a verified V5 property. All three can use 64-bit keys; V5-64 v1 has 10 encoded levels.</p>
+      </div>
+    </div>
+    <div class="v5-chart-card" style="margin-top:18px">
+      <div class="kicker">03 / GEOMETRY LAB · GAUSS–BONNET</div>
+      <h3 data-v5-t="curvature.title">How positive curvature changes pentagon angles</h3>
+      <p data-v5-t="curvature.desc">Move the hypothetical area of a convex geodesic spherical pentagon on a round Earth with R = 6,371 km. The formula gives its angle sum; the slider is not an equal-area V5 cell measurement.</p>
+      <div class="v5-math-lab"><div>
+        <div class="v5-formula">
+          <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="sum of alpha sub i equals 3 pi plus area over radius squared">
+            <mrow><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mn>5</mn></munderover><msub><mi>α</mi><mi>i</mi></msub><mo>=</mo><mn>3</mn><mi>π</mi><mo>+</mo><mfrac><mi>A</mi><msup><mi>R</mi><mn>2</mn></msup></mfrac></mrow>
+          </math>
+        </div>
+        <label for="v5-area" class="v5-dynamic-foot" data-v5-t="curvature.area">Hypothetical spherical pentagon area</label>
+        <div class="v5-math-range"><input id="v5-area" type="range" min="10000" max="2000000" step="10000" value="500000" aria-describedby="v5-area-value"><output id="v5-area-value">500,000 km²</output></div>
+        <p class="v5-microtext" data-v5-t="curvature.caveat">Spherical metric only; WGS84 ellipsoid requires its own geodesic area computation. The theorem is not a proof of a strong V5-32 DGGS.</p>
+      </div><div><div class="v5-microtext" data-v5-t="curvature.sum">Interior-angle sum</div><div class="v5-metric-large" id="v5-angle-value">540.706°</div><div class="v5-microtext" data-v5-t="curvature.excess">Spherical excess above 540°</div><div class="v5-metric-large" id="v5-excess-value">+0.706°</div><div class="v5-bar-track" style="height:10px;margin-top:13px"><span class="v5-bar-fill" id="v5-angle-indicator" style="width:25%;--v5-color:linear-gradient(90deg,#955cff,#e963dc)"></span></div><p class="v5-dynamic-foot"><a href="mathematical-proof.html#proof" data-v5-t="curvature.proof">Read the complete Gauss–Bonnet proof →</a></p></div></div>
+    </div>
+    <p class="v5-microtext" style="margin-top:25px" data-v5-t="compare.disclaimer">These charts compare documented architecture and maturity, not measured speed. H3/S2 are mature geospatial libraries; V5-32 remains a research reference. No synthetic advantage ratings are used.</p>
+  </div>
+</section>
 <section id="mathematics" class="section"><div class="wrap">
-  <div class="kicker">Mathematical foundation</div><h2>Theorem. Proof. Limitations.</h2>
+  <div class="kicker" data-v5-t="math.kicker">Mathematical foundation</div><h2 data-v5-t="math.title">Theorem. Proof. Limitations.</h2>
   <p class="section-intro">The following claims have different mathematical status. They should not be combined into an unsupported statement that a practical all-convex global V5 grid has already been solved.</p>
   <div class="proofgrid">
     <article class="tile"><span class="tag">Theorem 1 / weak existence</span><h3>Binary bent-chord lemma</h3><p>Triangulate a simple pentagon from a shared fan vertex A. With Q on the opposite edge CD and T slightly off chord AQ, the cut A–T–Q creates two strict, generally nonconvex pentagons.</p><div class="formula">P₅ → 2P₅ → 2⁵P₅ = 32P₅</div><p>Repeat five binary subdivisions at each level for any finite number of levels.</p></article>
@@ -395,5 +445,7 @@ show(5);
 {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
 </script>
 <script type="module" src="./web/v5-3d.js"></script>
+<script type="module" src="./web/v5-i18n.js"></script>
+<script type="module" src="./web/v5-compare.js"></script>
 </body>
 </html>
