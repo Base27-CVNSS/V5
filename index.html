@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="description" content="V5 is an experimental 32-ary pentagonal geospatial indexing research project. Constructive proofs, exact-rational prototype, and scholarly notes by Long Ngo."/>
+  <meta name="theme-color" content="#09223a"/>
+  <title>V5 | Pentagonal Geospatial Indexing Research</title>
+  <style>
+    :root{--ink:#10263e;--muted:#5a6d7d;--blue:#1364c4;--teal:#008b89;--line:#e1e9f0;--soft:#f4f8fc;--white:#fff;--navy:#0c233b;--gold:#dfa53f}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}
+    body{margin:0;background:#fff;color:var(--ink);font:15px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+    a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}button,input{font:inherit}
+    .wrap{max-width:1216px;margin:auto;padding:0 28px}
+    header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
+    .nav{height:70px;display:flex;align-items:center;gap:25px}
+    .brand{display:flex;align-items:center;gap:11px;color:var(--ink);font-size:24px;font-weight:800;letter-spacing:-1.2px}
+    .mark{display:inline-grid;place-items:center;width:34px;height:34px;background:#0c6dba;color:#fff;clip-path:polygon(50% 0,98% 35%,80% 100%,20% 100%,2% 35%);font-size:14px;font-weight:900}
+    .nav nav{display:flex;align-items:center;gap:26px;margin-left:28px;font-size:13px;font-weight:650}.nav nav a{color:#52687c}
+    .nav .push{margin-left:auto}.tiny-pill{border:1px solid #bddedb;color:#086e70;border-radius:99px;padding:5px 12px;font-size:11px;font-weight:750;white-space:nowrap}
+    .nav-btn{padding:9px 15px;background:#0b3152;color:#fff;border-radius:8px;font-size:12px;font-weight:700;white-space:nowrap}
+    .hero{padding:76px 0 66px;background:radial-gradient(ellipse at 80% 5%,#e8f4fe 0,transparent 43%),linear-gradient(180deg,#fff,#f8fbfe)}
+    .hero-grid{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:57px}
+    .eyebrow{font-size:12px;letter-spacing:.19em;font-weight:850;color:#107c95;text-transform:uppercase}
+    h1{font-size:clamp(43px,5vw,70px);line-height:1.055;letter-spacing:-3px;font-weight:850;margin:21px 0}
+    h1 em{font-style:normal;color:#146cc1}h2{font-size:37px;line-height:1.18;letter-spacing:-1.5px;margin:11px 0 20px}h3{font-size:21px;line-height:1.35;letter-spacing:-.5px;margin:7px 0 12px}
+    .lead{font-size:17px;line-height:1.85;color:#51677b;max-width:520px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin:28px 0 21px}.btn{display:inline-flex;gap:9px;align-items:center;justify-content:center;border:1px solid #bdd2e5;border-radius:9px;padding:11px 19px;background:white;color:#153b5d;font-weight:750;font-size:13px;cursor:pointer}.btn.primary{background:#1369ba;color:white;border-color:#1369ba}.btn:hover{text-decoration:none;filter:brightness(.98)}
+    .byline{color:#7d8992;font-size:12px}.byline strong{color:#173852}
+    .hero-art{background:#0c2742;box-shadow:0 24px 58px #193e6521;border-radius:22px;min-height:390px;position:relative;overflow:hidden;padding:20px}
+    .art-head{display:flex;align-items:center;justify-content:space-between;color:#c7e5f8;font-size:12px;letter-spacing:.06em}.art-dots{display:flex;gap:6px}.art-dots i{display:block;width:7px;height:7px;border-radius:50%;background:#4b89aa}
+    #heroSvg{width:100%;height:325px}.art-foot{display:flex;justify-content:space-between;border-top:1px solid #30536a;color:#a5c9d9;padding-top:12px;font-size:12px}
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);margin:0;border-bottom:1px solid var(--line);border-top:1px solid var(--line);background:white}
+    .stat{padding:25px 36px;border-right:1px solid var(--line)}.stat:last-child{border-right:0}.stat b{font-size:28px;color:#103757;font-weight:850;letter-spacing:-1px}.stat small{display:block;color:#6f8190;font-size:12px}
+    .section{padding:80px 0}.section.alt{background:var(--soft)}.kicker{color:#008f8c;font-size:12px;font-weight:850;letter-spacing:.14em;text-transform:uppercase}
+    .section-intro{max-width:760px;margin-bottom:32px;color:#627588;font-size:16px}
+    .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.tile{border:1px solid var(--line);background:#fff;border-radius:14px;padding:23px;box-shadow:0 3px 12px #102a3b06}
+    .tile .iconish{display:inline-grid;place-items:center;width:40px;height:40px;background:#e5f4f9;border-radius:11px;color:#087caa;font-size:20px;font-weight:800}.tile p{color:#607487;font-size:14px}
+    .tag{display:inline-block;padding:4px 10px;border-radius:7px;font-size:11px;background:#e5f4eb;color:#236d4d;font-weight:800}.tag.open{background:#fff1e4;color:#a15b18}
+    .explore-grid{display:grid;grid-template-columns:1.45fr .85fr;gap:22px}
+    .panel{border:1px solid var(--line);background:#fff;border-radius:15px;overflow:hidden;box-shadow:0 5px 22px #17344d0a}
+    .panel-h{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 20px;border-bottom:1px solid var(--line)}
+    .panel-h strong{font-size:14px}.hint{font-size:11px;color:#6f8190}
+    .controls{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:14px 20px;background:#fbfcfe;border-bottom:1px solid var(--line);font-size:12px}
+    input[type=range]{accent-color:#1675c0;flex:1;min-width:100px}.level{font-weight:800;color:#176cb7;min-width:64px}
+    .diagram{height:420px;background:radial-gradient(circle,#f2f8fc 0,#fff 75%);display:grid;place-items:center;position:relative}.diagram svg{width:100%;height:100%;max-height:420px}
+    .diagram polygon{cursor:pointer;transition:opacity .15s,stroke-width .15s}.diagram polygon:hover{opacity:.68;stroke:#06233e;stroke-width:3}.diagram polygon.active{stroke:#f0891d;stroke-width:4}
+    .diagram-label{position:absolute;bottom:14px;left:18px;font-size:11px;color:#6e8190;pointer-events:none}
+    .small-stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}.small-stats div{padding:14px 18px;border-right:1px solid var(--line)}.small-stats div:last-child{border-right:0}.small-stats b{display:block;font-size:20px;color:#173f60}.small-stats span{font-size:11px;color:#687d8c}
+    .details{padding:24px}.details .area{font:24px Georgia,serif;color:#173957;margin:12px 0}
+    .term{display:grid;grid-template-columns:95px 1fr;gap:15px;border-top:1px solid var(--line);padding:12px 0;font-size:13px}.term b{color:#173b59}.term span{color:#687d8c}
+    .note{background:#eff8fc;border-left:3px solid #1f87b6;padding:14px 16px;border-radius:4px;color:#315c78;font-size:13px;margin-top:15px}
+    .formula{font-family:Georgia,"Times New Roman",serif;font-size:clamp(18px,2.5vw,26px);background:#f6f9fc;border:1px solid #e3ebf2;text-align:center;border-radius:9px;padding:19px 8px;margin:20px 0;color:#174568;overflow:auto}
+    .proofgrid{display:grid;grid-template-columns:1fr 1fr;gap:22px}.proofgrid .tile{padding:29px}.proofgrid p{color:#607487;font-size:14px}
+    .paperhead{display:flex;gap:20px;justify-content:space-between;align-items:center;flex-wrap:wrap}
+    .paper{background:#fff;border:1px solid #dfe7ed;box-shadow:0 12px 44px #12283b0d;padding:45px;max-width:890px;margin:auto;font-family:Georgia,"Times New Roman",serif;color:#242c36}
+    .paper .journal{font-family:Arial,sans-serif;color:#64788b;font-size:11px;text-transform:uppercase;letter-spacing:.13em}
+    .paper h3{font-family:Georgia,serif;font-size:29px;text-align:center;line-height:1.22;margin:20px 0}.paper .author{text-align:center;color:#5b6974}.paper h4{font-size:15px;margin:27px 0 9px}.paper p{font-size:15px;line-height:1.85;text-align:justify}.paper .formula{font-size:22px;background:none;border:0}
+    .notice{background:#fff8ec;border:1px solid #f1d9a4;border-radius:11px;padding:18px 22px;color:#71562a}
+    .globegrid{display:grid;grid-template-columns:.8fr 1.2fr;gap:34px;align-items:center}.globe{background:#08283f;border-radius:17px;min-height:330px;display:grid;place-items:center;overflow:hidden}.globe svg{width:min(100%,350px);height:auto}
+    .tablewrap{overflow-x:auto;border:1px solid #dde6ef;border-radius:12px}table{border-collapse:collapse;width:100%;font-size:14px}th,td{text-align:left;padding:13px 17px;border-bottom:1px solid #e4ebf2}th{background:#edf4f9;color:#304b63}td{color:#576e80}tr:last-child td{border:0}
+    pre{background:#0d273f;border-radius:12px;color:#cdeaf7;padding:22px;overflow:auto;font-size:13px;line-height:1.8}.num{color:#80d6ca}.fn{color:#f9d28e}
+    footer{border-top:1px solid #dce6ef;background:#f5f9fc;padding:35px 0;color:#657888;font-size:13px}footer .wrap{display:flex;justify-content:space-between;gap:25px;flex-wrap:wrap}
+    @media(max-width:970px){.nav nav{display:none}.hero-grid,.explore-grid,.globegrid{grid-template-columns:1fr}.hero-art{max-width:640px}.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.stats{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+    @media(max-width:600px){.wrap{padding:0 18px}.nav{height:62px}.hero{padding:48px 0}h1{letter-spacing:-2px}.cards,.proofgrid{grid-template-columns:1fr}.section{padding:55px 0}.stats{grid-template-columns:repeat(2,1fr)}.stat{padding:17px}.stat b{font-size:22px}.paper{padding:22px}.diagram{height:340px}.hero-art{min-height:345px}#heroSvg{height:280px}.small-stats b{font-size:17px}.nav .tiny-pill{display:none}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.diagram polygon{transition:none}}
+  </style>
+</head>
+<body>
+<header><div class="wrap nav">
+  <a class="brand" href="#top"><span class="mark">V</span> V5</a>
+  <nav aria-label="Main navigation"><a href="#overview">Overview</a><a href="#explorer">Explorer</a><a href="#mathematics">Mathematics</a><a href="#paper">Research paper</a><a href="#implementation">Developers</a></nav>
+  <span class="push"></span><span class="tiny-pill">RESEARCH PREPRINT · 2026</span><a class="nav-btn" href="https://github.com/Base27-CVNSS/V5" target="_blank" rel="noopener">GitHub ↗</a>
+</div></header>
+<main id="top">
+<section class="hero"><div class="wrap hero-grid">
+  <div><div class="eyebrow">Pentagonal Geospatial Indexing · V5-32</div>
+  <h1>Five edges.<br/><em>Thirty-two</em> branches.<br/>One planet.</h1>
+  <p class="lead">An open, proof-driven research project investigating recursively nested pentagonal partitions on the sphere, topology constraints, and hierarchical spatial identifiers.</p>
+  <div class="hero-actions"><a class="btn primary" href="#explorer">Explore the 32-cell construction →</a><a class="btn" href="#paper">Read the paper ↗</a></div>
+  <p class="byline"><strong>Long Ngo · 2026</strong> &nbsp;|&nbsp; Vietflexmap &nbsp;|&nbsp; Apache-2.0</p>
+  </div>
+  <div class="hero-art"><div class="art-head"><span>V5 / WEAK GEOMETRIC REFINEMENT</span><span class="art-dots"><i></i><i></i><i></i></span></div><svg id="heroSvg" viewBox="0 0 480 360" role="img" aria-label="Diagram of 32 subdivided pentagonal cells"></svg><div class="art-foot"><span>32 cells · 5 binary cuts</span><span>CONSTRUCTIVE PROOF</span></div></div>
+</div></section>
+<div class="stats wrap" aria-label="Core facts">
+  <div class="stat"><b>12</b><small>Root dodecahedral faces</small></div>
+  <div class="stat"><b>32</b><small>Children per proposed level</small></div>
+  <div class="stat"><b>5</b><small>Geometric corners per cell</small></div>
+  <div class="stat"><b>64-bit</b><small>Proposed index format, not implemented</small></div>
+</div>
+<section id="overview" class="section"><div class="wrap">
+  <div class="kicker">Overview / research program</div><h2>From planar existence to spherical structure.</h2>
+  <p class="section-intro">The weak-existence theorem is proved; a conforming, equal-area and efficiently searchable discrete global grid is still an open engineering and mathematical problem.</p>
+  <div class="cards">
+    <div class="tile"><div class="iconish">①</div><h3>Constructive refinement</h3><span class="tag">Proved under assumptions</span><p>A bent-chord cut turns a simple pentagon into two nondegenerate pentagons. Five iterations give 32 descendants.</p></div>
+    <div class="tile"><div class="iconish">⬡</div><h3>Spherical coverage</h3><span class="tag">Proved under assumptions</span><p>Start from a 12-face dodecahedron and use a radial homeomorphism to transfer the nested grid to a sphere.</p></div>
+    <div class="tile"><div class="iconish">∞</div><h3>Conforming V5 DGGS</h3><span class="tag open">Open research</span><p>Edge-to-edge conformity, uniform shape regularity, fast neighbors, and WGS84 lookup are not established.</p></div>
+  </div>
+</div></section>
+<section id="explorer" class="section alt"><div class="wrap">
+  <div class="kicker">Interactive laboratory</div><h2>Watch 1 pentagon become 32.</h2>
+  <p class="section-intro">This interactive demo reproduces the <b>planar weak partition</b>, not a production global DGGS. Some pentagons are concave; some boundaries contain hanging nodes.</p>
+  <div class="explore-grid">
+    <div class="panel">
+      <div class="panel-h"><strong>Exact subdivision concept / planar projection</strong><span class="hint">Sample construction</span></div>
+      <div class="controls"><label for="depth">Binary depth</label><input id="depth" type="range" min="0" max="5" step="1" value="5"/><span id="levelText" class="level">5 / 5</span><button id="reset" class="btn" type="button">Reset</button></div>
+      <div class="diagram"><svg id="cellSvg" viewBox="0 0 700 620" role="img" aria-label="Interactive diagram of pentagon subdivisions"></svg><span class="diagram-label">Click a cell to inspect its exact role in the weak construction.</span></div>
+      <div class="small-stats"><div><b id="count">32</b><span>Resulting cells</span></div><div><b id="areaRatio">—</b><span>Max/min cell area</span></div><div><b>5</b><span>Corners per cell</span></div></div>
+    </div>
+    <aside class="panel">
+      <div class="panel-h"><strong>Selected cell / research facts</strong></div>
+      <div class="details"><div class="kicker">Geometry inspector</div><h3 id="selectedName">Cell 00</h3><div class="area" id="selectedArea">Select a polygon</div>
+      <div class="term"><b>Definition</b><span>Strict simple 5-corner polygon; convexity not required.</span></div>
+      <div class="term"><b>Boundary</b><span>Interior-disjoint weak partition. Hanging nodes allowed.</span></div>
+      <div class="term"><b>Proof</b><span>Binary bent-chord cut × 5 per hierarchical level.</span></div>
+      <div class="term"><b>Global roots</b><span>12 pentagonal dodecahedral faces, radially mapped to S².</span></div>
+      <div class="note" id="validation">Numerical browser preview; mathematically exact rational demonstration is in Python. No claim of equal cell areas.</div>
+      <a href="https://github.com/Base27-CVNSS/V5/blob/main/src/v5.py" class="btn" target="_blank" rel="noopener" style="margin-top:20px">View source algorithm ↗</a></div>
+    </aside>
+  </div>
+</div></section>
+<section id="mathematics" class="section"><div class="wrap">
+  <div class="kicker">Mathematical foundation</div><h2>Theorem. Proof. Limitations.</h2>
+  <p class="section-intro">The following claims have different mathematical status. They should not be combined into an unsupported statement that a practical all-convex global V5 grid has already been solved.</p>
+  <div class="proofgrid">
+    <article class="tile"><span class="tag">Theorem 1 / weak existence</span><h3>Binary bent-chord lemma</h3><p>Triangulate a simple pentagon from a shared fan vertex A. With Q on the opposite edge CD and T slightly off chord AQ, the cut A–T–Q creates two strict, generally nonconvex pentagons.</p><div class="formula">P₅ → 2P₅ → 2⁵P₅ = 32P₅</div><p>Repeat five binary subdivisions at each level for any finite number of levels.</p></article>
+    <article class="tile"><span class="tag">Theorem 2 / spherical transfer</span><h3>12 roots cover the sphere</h3><p>For a convex dodecahedron D centered at the origin, the radial projection is a homeomorphism from its surface onto a sphere of radius R.</p><div class="formula">ρ(x) = R · x / ‖x‖</div><p>Each straight planar edge maps to a great-circle arc. Coverage and non-overlap of cell interiors are preserved.</p></article>
+    <article class="tile"><span class="tag">Necessary condition</span><h3>Euler degree budget</h3><p>For any all-pentagon, edge-to-edge spherical cell decomposition, the vertex degrees cannot all remain three beyond the twelve-cell base level.</p><div class="formula">Σ (deg(v) − 3) = F/2 − 6</div><p>At level r, F = 12·32ʳ, giving an excess-degree budget of 6(32ʳ − 1).</p></article>
+    <article class="tile"><span class="tag open">Open research</span><h3>Strong V5-32</h3><p>Does there exist a global refinement of <i>convex</i>, edge-to-edge pentagons with uniformly bounded aspect ratio and shrinking diameters across arbitrarily many levels?</p><div class="formula">max diam(Cᵣ) = O(32<sup>−r/2</sup>) ?</div><p>The current constructive theorem does not establish this.</p></article>
+  </div>
+  <div style="margin-top:24px" class="notice"><b>Scientific integrity:</b> A 32-child weak refinement is possible, but full fivefold rotational symmetry is incompatible with 32 convex children; five unsplit parent edges are incompatible with an edge-to-edge 32-cell partition. These obstructions guide research and do not imply a strong solution exists.</div>
+</div></section>
+<section class="section alt"><div class="wrap globegrid">
+  <div><div class="kicker">Global topology</div><h2>Twelve pentagonal roots. One sphere.</h2><p class="section-intro">A convex dodecahedron has twelve pentagonal faces. Projecting every point radially onto a sphere creates a spherical atlas without coverage gaps. The illustration is an interactive-inspired root-face schematic, <b>not</b> WGS84 index data.</p><div class="formula">N(r) = 12 × 32<sup>r</sup></div><a class="btn" href="https://github.com/Base27-CVNSS/V5/blob/main/docs/PROOF.md" target="_blank" rel="noopener">Read global coverage proof ↗</a></div>
+  <div class="globe"><svg viewBox="0 0 360 350" role="img" aria-label="Schematic globe representing twelve pentagonal root faces">
+    <defs><radialGradient id="ocean"><stop offset="0" stop-color="#215e82"/><stop offset="0.85" stop-color="#0b3459"/><stop offset="1" stop-color="#05182e"/></radialGradient><clipPath id="clipGlobe"><circle cx="180" cy="174" r="146"/></clipPath></defs>
+    <circle cx="180" cy="174" r="146" fill="url(#ocean)" stroke="#5bb8d4" stroke-width="1.3"/>
+    <g clip-path="url(#clipGlobe)" stroke="#2d8da8" stroke-width="1" fill="none" opacity=".55">
+      <ellipse cx="180" cy="174" rx="58" ry="146"/><ellipse cx="180" cy="174" rx="110" ry="146"/>
+      <path d="M34 174 H326" /><ellipse cx="180" cy="174" rx="146" ry="50"/><ellipse cx="180" cy="174" rx="146" ry="105"/>
+    </g>
+    <g clip-path="url(#clipGlobe)" stroke="#a3e8ec" stroke-width="2.3" fill="#53b8c2" fill-opacity=".2">
+      <polygon points="180,70 244,96 266,162 206,202 142,164"/><polygon points="180,70 142,164 74,147 89,88 150,34"/><polygon points="244,96 320,120 306,192 266,162"/><polygon points="142,164 206,202 180,286 100,254 74,147"/><polygon points="206,202 266,162 306,192 268,271 180,286"/>
+    </g><text x="180" y="336" fill="#c8eaf4" font-size="11" text-anchor="middle">DODECAHEDRAL ROOT ATLAS · SCHEMATIC</text>
+  </svg></div>
+</div></section>
+<section id="paper" class="section"><div class="wrap">
+  <div class="paperhead"><div><div class="kicker">Research publication</div><h2>An arXiv-style mathematical manuscript.</h2></div><a class="btn primary" target="_blank" rel="noopener" href="https://github.com/Base27-CVNSS/V5/blob/main/docs/paper.tex">Read complete LaTeX paper ↗</a></div>
+  <p class="section-intro">English scholarly draft, available in LaTeX and Markdown. This manuscript has not been submitted to arXiv and has not been peer reviewed.</p>
+  <article class="paper">
+    <div class="journal">V5 Technical Preprint · Research Draft · October 2026</div>
+    <h3>V5-32: Constructive Weak Pentagonal Refinement on the Sphere and Topological Obstructions</h3>
+    <div class="author">Long Ngo · Vietflexmap · 2026</div>
+    <h4>Abstract</h4>
+    <p>We establish an elementary constructive existence theorem for weak nested 32-ary pentagonal partitions of the sphere. Starting with twelve faces of a convex dodecahedron, a bent-chord subdivision is iterated to obtain 32 nondegenerate pentagonal descendants per parent. Radial projection preserves the nested partition, yielding 12·32ʳ spherical cells at each finite resolution r. The construction permits nonconvex cells and hanging nodes, and does not establish uniform shape regularity, edge-to-edge conformity or an operational DGGS.</p>
+    <h4>1. Main existence result</h4><p>For every finite r ≥ 0, there exists a weak spherical partition into exactly 12·32ʳ strict spherical pentagons. Each parent is the union of exactly 32 children with pairwise disjoint interiors.</p>
+    <div class="formula">S² = ⋃ C<sub>i</sub> &nbsp;&nbsp; ; &nbsp;&nbsp; int(C<sub>i</sub>) ∩ int(C<sub>j</sub>) = ∅</div>
+    <h4>2. What remains unproved</h4><p>We do not prove that all children can be simultaneously convex, strictly edge-to-edge, shape regular, or asymptotically fine. Efficient spherical point indexing and neighbor calculation remain future work.</p>
+    <h4>3. Reproducibility</h4><p>Exact-rational planar implementation, automated regression tests, and a bibliography of pre-existing mathematical and DGGS principles are included in the repository.</p>
+    <div style="border-top:1px solid #ddd;margin-top:25px;padding-top:15px;font:12px Arial,sans-serif;color:#657887">Long Ngo 2026 · Vietflexmap Copyright (c) 2025 · Apache-2.0</div>
+  </article>
+</div></section>
+<section id="implementation" class="section alt"><div class="wrap">
+  <div class="kicker">Developer documentation</div><h2>Open source, reproducible research.</h2>
+  <div class="proofgrid">
+    <div><h3>Prototype: Python standard library</h3><p class="section-intro">Uses exact rational coordinates and deterministic fan cuts. The generated cell geometry is a planar mathematical example, not GPS-ready data.</p>
+      <pre><code><span class="fn">python</span> -m unittest discover -s tests -v
+<span class="fn">python</span> src/v5.py --depth <span class="num">5</span> --json &gt; cells.json
+<span class="fn">python</span> src/v5.py --depth <span class="num">5</span> --svg &gt; cells.svg</code></pre>
+    </div>
+    <div><h3>Proposed 64-bit format</h3><p class="section-intro">This is a proposed hierarchical binary layout, not yet implemented as a complete cell index API.</p>
+      <div class="tablewrap"><table><thead><tr><th>Field</th><th>Bits</th><th>Purpose</th></tr></thead><tbody>
+       <tr><td>Version</td><td>4</td><td>Format evolution</td></tr><tr><td>Resolution</td><td>4</td><td>0–10 proposed levels</td></tr><tr><td>Root</td><td>6</td><td>12 root pentagons</td></tr><tr><td>Path</td><td>50</td><td>Ten 5-bit digits (0–31)</td></tr><tr><td><b>Total</b></td><td><b>64</b></td><td>Unsigned 64-bit word</td></tr>
+      </tbody></table></div>
+    </div>
+  </div>
+  <div class="cards" style="margin-top:25px"><div class="tile"><h3>Proof notes</h3><p>Detailed lemmas, hypotheses, mathematical scope, and integrity checks.</p><a href="https://github.com/Base27-CVNSS/V5/blob/main/docs/PROOF.md" target="_blank" rel="noopener">Read notes ↗</a></div><div class="tile"><h3>Python algorithm</h3><p>Executable construction and exact-area validation.</p><a href="https://github.com/Base27-CVNSS/V5/blob/main/src/v5.py" target="_blank" rel="noopener">Read code ↗</a></div><div class="tile"><h3>H3 comparison</h3><p>H3 is a separate aperture-7, mostly hexagonal DGGS. V5 is not a fork or benchmark result.</p><a href="https://h3geo.org/" target="_blank" rel="noopener">H3 documentation ↗</a></div></div>
+</div></section>
+</main>
+<footer><div class="wrap"><div><b style="color:#1a405d">V5 / Vietflexmap</b><div>Long Ngo 2026 · Vietflexmap Copyright (c) 2025</div><div>V5 is licensed under the Apache 2.0 License.</div></div><div><a href="https://github.com/Base27-CVNSS/V5">Source</a> &nbsp;·&nbsp; <a href="https://github.com/Base27-CVNSS/V5/blob/main/LICENSE">License</a> &nbsp;·&nbsp; <a href="https://arxiv.org/">arXiv (external)</a> &nbsp;·&nbsp; <a href="https://h3geo.org/">H3 reference</a></div></div></footer>
+<script>
+(function(){
+"use strict";
+var root=[[0,-5],[5,-2],[3,4],[-3,4],[-5,-2]];
+function cross(a,b,c){return (b[0]-a[0])*(c[1]-a[1])-(b[1]-a[1])*(c[0]-a[0]);}
+function area2(p){var s=0;for(var i=0;i<p.length;i++){var q=p[(i+1)%p.length];s+=p[i][0]*q[1]-q[0]*p[i][1];}return s;}
+function valid(p){if(p.length!==5||area2(p)<=0)return false;for(var i=0;i<5;i++)if(cross(p[(i+4)%5],p[i],p[(i+1)%5])===0)return false;return true;}
+function split(p){
+  for(var i=0;i<5;i++){
+    var f=p.slice(i).concat(p.slice(0,i)),a=f[0],b=f[1],c=f[2],d=f[3],e=f[4];
+    if(!(cross(a,b,c)>0&&cross(a,c,d)>0&&cross(a,d,e)>0))continue;
+    var q=[(c[0]+d[0])/2,(c[1]+d[1])/2],m=[(a[0]+q[0])/2,(a[1]+q[1])/2],dx=q[0]-a[0],dy=q[1]-a[1];
+    for(var k=5;k<28;k++)for(var sign of [1,-1]){
+      var eps=sign/Math.pow(2,k),t=[m[0]-eps*dy,m[1]+eps*dx];
+      if(!(cross(a,c,t)>0&&cross(c,d,t)>0&&cross(d,a,t)>0))continue;
+      var l=[a,b,c,q,t],r=[a,t,q,d,e];
+      if(valid(l)&&valid(r)&&Math.abs(area2(l)+area2(r)-area2(p))<1e-7)return[l,r];
+    }
+  }
+  throw new Error("Failed to produce a strictly nonflat bent-chord cut.");
+}
+var levels=[[root]];
+try{
+ for(var dep=1;dep<=5;dep++){var next=[];levels[dep-1].forEach(function(p){next.push.apply(next,split(p));});levels.push(next);}
+}catch(err){document.getElementById("validation").textContent="Browser preview failed: "+err.message;}
+function svgPolygon(svg,p,id,selected,click,hero){
+ var ns="http://www.w3.org/2000/svg",el=document.createElementNS(ns,"polygon");
+ var scale=hero?28:48,x0=hero?240:350,y0=hero?181:326;
+ el.setAttribute("points",p.map(function(pt){return (x0+pt[0]*scale).toFixed(4)+","+(y0-pt[1]*scale).toFixed(4);}).join(" "));
+ var palette=["#83ded0","#75b9ec","#b7a8ed","#99cf80","#e8c078","#e88da7","#90cce0","#a3bcd8"];
+ el.setAttribute("fill",palette[id%palette.length]);
+ el.setAttribute("fill-opacity",hero?".80":".78");
+ el.setAttribute("stroke",hero?"#b4edee":"#1c5777");
+ el.setAttribute("stroke-width",hero?".6":"1.35");
+ el.setAttribute("stroke-linejoin","round");
+ if(!hero){el.setAttribute("tabindex","0");el.setAttribute("role","button");el.setAttribute("aria-label","Select pentagon "+id);if(selected===id)el.classList.add("active");el.addEventListener("click",function(){click(id);});el.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();click(id);}});}
+ svg.appendChild(el);
+}
+var svg=document.getElementById("cellSvg"),hero=document.getElementById("heroSvg"),slider=document.getElementById("depth"),sel=0;
+function show(d){
+ var p=levels[d];if(!p)return;
+ svg.replaceChildren();hero.replaceChildren();
+ p.forEach(function(poly,i){svgPolygon(svg,poly,i,sel,select,false);});
+ levels[5].forEach(function(poly,i){svgPolygon(hero,poly,i,-1,null,true);});
+ document.getElementById("count").textContent=p.length.toLocaleString("en-US");
+ document.getElementById("levelText").textContent=d+" / 5";
+ var areas=p.map(function(c){return area2(c)/2;});
+ document.getElementById("areaRatio").textContent=(Math.max.apply(null,areas)/Math.min.apply(null,areas)).toFixed(1)+"×";
+ if(sel>=p.length)sel=0;
+ select(sel);
+}
+function select(i){
+ sel=i;var d=Number(slider.value),p=levels[d],poly=p[i];
+ if(!poly)return;
+ document.getElementById("selectedName").textContent="Cell "+String(i).padStart(2,"0")+" / "+p.length;
+ document.getElementById("selectedArea").textContent="Area: "+(area2(poly)/2).toFixed(7)+" units²";
+ Array.prototype.forEach.call(svg.querySelectorAll("polygon"),function(el,j){el.classList.toggle("active",j===i);});
+}
+slider.addEventListener("input",function(){show(Number(slider.value));});
+document.getElementById("reset").addEventListener("click",function(){slider.value="5";sel=0;show(5);});
+show(5);
+})();
+</script>
+</body>
+</html>
