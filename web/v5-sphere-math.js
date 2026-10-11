@@ -36,10 +36,29 @@ export function area2(poly) {
     return sum+p[0]*q[1]-q[0]*p[1];
   },0);
 }
+function touchesSegment(a,b,p) {
+  return orient(a,b,p)===0 &&
+    p[0]>=Math.min(a[0],b[0]) && p[0]<=Math.max(a[0],b[0]) &&
+    p[1]>=Math.min(a[1],b[1]) && p[1]<=Math.max(a[1],b[1]);
+}
+function segmentsIntersect(a,b,c,d) {
+  const x=orient(a,b,c),y=orient(a,b,d),u=orient(c,d,a),v=orient(c,d,b);
+  return ((x>0&&y<0||x<0&&y>0)&&(u>0&&v<0||u<0&&v>0)) ||
+    (x===0&&touchesSegment(a,b,c)) || (y===0&&touchesSegment(a,b,d)) ||
+    (u===0&&touchesSegment(c,d,a)) || (v===0&&touchesSegment(c,d,b));
+}
 export function strictPentagon(poly) {
-  return poly.length===5 &&
-    area2(poly)>0 &&
-    poly.every((p,i)=>Math.abs(orient(poly[(i+4)%5],p,poly[(i+1)%5]))>1e-15);
+  if(!Array.isArray(poly)||poly.length!==5 ||
+     poly.some(p=>!Array.isArray(p)||p.length!==2||p.some(v=>!Number.isFinite(v))) ||
+     new Set(poly.map(p=>p.join(","))).size!==5 ||
+     !(area2(poly)>0) ||
+     !poly.every((p,i)=>Math.abs(orient(poly[(i+4)%5],p,poly[(i+1)%5]))>1e-15))
+    return false;
+  for(let i=0;i<5;i++)for(let j=i+1;j<5;j++){
+    if(j===i+1||(i===0&&j===4))continue;
+    if(segmentsIntersect(poly[i],poly[(i+1)%5],poly[j],poly[(j+1)%5]))return false;
+  }
+  return true;
 }
 export function weakBinarySplit(poly) {
   for(let i=0;i<5;i++){
