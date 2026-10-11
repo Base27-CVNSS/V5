@@ -205,3 +205,10 @@ body.v5-web3 .stage-note{background:#382441;color:#e6c9ef}
   .v5-orb-image,.v5-language,.v5-nav-toggle{display:none!important}
   .v5-chart-card{break-inside:avoid}
 }
+
+/* Offline / remote-module failure fallback: retain meaningful 3D section content. */
+.v5-globe-static{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px 20px 32px;text-align:center;z-index:1;color:#f9d4f3;background:radial-gradient(circle at 50% 47%,#8420aa3d,transparent 57%)}
+.v5-globe-static img{width:min(58%,280px);height:auto;object-fit:contain;filter:drop-shadow(0 13px 35px #b927ba4b)}
+.v5-globe-static span{font-weight:820;font-size:15px;margin-top:-22px;letter-spacing:.03em}
+.v5-globe-static small{font-size:11px;max-width:330px;color:#d3b8d9;margin-top:7px;line-height:1.6}
+#v5-globe-stage:has(canvas) .v5-globe-static{display:none}
