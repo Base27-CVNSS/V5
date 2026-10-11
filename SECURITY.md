@@ -37,3 +37,11 @@ Please use GitHub's **private vulnerability reporting / Security Advisory** feat
 | CI / deployment compromise | Minimal GitHub Actions permissions, test-gated Pages publishing; actions pinned by major tags rather than full digests (outstanding hardening) |
 
 Security testing does not imply correctness of an unimplemented global DGGS, OGC conformance or privacy protection.
+
+## Spatial DNA v0.1 authenticated sidecar
+
+The research module [src/v5dna.py](src/v5dna.py) adds an optional authenticated metadata envelope. It uses CRC32 to detect accidental corruption, and HMAC-SHA256 truncated to **128 bits** (constant-time comparison) to authenticate the *sidecar bytes* under a shared secret key. This is **not** encryption, public-key digital signature, an immutable audit log, data-content authentication for external GIS payloads, ACL enforcement or error correction. Sensitive fields and authentication keys MUST be protected externally.
+
+**Design warning:** the 77.4% entropy-capacity number is only for an alternative five-way/3-bit alphabet; no secret or watermark bits may be embedded into the existing V5-64 v1 canonical padding. 15-bit tags are insecure. The 54-byte sidecar has significant storage overhead versus an 8-byte CellID and should be opt-in.
+
+Before production use, specify atlas-version trust, content-hash binding, producer identity, key rotation, anti-replay, confidentiality where required, backup/erasure recovery and external security review. The prototype test suite verifies only basic serialization and modification detection.
