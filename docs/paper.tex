@@ -179,7 +179,7 @@ theorem does not establish shrinking diameters, bounded area ratios,
 equal-area cells, WGS84 geodesics, or usable constant-time
 coordinate-to-cell conversion. A proposed 64-bit layout
 (version 4, resolution 4, root 6, path 50 bits) holds at most
-ten base-32 refinement digits but is not an indexing library.
+ten base-32 refinement digits and a canonical integer address codec is implemented in\texttt{src/v5id.py}, but neither provides a WGS84 coordinate locator or a full geographic indexing library.
 No timing benchmark or H3-vs-V5 speedup is claimed.
 
 \section{Conclusion}
