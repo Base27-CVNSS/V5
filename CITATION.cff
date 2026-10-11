@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use the V5 research prototype, please cite this repository and the preprint draft."
+title: "V5-32: Constructive Weak Pentagonal Refinement on the Sphere and Topological Obstructions"
+type: software
+authors:
+  - family-names: Ngo
+    given-names: Long
+year: 2026
+license: Apache-2.0
+repository-code: "https://github.com/Base27-CVNSS/V5"
+url: "https://base27-cvnss.github.io/V5/"
+abstract: "Research prototype for weak hierarchical 32-ary pentagonal subdivisions; not a production DGGS."
