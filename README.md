@@ -2,9 +2,23 @@
 
 **An experimental, mathematically grounded pentagonal spatial indexing research project.**
 
-[Website](https://base27-cvnss.github.io/V5/) · [Mathematical paper](docs/paper.tex) · [Proof notes](docs/PROOF.md) · [Python prototype](src/v5.py) · [V5-64 codec](src/v5id.py) · [H3 comparison](https://h3geo.org/)
+[Website](https://base27-cvnss.github.io/V5/) · [3D spherical simulation](https://base27-cvnss.github.io/V5/#simulation3d) · [Mathematical paper](docs/paper.tex) · [Proof notes](docs/PROOF.md) · [Python prototype](src/v5.py) · [V5-64 codec](src/v5id.py) · [H3 comparison](https://h3geo.org/)
 
 > **Research status (2026):** A weak, geometrically nested 32-child refinement exists for simple, nondegenerate planar pentagons and can be transferred to a spherical dodecahedral atlas. The construction allows **nonconvex cells and hanging nodes**. An edge-to-edge, uniformly shape-regular, equal-area V5 grid is **not proven**. Do not describe this as a production DGGS or as faster than H3.
+
+## Interactive 3D spherical simulation
+
+The website now includes a dedicated [V5 Spherical Geometry Lab](https://base27-cvnss.github.io/V5/#simulation3d), implemented with **Three.js WebGL (ES modules)** and mathematically generated twelve-root dodecahedral geometry.
+
+Interactive modes:
+- **Spherical excess**: For a simple geodesic pentagon on a sphere, `Σα=3π+A/R²>3π`. Each of the twelve regular dodecahedral root faces has five 120° angles and spherical excess `π/3`; total area excess is `4π`.
+- **Vertex closure**: Exactly 20 root vertices, each with three 120° wedges, hence `Σα(v)=2π` with negligible numerical residual.
+- **Curvature obstruction**: Compare the circumference `2πR sin(λθ)` after a radial change of geodesic radius with `λ·2πR sin(θ)` expected under a hypothetical metric similarity. The difference illustrates the failure of exact constant-scale spherical similarity for `0<λ<1`. The rigorous proof uses preservation of Gaussian curvature, not the ring example alone.
+- **Weak hierarchy visualization**: r=0 (12 roots); r=1 (384 weak cells globally); r=2 (1,024 cells shown inside one selected root, with 12,288 globally inferred). Child cells are **possibly nonconvex, nonconforming, and not uniform-area**.
+
+The Three.js version is pinned in `index.html`; Internet access is required to load its CDN modules. Pure geometry calculations are in [web/v5-sphere-math.js](web/v5-sphere-math.js); the WebGL interface is [web/v5-3d.js](web/v5-3d.js). Run math regression tests with `node --test tests/test_sphere_math.mjs`.
+
+**Distinction:** A 32-child hierarchical partition exists, but no exact contraction similarity with a universal constant `λ<1` exists on spherical open sets. These statements are compatible.
 
 ## Key results
 
