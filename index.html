@@ -109,7 +109,7 @@
 <body>
 <header><div class="wrap nav">
   <a class="brand" href="#top"><span class="mark">V</span> V5</a>
-  <nav aria-label="Main navigation"><a href="#overview">Overview</a><a href="#explorer">Explorer</a><a href="#simulation3d">3D Simulation</a><a href="#mathematics">Mathematics</a><a href="#paper">Research paper</a><a href="#implementation">Developers</a></nav>
+  <nav aria-label="Main navigation"><a href="#overview">Overview</a><a href="#explorer">Explorer</a><a href="#simulation3d">3D Simulation</a><a href="#mathematics">Mathematics</a><a href="mathematical-proof.html" lang="vi">Chứng minh V5-32</a><a href="#paper">Research paper</a><a href="#implementation">Developers</a></nav>
   <span class="push"></span><span class="tiny-pill">RESEARCH PREPRINT · 2026</span><a class="nav-btn" href="https://github.com/Base27-CVNSS/V5" target="_blank" rel="noopener">GitHub ↗</a>
 </div></header>
 <main id="top">
@@ -117,7 +117,7 @@
   <div><div class="eyebrow">Pentagonal Geospatial Indexing · V5-32</div>
   <h1>Five edges.<br/><em>Thirty-two</em> branches.<br/>One planet.</h1>
   <p class="lead">An open, proof-driven research project investigating recursively nested pentagonal partitions on the sphere, topology constraints, and hierarchical spatial identifiers.</p>
-  <div class="hero-actions"><a class="btn primary" href="#explorer">Explore the 32-cell construction →</a><a class="btn" href="#paper">Read the paper ↗</a></div>
+  <div class="hero-actions"><a class="btn primary" href="#explorer">Explore the 32-cell construction →</a><a class="btn" href="#paper">Read the paper ↗</a><a class="btn" href="mathematical-proof.html" lang="vi">Chứng minh toán học (VI) →</a></div>
   <p class="byline"><strong>Long Ngo · 2026</strong> &nbsp;|&nbsp; Vietflexmap &nbsp;|&nbsp; Apache-2.0</p>
   </div>
   <div class="hero-art"><div class="art-head"><span>V5 / WEAK GEOMETRIC REFINEMENT</span><span class="art-dots"><i></i><i></i><i></i></span></div><svg id="heroSvg" viewBox="0 0 480 360" role="img" aria-label="Diagram of 32 subdivided pentagonal cells"></svg><div class="art-foot"><span>32 cells · 5 binary cuts</span><span>CONSTRUCTIVE PROOF</span></div></div>
@@ -230,6 +230,17 @@
     <article class="tile"><span class="tag open">Open research</span><h3>Strong V5-32</h3><p>Does there exist a global refinement of <i>convex</i>, edge-to-edge pentagons with uniformly bounded aspect ratio and shrinking diameters across arbitrarily many levels?</p><div class="formula">max diam(Cᵣ) = O(32<sup>−r/2</sup>) ?</div><p>The current constructive theorem does not establish this.</p></article>
   </div>
   <div style="margin-top:24px" class="notice"><b>Scientific integrity:</b> A 32-child weak refinement is possible, but full fivefold rotational symmetry is incompatible with 32 convex children; five unsplit parent edges are incompatible with an edge-to-edge 32-cell partition. These obstructions guide research and do not imply a strong solution exists.</div>
+</div></section>
+<section id="v5-proof-vi" class="section alt"><div class="wrap">
+  <div class="kicker">New / Vietnamese mathematical dossier</div>
+  <h2>V5-32: Định lý, chướng ngại mặt cầu và điều kiện ứng dụng.</h2>
+  <p class="section-intro">Chứng minh bất khả thi phép co đồng dạng Riemann chính xác với 0 &lt; λ &lt; 1; phân biệt với hội tụ đường kính; kiểm tra Gauss–Bonnet, Euler, parity, phân hoạch yếu và bài toán ngũ giác cầu lồi còn mở. Giải thích khi nào đáng thử nghiệm V5 thay vì H3/S2 và giới hạn CellID 64-bit.</p>
+  <div class="cards">
+    <div class="tile"><span class="tag">Proved</span><h3>Curvature obstruction</h3><div class="formula" style="font-size:20px">K = 1/R² &nbsp;→&nbsp; λ = 1</div><p>Không có phép đồng dạng co trắc địa chính xác giữa các miền của cùng một mặt cầu.</p></div>
+    <div class="tile"><span class="tag open">Open research</span><h3>Strong convex V5-32</h3><div class="formula" style="font-size:19px">diam(Cᵢ) ≤ ρ diam(P) ?</div><p>32 ngũ giác lồi, khớp cạnh, co đường kính đều: chưa được chứng nhận trong prototype hiện tại.</p></div>
+    <div class="tile"><span class="tag">Implemented codec</span><h3>V5-64 vs H3/S2</h3><div class="formula" style="font-size:19px">4 + 4 + 6 + 50 = 64</div><p>10 cấp tối đa trong định dạng hiện hành. Không có kết quả benchmark xác nhận V5 nhanh hơn.</p></div>
+  </div>
+  <p style="margin-top:22px"><a class="btn primary" href="mathematical-proof.html" lang="vi">Đọc chuyên đề chứng minh toán học và ứng dụng →</a> &nbsp;<a class="btn" href="https://github.com/Base27-CVNSS/V5/blob/main/docs/PROOF.md" target="_blank" rel="noopener">Proof audit ↗</a></p>
 </div></section>
 <section class="section alt"><div class="wrap globegrid">
   <div><div class="kicker">Global topology</div><h2>Twelve pentagonal roots. One sphere.</h2><p class="section-intro">A convex dodecahedron has twelve pentagonal faces. Projecting every point radially onto a sphere creates a spherical atlas without coverage gaps. The illustration is an interactive-inspired root-face schematic, <b>not</b> WGS84 index data.</p><div class="formula">N(r) = 12 × 32<sup>r</sup></div><a class="btn" href="https://github.com/Base27-CVNSS/V5/blob/main/docs/PROOF.md" target="_blank" rel="noopener">Read global coverage proof ↗</a></div>
