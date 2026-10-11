@@ -137,3 +137,8 @@ This repository includes an English-language LaTeX **preprint draft** in [docs/p
 Implemented angular point-to-CellID, cell boundary, interior sample, GeoJSON, root neighbors, canonical JS V5-64 v1 and measured local benchmark. Research geometry supports only levels 0–2 on the unit sphere. The existing 10-level V5-64 codec is unchanged. No WGS84 ellipsoidal geodesics, equal-area, global child-neighbor guarantees, OGC conformance or measured superiority versus H3/S2/A5 is implied. A 9/10 rating is an evidence-gated target.
 
 Run tests: npm test. Benchmark: node scripts/benchmark_geo.mjs 200 1.
+
+
+### GIS batch integration (experimental)
+
+Convert bounded CSV samples to aggregated V5-64 cells as a GeoJSON FeatureCollection: `node scripts/geo_csv_to_geojson.mjs examples/v5_points.csv 1 > v5_cells.geojson`. See [QGIS, PostGIS and MapLibre integration notes](docs/INTEGRATION_QGIS_POSTGIS.md). This pipeline does not certify spherical area, antimeridian handling or OGC conformance.

@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "node --test tests/*.mjs",
-    "check:syntax": "node --check web/v5-sphere-math.js && node --check web/v5-3d.js && node --check web/v5-compare.js && node --check web/v5-metrics.js && node --check web/v5-i18n.js && node --check web/v5-usecases.js && node --check web/v5-usecases-data.js && node --check web/v5-usecases-math.js && node --check web/v5-entropy.js && node --check web/v5-entropy-ui.js && node --check web/v5-geo.js && node --check web/v5-geo-lab.js && node --check scripts/benchmark_geo.mjs",
+    "check:syntax": "node --check web/v5-sphere-math.js && node --check web/v5-3d.js && node --check web/v5-compare.js && node --check web/v5-metrics.js && node --check web/v5-i18n.js && node --check web/v5-usecases.js && node --check web/v5-usecases-data.js && node --check web/v5-usecases-math.js && node --check web/v5-entropy.js && node --check web/v5-entropy-ui.js && node --check web/v5-geo.js && node --check web/v5-geo-lab.js && node --check scripts/benchmark_geo.mjs && node --check scripts/geo_csv_to_geojson.mjs",
     "benchmark:geo": "node scripts/benchmark_geo.mjs 200 1"
   }
 }
