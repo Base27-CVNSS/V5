@@ -17,12 +17,12 @@ if (!stage) throw new Error("V5 3D stage missing");
 const atlas=makeDodecahedralAtlas();
 const junctions=vertexJunctions(atlas);
 const scene=new THREE.Scene();
-scene.background=new THREE.Color("#061827");
-scene.fog=new THREE.FogExp2("#061827",0.045);
+scene.background=new THREE.Color("#0a0612");
+scene.fog=new THREE.FogExp2("#0a0612",0.045);
 const camera=new THREE.PerspectiveCamera(42,1,0.03,140);
 camera.position.set(2.65,1.65,3.45);
 const renderer=new THREE.WebGLRenderer({antialias:true,alpha:false,powerPreference:"high-performance"});
-renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
+renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,window.innerWidth<780?1.4:1.8));
 renderer.outputColorSpace=THREE.SRGBColorSpace;
 stage.appendChild(renderer.domElement);
 renderer.domElement.setAttribute("aria-label","Interactive 3D sphere with twelve pentagonal regions. Drag to rotate, scroll to zoom, click a face to inspect.");
@@ -33,25 +33,25 @@ orbit.enableDamping=true;
 orbit.dampingFactor=.055;
 orbit.minDistance=1.65;
 orbit.maxDistance=8;
-orbit.autoRotate=true;
+orbit.autoRotate=!(window.matchMedia?.("(prefers-reduced-motion: reduce)").matches);
 orbit.autoRotateSpeed=.38;
-scene.add(new THREE.HemisphereLight(0x9ae4fe,0x061728,2.1));
-const light=new THREE.DirectionalLight(0xd6f7ff,2.3);
+scene.add(new THREE.HemisphereLight(0xf8aaff,0x14091e,2.1));
+const light=new THREE.DirectionalLight(0xffb4f0,2.4);
 light.position.set(-2,3,4);
 scene.add(light);
 const atmosphere=new THREE.Mesh(
   new THREE.SphereGeometry(1.047,64,40),
-  new THREE.MeshBasicMaterial({color:0x127dba,transparent:true,opacity:.045,depthWrite:false,side:THREE.BackSide})
+  new THREE.MeshBasicMaterial({color:0xba50d9,transparent:true,opacity:.085,depthWrite:false,side:THREE.BackSide})
 );
 scene.add(atmosphere);
 const ocean=new THREE.Mesh(
   new THREE.SphereGeometry(.992,100,64),
-  new THREE.MeshPhongMaterial({color:0x0b3855,emissive:0x061b2e,shininess:95,transparent:false})
+  new THREE.MeshPhongMaterial({color:0x32124e,emissive:0x180827,shininess:105,transparent:false})
 );
 scene.add(ocean);
 
 const faceMeshes=[];
-const palette=["#2691b4","#34b5b8","#278cc7","#567ee0","#2cafa1","#499ece","#6789db","#319cba","#278f9a","#3e7cb6","#3da8c3","#638cbd"];
+const palette=["#c85add","#f376dd","#985deb","#6b76eb","#c35ccf","#9353d9","#a064ed","#dd62c2","#8875dd","#b964ef","#bc71d9","#ec74c7"];
 const rootGroup=new THREE.Group();
 scene.add(rootGroup);
 function lerp2(a,b,t){return[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t];}
@@ -285,7 +285,7 @@ for(let i=0;i<240;i++){
   stars.push(...mul3(v,distance));
 }
 starGeometry.setAttribute("position",new THREE.Float32BufferAttribute(stars,3));
-const starfield=new THREE.Points(starGeometry,new THREE.PointsMaterial({color:0x7fbdd7,size:.038,transparent:true,opacity:.75,depthWrite:false}));
+const starfield=new THREE.Points(starGeometry,new THREE.PointsMaterial({color:0xe39aff,size:.038,transparent:true,opacity:.65,depthWrite:false}));
 scene.add(starfield);
 setFaceSelection(0);
 setVertexSelection(0);
