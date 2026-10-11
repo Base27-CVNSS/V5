@@ -39,7 +39,7 @@ test('all four page templates share V5 Web3 stylesheet without losing core ancho
   assert.ok(html.includes("name=\"referrer\""));
  }
  const home=read('../index.html');
- for(const id of ['heroSvg','v5-globe-stage','explorer','simulation3d','comparison-lab','v5-matrix-body','v5-bars','v5-area','mathematics','implementation']){
+ for(const id of ['heroSvg','v5-globe-stage','explorer','simulation3d','comparison-lab','v5-matrix-body','v5-bars','v5-area','v5-gb-angle-value','mathematics','implementation']){
    assert.ok(home.includes(\`id="\${id}"\`),\`Missing existing/new feature: \${id}\`);
  }
  assert.ok(home.includes('src="./web/v5-orb.svg"'));
