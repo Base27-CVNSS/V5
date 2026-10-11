@@ -9,12 +9,14 @@ import re
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-PAGES = ("index.html", "technical-specification.html", "mathematical-proof.html")
+PAGES = ("index.html", "technical-specification.html", "mathematical-proof.html", "use-cases.html")
 REQUIRED_DOCUMENTS = (
     "README.md", "LICENSE", "NOTICE", "SECURITY.md",
     "CHANGELOG.md", "docs/PROOF.md", "docs/TECHNICAL_SPEC_EN.md",
     "docs/V5-64.md", "src/v5.py", "src/v5id.py",
     "web/v5-sphere-math.js", "web/v5-3d.js",
+    "web/v5-usecases-data.js", "web/v5-usecases.js", "web/v5-usecases-math.js",
+    "docs/USE_CASES_50_VI.md",
 )
 DANGEROUS_ATTRS = {"onload", "onerror", "onclick", "onfocus", "onmouseover"}
 UNSAFE_CALLS = (r"\beval\s*\(", r"\bnew\s+Function\s*\(", r"\bdocument\.write\s*\(")
