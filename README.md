@@ -2,7 +2,7 @@
 
 **An experimental, mathematically grounded pentagonal spatial indexing research project.**
 
-[Website](https://base27-cvnss.github.io/V5/) · [Mathematical paper](docs/paper.tex) · [Proof notes](docs/PROOF.md) · [Python prototype](src/v5.py) · [H3 comparison](https://h3geo.org/)
+[Website](https://base27-cvnss.github.io/V5/) · [Mathematical paper](docs/paper.tex) · [Proof notes](docs/PROOF.md) · [Python prototype](src/v5.py) · [V5-64 codec](src/v5id.py) · [H3 comparison](https://h3geo.org/)
 
 > **Research status (2026):** A weak, geometrically nested 32-child refinement exists for simple, nondegenerate planar pentagons and can be transferred to a spherical dodecahedral atlas. The construction allows **nonconvex cells and hanging nodes**. An edge-to-edge, uniformly shape-regular, equal-area V5 grid is **not proven**. Do not describe this as a production DGGS or as faster than H3.
 
@@ -34,6 +34,7 @@ Requires Python 3.10+; core prototype uses the Python standard library only.
 python -m unittest discover -s tests -v
 python src/v5.py --depth 5 --json > v5-32.json
 python src/v5.py --depth 5 --svg > v5-32.svg
+python -m src.v5id
 ```
 
 The prototype uses rational coordinates (via `fractions.Fraction`) for exact planar orientation, areas, and intersection checks. This is intentionally a research prototype, **not** a latitude/longitude lookup library.
@@ -45,7 +46,7 @@ The prototype uses rational coordinates (via `fractions.Fraction`) for exact pla
 | Finite weak 32-child existence theorem | Proven (under stated geometric assumptions) |
 | Deterministic exact-arithmetic planar prototype | Implemented |
 | Spherical transfer via a dodecahedral radial projection | Proven as construction |
-| 64-bit base-32 hierarchical **encoding proposal** | Specification only |
+| Canonical 64-bit base-32 address pack/unpack/parent/children | Implemented in Python (research only) |
 | Conforming edge-to-edge recursive pentagonal grid | Open |
 | Uniformly bounded aspect ratio / cell diameters | Open |
 | WGS84 projection, point lookup, neighbor traversal | Not implemented |
@@ -53,7 +54,7 @@ The prototype uses rational coordinates (via `fractions.Fraction`) for exact pla
 
 ## Suggested V5-64 layout (proposal only)
 
-`version:4 | resolution:4 | root:6 | path:50` = 64 bits. The path contains up to ten 5-bit base-32 digits. This is only a **binary format proposal**, and is not a complete operational 64-bit geospatial index. The number five in `5-bit` does not mathematically imply five polygon edges.
+`version:4 | resolution:4 | root:6 | path:50` = 64 bits. The path contains up to ten 5-bit base-32 digits. The canonical binary path codec is **implemented in [src/v5id.py](src/v5id.py)** and documented in [docs/V5-64.md](docs/V5-64.md), but this is **not** a complete operational geospatial index or coordinate lookup API. The number five in `5-bit` does not mathematically imply five polygon edges.
 
 ## Research publication
 
