@@ -1,0 +1,19 @@
+name: V5 prototype tests
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  unittest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact rational geometry checks
+        run: python -m unittest discover -s tests -v
+      - name: Generate 32-cell test SVG
+        run: python src/v5.py --depth 5 --svg > v5-32.svg
