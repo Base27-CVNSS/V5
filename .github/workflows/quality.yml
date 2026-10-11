@@ -1,0 +1,33 @@
+name: V5 quality gate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Python codec and exact weak-geometry tests
+        run: python -m unittest discover -s tests -v
+      - name: JS spherical mathematics and geometry validation
+        run: npm test
+      - name: Browser source syntax
+        run: npm run check:syntax
+      - name: Static website and security audit
+        run: python scripts/audit_site.py
+      - name: Python syntax
+        run: python -m compileall -q src tests scripts
