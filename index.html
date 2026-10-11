@@ -86,7 +86,7 @@
   <div class="stat"><b>12</b><small>Root dodecahedral faces</small></div>
   <div class="stat"><b>32</b><small>Children per proposed level</small></div>
   <div class="stat"><b>5</b><small>Geometric corners per cell</small></div>
-  <div class="stat"><b>64-bit</b><small>Proposed index format, not implemented</small></div>
+  <div class="stat"><b>64-bit</b><small>Canonical path codec; point lookup open</small></div>
 </div>
 <section id="overview" class="section"><div class="wrap">
   <div class="kicker">Overview / research program</div><h2>From planar existence to spherical structure.</h2>
@@ -168,12 +168,13 @@
 <span class="fn">python</span> src/v5.py --depth <span class="num">5</span> --json &gt; cells.json
 <span class="fn">python</span> src/v5.py --depth <span class="num">5</span> --svg &gt; cells.svg</code></pre>
     </div>
-    <div><h3>Proposed 64-bit format</h3><p class="section-intro">This is a proposed hierarchical binary layout, not yet implemented as a complete cell index API.</p>
+    <div><h3>Proposed 64-bit format</h3><p class="section-intro">Canonical path packing, decoding, parents and children are now implemented in Python. WGS84 lookup and worldwide cell geometries are still open.</p>
       <div class="tablewrap"><table><thead><tr><th>Field</th><th>Bits</th><th>Purpose</th></tr></thead><tbody>
        <tr><td>Version</td><td>4</td><td>Format evolution</td></tr><tr><td>Resolution</td><td>4</td><td>0–10 proposed levels</td></tr><tr><td>Root</td><td>6</td><td>12 root pentagons</td></tr><tr><td>Path</td><td>50</td><td>Ten 5-bit digits (0–31)</td></tr><tr><td><b>Total</b></td><td><b>64</b></td><td>Unsigned 64-bit word</td></tr>
       </tbody></table></div>
     </div>
   </div>
+  <p><a href="https://github.com/Base27-CVNSS/V5/blob/main/src/v5id.py" target="_blank" rel="noopener">Explore the V5-64 path codec ↗</a> · <a href="https://github.com/Base27-CVNSS/V5/blob/main/docs/V5-64.md" target="_blank" rel="noopener">Read encoding specification ↗</a></p>
   <div class="cards" style="margin-top:25px"><div class="tile"><h3>Proof notes</h3><p>Detailed lemmas, hypotheses, mathematical scope, and integrity checks.</p><a href="https://github.com/Base27-CVNSS/V5/blob/main/docs/PROOF.md" target="_blank" rel="noopener">Read notes ↗</a></div><div class="tile"><h3>Python algorithm</h3><p>Executable construction and exact-area validation.</p><a href="https://github.com/Base27-CVNSS/V5/blob/main/src/v5.py" target="_blank" rel="noopener">Read code ↗</a></div><div class="tile"><h3>H3 comparison</h3><p>H3 is a separate aperture-7, mostly hexagonal DGGS. V5 is not a fork or benchmark result.</p><a href="https://h3geo.org/" target="_blank" rel="noopener">H3 documentation ↗</a></div></div>
 </div></section>
 </main>
