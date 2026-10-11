@@ -105,12 +105,14 @@
     @media(max-width:600px){.wrap{padding:0 18px}.nav{height:62px}.hero{padding:48px 0}h1{letter-spacing:-2px}.cards,.proofgrid{grid-template-columns:1fr}.section{padding:55px 0}.stats{grid-template-columns:repeat(2,1fr)}.stat{padding:17px}.stat b{font-size:22px}.paper{padding:22px}.diagram{height:340px}.hero-art{min-height:345px}#heroSvg{height:280px}.small-stats b{font-size:17px}.nav .tiny-pill{display:none}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.diagram polygon{transition:none}}
   </style>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://cdn.jsdelivr.net; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="no-referrer">
 </head>
 <body>
 <header><div class="wrap nav">
   <a class="brand" href="#top"><span class="mark">V</span> V5</a>
   <nav aria-label="Main navigation"><a href="#overview">Overview</a><a href="#explorer">Explorer</a><a href="#simulation3d">3D Simulation</a><a href="#mathematics">Mathematics</a><a href="mathematical-proof.html" lang="vi">Chứng minh V5-32</a><a href="technical-specification.html">Technical Spec EN</a><a href="#paper">Research paper</a><a href="#implementation">Developers</a></nav>
-  <span class="push"></span><span class="tiny-pill">RESEARCH PREPRINT · 2026</span><a class="nav-btn" href="https://github.com/Base27-CVNSS/V5" target="_blank" rel="noopener">GitHub ↗</a>
+  <span class="push"></span><span class="tiny-pill">RESEARCH PREPRINT · 2026</span><a class="nav-btn" href="https://github.com/Base27-CVNSS/V5" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
 </div></header>
 <main id="top">
 <section class="hero"><div class="wrap hero-grid">
@@ -155,7 +157,7 @@
       <div class="term"><b>Proof</b><span>Binary bent-chord cut × 5 per hierarchical level.</span></div>
       <div class="term"><b>Global roots</b><span>12 pentagonal dodecahedral faces, radially mapped to S².</span></div>
       <div class="note" id="validation">Numerical browser preview; mathematically exact rational demonstration is in Python. No claim of equal cell areas.</div>
-      <a href="https://github.com/Base27-CVNSS/V5/blob/main/src/v5.py" class="btn" target="_blank" rel="noopener" style="margin-top:20px">View source algorithm ↗</a></div>
+      <a href="https://github.com/Base27-CVNSS/V5/blob/main/src/v5.py" class="btn" target="_blank" rel="noopener noreferrer" style="margin-top:20px">View source algorithm ↗</a></div>
     </aside>
   </div>
 </div></section>
@@ -240,10 +242,10 @@
     <div class="tile"><span class="tag open">Open research</span><h3>Strong convex V5-32</h3><div class="formula" style="font-size:19px">diam(Cᵢ) ≤ ρ diam(P) ?</div><p>32 ngũ giác lồi, khớp cạnh, co đường kính đều: chưa được chứng nhận trong prototype hiện tại.</p></div>
     <div class="tile"><span class="tag">Implemented codec</span><h3>V5-64 vs H3/S2</h3><div class="formula" style="font-size:19px">4 + 4 + 6 + 50 = 64</div><p>10 cấp tối đa trong định dạng hiện hành. Không có kết quả benchmark xác nhận V5 nhanh hơn.</p></div>
   </div>
-  <p style="margin-top:22px"><a class="btn primary" href="mathematical-proof.html" lang="vi">Đọc chuyên đề chứng minh toán học và ứng dụng →</a> &nbsp;<a class="btn" href="https://github.com/Base27-CVNSS/V5/blob/main/docs/PROOF.md" target="_blank" rel="noopener">Proof audit ↗</a></p>
+  <p style="margin-top:22px"><a class="btn primary" href="mathematical-proof.html" lang="vi">Đọc chuyên đề chứng minh toán học và ứng dụng →</a> &nbsp;<a class="btn" href="https://github.com/Base27-CVNSS/V5/blob/main/docs/PROOF.md" target="_blank" rel="noopener noreferrer">Proof audit ↗</a></p>
 </div></section>
 <section class="section alt"><div class="wrap globegrid">
-  <div><div class="kicker">Global topology</div><h2>Twelve pentagonal roots. One sphere.</h2><p class="section-intro">A convex dodecahedron has twelve pentagonal faces. Projecting every point radially onto a sphere creates a spherical atlas without coverage gaps. The illustration is an interactive-inspired root-face schematic, <b>not</b> WGS84 index data.</p><div class="formula">N(r) = 12 × 32<sup>r</sup></div><a class="btn" href="https://github.com/Base27-CVNSS/V5/blob/main/docs/PROOF.md" target="_blank" rel="noopener">Read global coverage proof ↗</a></div>
+  <div><div class="kicker">Global topology</div><h2>Twelve pentagonal roots. One sphere.</h2><p class="section-intro">A convex dodecahedron has twelve pentagonal faces. Projecting every point radially onto a sphere creates a spherical atlas without coverage gaps. The illustration is an interactive-inspired root-face schematic, <b>not</b> WGS84 index data.</p><div class="formula">N(r) = 12 × 32<sup>r</sup></div><a class="btn" href="https://github.com/Base27-CVNSS/V5/blob/main/docs/PROOF.md" target="_blank" rel="noopener noreferrer">Read global coverage proof ↗</a></div>
   <div class="globe"><svg viewBox="0 0 360 350" role="img" aria-label="Schematic globe representing twelve pentagonal root faces">
     <defs><radialGradient id="ocean"><stop offset="0" stop-color="#215e82"/><stop offset="0.85" stop-color="#0b3459"/><stop offset="1" stop-color="#05182e"/></radialGradient><clipPath id="clipGlobe"><circle cx="180" cy="174" r="146"/></clipPath></defs>
     <circle cx="180" cy="174" r="146" fill="url(#ocean)" stroke="#5bb8d4" stroke-width="1.3"/>
@@ -265,10 +267,10 @@
     <div class="tile"><span class="tag open">OPEN RESEARCH</span><h3>Strong spherical refinement</h3><div class="formula" style="font-size:19px">diam(Cᵢ) ≤ ρ · diam(P) ?</div><p>Separate exact Riemannian homothety impossibility from yet-unverified convex, edge-to-edge and shape-regular subdivision.</p></div>
     <div class="tile"><span class="tag">DESIGN CONTRACT</span><h3>GeoAI · API · H3/S2</h3><p>Multiresolution spatial tokens, area-weighted loss, sparse neighbor graphs, truthful API maturity, OGC requirements and benchmark gates.</p></div>
   </div>
-  <p style="margin-top:23px"><a href="technical-specification.html" class="btn primary">Explore English technical specification →</a> <a href="https://github.com/Base27-CVNSS/V5/blob/main/docs/TECHNICAL_SPEC_EN.md" target="_blank" rel="noopener" class="btn">Read the full Markdown standard draft ↗</a></p>
+  <p style="margin-top:23px"><a href="technical-specification.html" class="btn primary">Explore English technical specification →</a> <a href="https://github.com/Base27-CVNSS/V5/blob/main/docs/TECHNICAL_SPEC_EN.md" target="_blank" rel="noopener noreferrer" class="btn">Read the full Markdown standard draft ↗</a></p>
 </div></section>
 <section id="paper" class="section"><div class="wrap">
-  <div class="paperhead"><div><div class="kicker">Research publication</div><h2>An arXiv-style mathematical manuscript.</h2></div><a class="btn primary" target="_blank" rel="noopener" href="https://github.com/Base27-CVNSS/V5/blob/main/docs/paper.tex">Read complete LaTeX paper ↗</a></div>
+  <div class="paperhead"><div><div class="kicker">Research publication</div><h2>An arXiv-style mathematical manuscript.</h2></div><a class="btn primary" target="_blank" rel="noopener noreferrer" href="https://github.com/Base27-CVNSS/V5/blob/main/docs/paper.tex">Read complete LaTeX paper ↗</a></div>
   <p class="section-intro">English scholarly draft, available in LaTeX and Markdown. This manuscript has not been submitted to arXiv and has not been peer reviewed.</p>
   <article class="paper">
     <div class="journal">V5 Technical Preprint · Research Draft · October 2026</div>
@@ -297,8 +299,8 @@
       </tbody></table></div>
     </div>
   </div>
-  <p><a href="https://github.com/Base27-CVNSS/V5/blob/main/src/v5id.py" target="_blank" rel="noopener">Explore the V5-64 path codec ↗</a> · <a href="https://github.com/Base27-CVNSS/V5/blob/main/docs/V5-64.md" target="_blank" rel="noopener">Read encoding specification ↗</a></p>
-  <div class="cards" style="margin-top:25px"><div class="tile"><h3>Proof notes</h3><p>Detailed lemmas, hypotheses, mathematical scope, and integrity checks.</p><a href="https://github.com/Base27-CVNSS/V5/blob/main/docs/PROOF.md" target="_blank" rel="noopener">Read notes ↗</a></div><div class="tile"><h3>Python algorithm</h3><p>Executable construction and exact-area validation.</p><a href="https://github.com/Base27-CVNSS/V5/blob/main/src/v5.py" target="_blank" rel="noopener">Read code ↗</a></div><div class="tile"><h3>H3 comparison</h3><p>H3 is a separate aperture-7, mostly hexagonal DGGS. V5 is not a fork or benchmark result.</p><a href="https://h3geo.org/" target="_blank" rel="noopener">H3 documentation ↗</a></div></div>
+  <p><a href="https://github.com/Base27-CVNSS/V5/blob/main/src/v5id.py" target="_blank" rel="noopener noreferrer">Explore the V5-64 path codec ↗</a> · <a href="https://github.com/Base27-CVNSS/V5/blob/main/docs/V5-64.md" target="_blank" rel="noopener noreferrer">Read encoding specification ↗</a></p>
+  <div class="cards" style="margin-top:25px"><div class="tile"><h3>Proof notes</h3><p>Detailed lemmas, hypotheses, mathematical scope, and integrity checks.</p><a href="https://github.com/Base27-CVNSS/V5/blob/main/docs/PROOF.md" target="_blank" rel="noopener noreferrer">Read notes ↗</a></div><div class="tile"><h3>Python algorithm</h3><p>Executable construction and exact-area validation.</p><a href="https://github.com/Base27-CVNSS/V5/blob/main/src/v5.py" target="_blank" rel="noopener noreferrer">Read code ↗</a></div><div class="tile"><h3>H3 comparison</h3><p>H3 is a separate aperture-7, mostly hexagonal DGGS. V5 is not a fork or benchmark result.</p><a href="https://h3geo.org/" target="_blank" rel="noopener noreferrer">H3 documentation ↗</a></div></div>
 </div></section>
 </main>
 <footer><div class="wrap"><div><b style="color:#1a405d">V5 / Vietflexmap</b><div>Long Ngo 2026 · Vietflexmap Copyright (c) 2025</div><div>V5 is licensed under the Apache 2.0 License.</div></div><div><a href="https://github.com/Base27-CVNSS/V5">Source</a> &nbsp;·&nbsp; <a href="https://github.com/Base27-CVNSS/V5/blob/main/LICENSE">License</a> &nbsp;·&nbsp; <a href="https://arxiv.org/">arXiv (external)</a> &nbsp;·&nbsp; <a href="https://h3geo.org/">H3 reference</a></div></div></footer>
