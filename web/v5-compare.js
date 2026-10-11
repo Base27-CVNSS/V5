@@ -55,7 +55,7 @@ function curvature(){
  if(!control)return;
  const A=Number(control.value),{excessDegrees:excess,angleSumDegrees:angle}=sphericalPentagonAngles(A);
  $("v5-area-value").textContent=A.toLocaleString(language()==="vi"?"vi-VN":"en-US")+" km²";
- $("v5-angle-value").textContent=angle.toLocaleString(language()==="vi"?"vi-VN":"en-US",{minimumFractionDigits:3,maximumFractionDigits:3})+"°";
+ $("v5-gb-angle-value").textContent=angle.toLocaleString(language()==="vi"?"vi-VN":"en-US",{minimumFractionDigits:3,maximumFractionDigits:3})+"°";
  $("v5-excess-value").textContent="+"+excess.toLocaleString(language()==="vi"?"vi-VN":"en-US",{minimumFractionDigits:3,maximumFractionDigits:3})+"°";
  const bar=$("v5-angle-indicator");
  if(bar)bar.style.width=Math.min(100,Math.max(0,(excess/(sphericalPentagonAngles(2000000).excessDegrees))*100))+"%";
