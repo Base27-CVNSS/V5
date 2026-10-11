@@ -109,7 +109,7 @@
 <body>
 <header><div class="wrap nav">
   <a class="brand" href="#top"><span class="mark">V</span> V5</a>
-  <nav aria-label="Main navigation"><a href="#overview">Overview</a><a href="#explorer">Explorer</a><a href="#simulation3d">3D Simulation</a><a href="#mathematics">Mathematics</a><a href="mathematical-proof.html" lang="vi">Chứng minh V5-32</a><a href="#paper">Research paper</a><a href="#implementation">Developers</a></nav>
+  <nav aria-label="Main navigation"><a href="#overview">Overview</a><a href="#explorer">Explorer</a><a href="#simulation3d">3D Simulation</a><a href="#mathematics">Mathematics</a><a href="mathematical-proof.html" lang="vi">Chứng minh V5-32</a><a href="technical-specification.html">Technical Spec EN</a><a href="#paper">Research paper</a><a href="#implementation">Developers</a></nav>
   <span class="push"></span><span class="tiny-pill">RESEARCH PREPRINT · 2026</span><a class="nav-btn" href="https://github.com/Base27-CVNSS/V5" target="_blank" rel="noopener">GitHub ↗</a>
 </div></header>
 <main id="top">
@@ -117,7 +117,7 @@
   <div><div class="eyebrow">Pentagonal Geospatial Indexing · V5-32</div>
   <h1>Five edges.<br/><em>Thirty-two</em> branches.<br/>One planet.</h1>
   <p class="lead">An open, proof-driven research project investigating recursively nested pentagonal partitions on the sphere, topology constraints, and hierarchical spatial identifiers.</p>
-  <div class="hero-actions"><a class="btn primary" href="#explorer">Explore the 32-cell construction →</a><a class="btn" href="#paper">Read the paper ↗</a><a class="btn" href="mathematical-proof.html" lang="vi">Chứng minh toán học (VI) →</a></div>
+  <div class="hero-actions"><a class="btn primary" href="#explorer">Explore the 32-cell construction →</a><a class="btn" href="#paper">Read the paper ↗</a><a class="btn" href="mathematical-proof.html" lang="vi">Chứng minh toán học (VI) →</a><a class="btn" href="technical-specification.html">English Technical Spec →</a></div>
   <p class="byline"><strong>Long Ngo · 2026</strong> &nbsp;|&nbsp; Vietflexmap &nbsp;|&nbsp; Apache-2.0</p>
   </div>
   <div class="hero-art"><div class="art-head"><span>V5 / WEAK GEOMETRIC REFINEMENT</span><span class="art-dots"><i></i><i></i><i></i></span></div><svg id="heroSvg" viewBox="0 0 480 360" role="img" aria-label="Diagram of 32 subdivided pentagonal cells"></svg><div class="art-foot"><span>32 cells · 5 binary cuts</span><span>CONSTRUCTIVE PROOF</span></div></div>
@@ -255,6 +255,17 @@
       <polygon points="180,70 244,96 266,162 206,202 142,164"/><polygon points="180,70 142,164 74,147 89,88 150,34"/><polygon points="244,96 320,120 306,192 266,162"/><polygon points="142,164 206,202 180,286 100,254 74,147"/><polygon points="206,202 266,162 306,192 268,271 180,286"/>
     </g><text x="180" y="336" fill="#c8eaf4" font-size="11" text-anchor="middle">DODECAHEDRAL ROOT ATLAS · SCHEMATIC</text>
   </svg></div>
+</div></section>
+<section id="technical-spec-en" class="section"><div class="wrap">
+  <div class="kicker">V5-32 / English technical specification / draft v1.1</div>
+  <h2>From mathematical constraints to an auditable technical contract.</h2>
+  <p class="section-intro">A source-aligned English reference for the 32-child weak subdivision, the implemented 64-bit address format, curvature and topology limitations, GIS/GeoAI interfaces, H3/S2 workload-specific decisions, conformance tests, and a practical implementation roadmap.</p>
+  <div class="cards">
+    <div class="tile"><span class="tag">IMPLEMENTED</span><h3>V5-64 bit layout</h3><div class="formula" style="font-size:19px">4 + 4 + 6 + 50 = 64</div><p>Ten 5-bit base-32 child digits. Canonical test vectors, decode validation and cross-language serialization rules.</p></div>
+    <div class="tile"><span class="tag open">OPEN RESEARCH</span><h3>Strong spherical refinement</h3><div class="formula" style="font-size:19px">diam(Cᵢ) ≤ ρ · diam(P) ?</div><p>Separate exact Riemannian homothety impossibility from yet-unverified convex, edge-to-edge and shape-regular subdivision.</p></div>
+    <div class="tile"><span class="tag">DESIGN CONTRACT</span><h3>GeoAI · API · H3/S2</h3><p>Multiresolution spatial tokens, area-weighted loss, sparse neighbor graphs, truthful API maturity, OGC requirements and benchmark gates.</p></div>
+  </div>
+  <p style="margin-top:23px"><a href="technical-specification.html" class="btn primary">Explore English technical specification →</a> <a href="https://github.com/Base27-CVNSS/V5/blob/main/docs/TECHNICAL_SPEC_EN.md" target="_blank" rel="noopener" class="btn">Read the full Markdown standard draft ↗</a></p>
 </div></section>
 <section id="paper" class="section"><div class="wrap">
   <div class="paperhead"><div><div class="kicker">Research publication</div><h2>An arXiv-style mathematical manuscript.</h2></div><a class="btn primary" target="_blank" rel="noopener" href="https://github.com/Base27-CVNSS/V5/blob/main/docs/paper.tex">Read complete LaTeX paper ↗</a></div>
