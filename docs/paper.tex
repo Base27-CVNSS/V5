@@ -1,0 +1,200 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,geometry,hyperref,booktabs}
+\geometry{margin=1in}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{conjecture}{Open problem}
+\newcommand{\sphere}{\mathbb{S}^{2}_{R}}
+\title{V5-32: Constructive Weak Pentagonal Refinement\\
+on the Sphere and Topological Obstructions\\
+{\large A Research Preprint Draft}}
+\author{Long Ngo\\
+Vietflexmap\\
+\small Copyright (c) 2025 Vietflexmap \quad \small Long Ngo 2026}
+\date{October 2026\\{\small Apache License, Version 2.0}}
+\begin{document}
+\maketitle
+\begin{abstract}
+We establish an elementary constructive existence theorem for weak nested
+32-ary pentagonal partitions of the sphere. Starting with twelve planar
+pentagonal faces of a convex dodecahedron, a two-piece nonconvex pentagonal
+refinement can be iterated five times to produce 32 strict pentagonal
+descendants per parent. Radial projection transfers the nested construction
+to the sphere, yielding exactly $12\cdot32^r$ spherical pentagons at each
+finite resolution $r$. The weak construction permits nonconvexity and
+hanging nodes; it does not prove edge-to-edge conformity, uniform
+shape-regularity, equal-area refinement, point-location efficiency, or
+performance superiority to existing DGGS. We derive necessary combinatorial
+constraints from Euler's relation, an edge-count parity obstruction, and a
+restriction on fivefold rotational symmetry for convex 32-child refinements.
+We give a deterministic exact-rational prototype and separate the established
+claims from open problems for a strong V5 grid.
+\end{abstract}
+\noindent\textbf{Keywords:} pentagonal tilings, spherical partitions,
+hierarchical grids, combinatorial topology, discrete global grid systems,
+constructive geometry.\\
+\noindent\textbf{Repository:} \url{https://github.com/Base27-CVNSS/V5}
+
+\section{Introduction}
+Geospatial indexing schemes such as H3 organize coordinates into hierarchical
+cell identifiers. H3 is predominantly hexagonal and has twelve exceptional
+pentagons; its implementation and indexing scheme are independent of V5
+\cite{h3docs,h3code}. Here we study a different, narrowly defined existence
+question: can a pentagonal parent be recursively divided into exactly 32
+pentagonal children, and can a family of such partitions cover the sphere?
+It is essential to distinguish a weak geometric partition from a production
+discrete global grid system (DGGS), whose requirements include efficient
+geospatial operations and usable geometric quality \cite{ogc}.
+
+\section{Definitions}
+A \emph{strict pentagon} is a simple planar polygon with exactly five distinct
+vertices and five edges, with no consecutive triple collinear. Convexity is
+not required. A \emph{weak partition} of a region is a finite family of cells
+with disjoint interiors whose union is the region; boundary hanging nodes
+are permitted. An \emph{edge-to-edge} partition instead requires all shared
+boundaries to be complete common edges or vertices.
+
+\section{Constructive existence}
+\begin{lemma}[Bent-chord binary refinement]
+Every strict simple pentagon admits a weak subdivision into two strict
+simple pentagons.
+\end{lemma}
+\begin{proof}
+Triangulate $P=(A,B,C,D,E)$. The two diagonals of a triangulation of a
+pentagon have a common endpoint; relabel such that they are $AC$ and
+$AD$, giving triangles $ABC$, $ACD$, and $ADE$. Choose
+$Q\in\operatorname{relint}(CD)$, so the chord $AQ$ runs inside triangle
+$ACD$. Choose $T$ sufficiently close to an interior point of $AQ$,
+strictly inside $ACD$, avoiding the line $AQ$ and the finitely many
+lines causing consecutive vertices to become collinear.
+The proper crosscut $A$--$T$--$Q$ separates the domain into
+$(A,B,C,Q,T)$ and $(A,T,Q,D,E)$. Both are simple pentagons
+with strict corners. Their interiors are disjoint and their union is $P$.
+One of them may be nonconvex.
+\end{proof}
+
+\begin{theorem}[Weak 32-ary refinement]
+For every finite integer $r\geq0$, every strict simple pentagon admits
+a weak nested partition into $32^r$ strict pentagons.
+\end{theorem}
+\begin{proof}
+At each refinement step apply the lemma to every current pentagon.
+Five binary steps produce $2^5=32$ children. Recursively repeating
+this five-step operation $r$ times yields $32^r$ descendants while
+preserving exact set coverage and disjoint interiors.
+\end{proof}
+
+\begin{theorem}[Global spherical existence]
+For every finite integer $r\geq0$, the sphere $\sphere$ admits a
+weak nested partition into $12\cdot32^r$ strict spherical
+pentagons bounded by great-circle arcs.
+\end{theorem}
+\begin{proof}
+Let $D$ be a regular convex dodecahedron with its center at the
+origin. Its boundary has twelve pentagonal faces. Apply the preceding
+refinement to each face, constructing $12\cdot32^r$ planar cells in
+total. The radial map $\rho:\partial D\to\sphere$ given by
+$\rho(x)=Rx/\lVert x\rVert$ is a homeomorphism: convexity and the
+interior origin ensure every radial ray intersects $\partial D$
+once, and compactness establishes a continuous inverse. It preserves
+coverage and disjoint interiors. Within a face plane not passing
+through the origin, every straight edge and the origin span a plane,
+whose intersection with $\sphere$ is a great circle. The restriction
+of $\rho$ to a face is a smooth local diffeomorphism and preserves
+the noncollinearity of consecutive edge directions. Thus each cell
+is a strict spherical pentagon with five geodesic arcs.
+\end{proof}
+
+\section{Necessary restrictions under edge-to-edge conformity}
+\begin{proposition}[Euler degree budget]
+In an edge-to-edge pentagonal decomposition of a sphere into $F$
+faces, where $d(v)$ is the vertex degree,
+\begin{equation}
+\sum_v (d(v)-3) = \frac{F}{2}-6.
+\end{equation}
+For $F=12\cdot32^r$, the right-hand side equals $6(32^r-1)$.
+\end{proposition}
+\begin{proof}
+Five incidences per face and two per edge imply $5F=2E$.
+Euler's equation $V-E+F=2$ gives $V=3F/2+2$.
+Finally $\sum_vd(v)=2E=5F$, from which the claim follows.
+\end{proof}
+
+\begin{proposition}[Boundary parity]
+If an edge-to-edge partition of a pentagonal parent consists of
+$F$ pentagonal children with $I$ interior edges and $B$ boundary
+edges, then $B\equiv F\pmod2$. In particular $F=32$ requires an
+even number of boundary segments; retaining exactly five unsplit
+parent sides is impossible.
+\end{proposition}
+\begin{proof}
+Count cell-edge incidences: $5F=2I+B$.
+\end{proof}
+
+\begin{proposition}[Fivefold symmetry obstruction]
+A partition of a fivefold-rotationally symmetric convex pentagon
+into $N$ convex polygonal cells invariant as a set under rotation
+by $2\pi/5$ must satisfy $N\equiv0$ or $1\pmod5$.
+Consequently $N=32$ is impossible under these combined assumptions.
+\end{proposition}
+\begin{proof}
+The rotation group $C_5$ acts on cells. Each orbit has size $1$
+or $5$. An invariant full-dimensional convex cell contains the
+rotation center in its interior. At most one child can contain the
+center in its interior, because interiors are pairwise disjoint.
+Thus $N=5k$ or $N=5k+1$.
+\end{proof}
+
+\begin{proposition}[Regular spherical cell obstruction]
+An edge-to-edge tiling of the sphere by congruent convex regular
+spherical pentagons with geodesic edges has exactly twelve faces.
+\end{proposition}
+\begin{proof}
+If the common interior angle is $\alpha$, Girard's formula gives
+$A/R^2=5\alpha-3\pi>0$, implying $\alpha>3\pi/5$.
+Convexity gives $\alpha<\pi$. The local angle sum at any vertex
+requires $d\alpha=2\pi$ with integer $d\geq3$, hence $d=3$.
+Substituting into the Euler degree budget yields $F=12$.
+\end{proof}
+
+\section{Computational prototype}
+The standard-library Python prototype at \url{https://github.com/Base27-CVNSS/V5/blob/main/src/v5.py}
+uses exact rational arithmetic for point construction, signed
+areas and strict-corner checks. Unit tests assert exact area conservation
+and the correct 32- and 1024-cell cardinalities. Such checks are
+illustrative, rather than independent certification of global
+intersection-freedom.
+
+\section{Open problems and limitations}
+\begin{conjecture}[Strong 32-ary V5, open]
+Find a globally edge-to-edge, recursively 32-ary spherical
+pentagonal grid with convex cells, a uniform shape-regularity
+constant, and $\max_C \mathrm{diam}(C)=O(32^{-r/2})$.
+\end{conjecture}
+No proof is presented for this conjecture. The weak constructive
+theorem does not establish shrinking diameters, bounded area ratios,
+equal-area cells, WGS84 geodesics, or usable constant-time
+coordinate-to-cell conversion. A proposed 64-bit layout
+(version 4, resolution 4, root 6, path 50 bits) holds at most
+ten base-32 refinement digits but is not an indexing library.
+No timing benchmark or H3-vs-V5 speedup is claimed.
+
+\section{Conclusion}
+The narrow weak-existence question has a constructive affirmative
+answer, under explicit nonconvexity and hanging-node allowances.
+The geometric and algorithmic conditions required for an
+operational pentagonal DGGS remain research questions.
+\begin{thebibliography}{9}
+\bibitem{h3docs} Uber Technologies, H3 Documentation,
+\url{https://h3geo.org/docs/}.
+\bibitem{h3code} Uber Technologies, H3 Source Code,
+\url{https://github.com/uber/h3}.
+\bibitem{ogc} Open Geospatial Consortium, Discrete Global Grid
+Systems (DGGS), \url{https://docs.ogc.org/as/20-040r3/20-040r3.html}.
+\bibitem{classic} Classical results: Euler's polyhedral relation,
+triangulation of simple polygons, and Girard's spherical excess theorem.
+\end{thebibliography}
+\end{document}
