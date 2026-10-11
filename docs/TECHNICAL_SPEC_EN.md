@@ -455,3 +455,15 @@ The interactive demonstrations deliberately stop at implemented **V5-64 codec** 
 Scientific positioning: V5 should initially **complement** H3/S2 as experimental pentagonal/hierarchical research, not claim to replace their mature spatial operations.
 
 **Known pentagonal prior art:** [A5](https://a5geo.org/docs) already provides a pentagonal global equal-area indexing design under the OGC definition, 31 resolution levels and 64-bit addresses. Accordingly pentagonal topology, equal-area DGGS and 64-bit deep addressing must not be attributed as V5-first innovations. V5’s distinct research question is an explicit **32-child** weak/strong refinement and its rigorous geometry/algorithmic analysis. No geospatial speed or accuracy advantage follows from five sides or the use of a 64-bit integer.
+
+## 16. Spatial DNA v0.1 — entropy-capacity disadvantage and optional provenance
+
+A separate technical design, [Spatial DNA v0.1](SPATIAL_DNA_V0_1.md), addresses a proposed **five-child, three-bit** alternative. Its maximum digit-capacity efficiency is **log2(5)/3 ≈ 77.4%** and its capacity overhead is **22.6%**. These percentages are **not V5-32 v1** properties: the current **32-child, 5-bit** digit alphabet has **100%** maximum alphabet capacity and no unused digit values. Valid V5-64 v1 padding MUST remain zero.
+
+At 15 levels of the alternative five-way tree, 45 raw bits can be densely re-encoded to **35 bits**, freeing **10 full bits** for other use. It does not create 15 free signed metadata bits, and this alternative represents a DIFFERENT hierarchy rather than the existing V5-32 geometry.
+
+**Spatial DNA v0.1 prototype:** [src/v5dna.py](../src/v5dna.py) defines a **54-byte optional sidecar** carrying schema/atlas version, key identifier, unchanged canonical V5-64 ID, epoch seconds, up to ten 2-bit level annotations, CRC32 and 128-bit truncated HMAC-SHA256 verification. [Unit tests](../tests/test_v5dna.py) exercise tampering, wrong keys, path canonicality and optional marks. This sidecar is **not encoded in the 64-bit CellID**; dense databases MAY store it only where needed.
+
+**Security boundaries:** 15-bit signatures are inadequate authentication; CRC does not correct errors; HMAC authenticates the sidecar only and neither encrypts it nor proves attached GIS observations are correct. Access controls, verified external provenance, trusted producer signatures, ECC repair, historical event logs, secure key management and replay controls remain separate unimplemented features. H3 and S2 can equally benefit from authenticated sidecars.
+
+See [Vietnamese mathematical analysis](../mathematical-proof.html#spatial-dna) for the lossless bit-capacity calculation and an interactive level slider.
