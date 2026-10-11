@@ -434,3 +434,22 @@ The user-facing [Vietnamese multi-criteria comparison and UInt64 rationale](COMP
 The V5-64 codec version 1 is restricted to `version=1` for both encoding and decoding. Cross-language serializations MUST preserve all 64 bits, e.g. fixed-width hex string or binary unsigned integer; JavaScript Number is insufficient.
 
 **Release maturity:** Version 1.0.0 labels the research reference site, mathematical weak-refinement prototype and codec, **not** full strong pentagonal DGGS capabilities. Future comparative claims require accuracy-matched, externally repeatable benchmarks.
+
+## 15. Research application catalog (50 falsifiable GIS / AI cases)
+
+A [Vietnamese 50-use-case research catalog](USE_CASES_50_VI.md) and its [interactive browser UI with synthetic examples](../use-cases.html) now enumerate the following research areas:
+
+| Domain | Count | Main proposed capability | Principal blocker |
+| --- | ---: | --- | --- |
+| GIS and geospatial analysis | 10 | Spatial aggregation, conservation, land use and risk | WGS84 atlas / true area / overlay |
+| WebGIS & SDI | 5 | Hierarchical key partition, candidate filters, streams | Point lookup / rendering/DB integration |
+| GeoAI & Machine Learning | 10 | Hierarchical tokens, area-weighted loss, graph learning | Real neighbor graph and trained models |
+| Spatial LLM | 7 | Multi-resolution search, grounding, graph reasoning | Correct spatial retrieval and provenance |
+| SLAM & Robotics | 6 | Coarse-to-fine map partitions | Local SE(2)/SE(3) frame and certified graph |
+| LiDAR & Point Clouds | 6 | Spatial chunking, point sampling, 3D features | Height/voxel dimension, reconstruction accuracy |
+| BIM & Digital Twins | 6 | Entity-to-cell associations, multiscale observations | IFC transforms, stable EntityID and volume |
+| **Total** | **50** | **Research proposals, not deployed features** | **Accuracy and benchmark evidence** |
+
+The interactive demonstrations deliberately stop at implemented **V5-64 codec** and general **area-weighted arithmetic**. No geographical coordinate lookup, equal-area proof, global adjacency, 3D SLAM engine, BIM collision engine or AI model is implied. The catalog is unit-tested by Node (record count, category balance, canonical UInt64 vectors, error rejection and weighted aggregate correctness).
+
+Scientific positioning: V5 should initially **complement** H3/S2 as experimental pentagonal/hierarchical research, not claim to replace their mature spatial operations. No geospatial speed or accuracy advantage follows from five sides or the use of a 64-bit integer.
