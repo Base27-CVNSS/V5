@@ -15,6 +15,8 @@
 | “32 cấp, chia thành 5 con” | **Không phù hợp mã nguồn hiện tại.** V5-32 chia **32 con/cha**, chữ số đường dẫn **5 bit**, CellID v1 lưu **tối đa 10 cấp**. |
 | “UInt64 làm V5 tự động nhanh hơn H3/S2” | **Chưa chứng minh.** H3 và S2 cũng có UInt64; phải đo đúng workload sau khi có engine địa lý. |
 
+**Đối chiếu prior art quan trọng:** [A5](https://a5geo.org/docs) đã triển khai lưới ngũ giác toàn cầu với mô tả equal-area theo OGC, 31 resolution levels và số nguyên 64-bit. Do đó các ý tưởng này không phải phát minh riêng của V5; bài toán V5 cần phát triển khác biệt bằng thuật toán 32-child có chứng nhận toán học và benchmark rõ ràng.
+
 ### Chú giải cổng triển khai
 
 - **Codec demo:** có thể minh họa quan hệ cây và số nguyên 64-bit bằng dữ liệu giả lập; luồng GIS hoàn chỉnh vẫn chưa có.
