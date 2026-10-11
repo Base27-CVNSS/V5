@@ -37,13 +37,13 @@ class CellAddress:
 def encode(root: int, path: Sequence[int] = (), version: int = FORMAT_VERSION) -> int:
     """Pack root, resolution, and path in version:4|res:4|root:6|path:50."""
     path = tuple(path)
-    if not (1 <= version <= 15):
-        raise ValueError("Version must be in 1..15")
-    if not (0 <= root < ROOT_COUNT):
+    if type(version) is not int or version != FORMAT_VERSION:
+        raise ValueError("Only V5-64 wire version 1 is supported")
+    if type(root) is not int or not (0 <= root < ROOT_COUNT):
         raise ValueError("Root must be in 0..11")
     if len(path) > MAX_RESOLUTION:
         raise ValueError("Path holds at most 10 base-32 digits")
-    if any(not isinstance(d, int) or not (0 <= d < 32) for d in path):
+    if any(type(d) is not int or not (0 <= d < 32) for d in path):
         raise ValueError("Every path digit must be an integer in 0..31")
     word = (version << 60) | (len(path) << 56) | (root << 50)
     for i, digit in enumerate(path):
@@ -53,12 +53,12 @@ def encode(root: int, path: Sequence[int] = (), version: int = FORMAT_VERSION) -
 
 def decode(word: int) -> CellAddress:
     """Reject invalid or noncanonical words, including padding garbage."""
-    if not isinstance(word, int) or not (0 <= word < MAX_WORD):
+    if type(word) is not int or not (0 <= word < MAX_WORD):
         raise ValueError("Expected an unsigned 64-bit integer")
     version = (word >> 60) & 15
     resolution = (word >> 56) & 15
     root = (word >> 50) & 63
-    if version == 0 or resolution > MAX_RESOLUTION or root >= ROOT_COUNT:
+    if version != FORMAT_VERSION or resolution > MAX_RESOLUTION or root >= ROOT_COUNT:
         raise ValueError("Invalid V5-64 header")
     suffix_bits = PATH_BITS - 5 * resolution
     if suffix_bits and word & ((1 << suffix_bits) - 1):
