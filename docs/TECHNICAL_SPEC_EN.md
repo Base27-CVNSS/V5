@@ -144,7 +144,7 @@ These are research goals, **not current guarantees**. Exact Riemannian self-simi
 
 | Bits | Width | Field | Canonical v1 rule |
 | --- | ---: | --- | --- |
-| 63..60 | 4 | version | Encoder uses 1; decoder currently accepts 1..15; clients claiming v1 semantics SHOULD require 1 |
+| 63..60 | 4 | version | Version MUST equal 1 for both encode and decode; other versions are reserved/unsupported |
 | 59..56 | 4 | resolution | Integer 0..10 |
 | 55..50 | 6 | root | Integer 0..11, one of twelve mathematical dodecahedral roots |
 | 49..0 | 50 | child path | Ten successive 5-bit digits 0..31, **left-aligned**; unused suffix MUST be zero |
@@ -169,7 +169,7 @@ Unused path bits are zero. No two canonical tuples (`version, root, path`) encod
 ### 3.3. Decode validation — MUST for v1
 
 1. Reject values outside `[0,2^{64})`, invalid integer types or malformed hex strings.
-2. Reject version 0; **v1-specific consumers SHOULD reject versions other than 1** pending a migration policy.
+2. Reject every version other than 1. The v1 decoder MUST NOT interpret future-version payloads under old semantics.
 3. Reject resolution greater than 10 or root greater than 11.
 4. Reject any nonzero padding bits below the used path prefix.
 5. Extract exactly `r` 5-bit digits; reconstruct and compare to the input when validating canonicality.
