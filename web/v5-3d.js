@@ -294,6 +294,7 @@ updateSimilarity();
 changeMode("angles");
 el("v5-3d-ready").textContent="WebGL · Three.js · 12 spherical roots";
 el("v5-3d-ready").classList.add("ready");
+if(el("v5-3d-loading"))el("v5-3d-loading").remove();
 function animate(){
   requestAnimationFrame(animate);
   if(!document.hidden){orbit.update();renderer.render(scene,camera);}
