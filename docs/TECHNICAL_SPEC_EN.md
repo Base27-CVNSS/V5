@@ -452,4 +452,6 @@ A [Vietnamese 50-use-case research catalog](USE_CASES_50_VI.md) and its [interac
 
 The interactive demonstrations deliberately stop at implemented **V5-64 codec** and general **area-weighted arithmetic**. No geographical coordinate lookup, equal-area proof, global adjacency, 3D SLAM engine, BIM collision engine or AI model is implied. The catalog is unit-tested by Node (record count, category balance, canonical UInt64 vectors, error rejection and weighted aggregate correctness).
 
-Scientific positioning: V5 should initially **complement** H3/S2 as experimental pentagonal/hierarchical research, not claim to replace their mature spatial operations. No geospatial speed or accuracy advantage follows from five sides or the use of a 64-bit integer.
+Scientific positioning: V5 should initially **complement** H3/S2 as experimental pentagonal/hierarchical research, not claim to replace their mature spatial operations.
+
+**Known pentagonal prior art:** [A5](https://a5geo.org/docs) already provides a pentagonal global equal-area indexing design under the OGC definition, 31 resolution levels and 64-bit addresses. Accordingly pentagonal topology, equal-area DGGS and 64-bit deep addressing must not be attributed as V5-first innovations. V5’s distinct research question is an explicit **32-child** weak/strong refinement and its rigorous geometry/algorithmic analysis. No geospatial speed or accuracy advantage follows from five sides or the use of a 64-bit integer.
